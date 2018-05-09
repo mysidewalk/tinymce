@@ -29,7 +29,6 @@ tinymcespellchecker
 a11ychecker
 codemirror
 mentions
-*.min.js
 *.dev.js
 *.full.js
 *.min.css
