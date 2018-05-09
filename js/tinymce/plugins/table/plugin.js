@@ -2025,8 +2025,8 @@ define(
 
           if (tableElm) {
             data = {
-              width: removePxSuffix(dom.getStyle(tableElm, 'width') || dom.getAttrib(tableElm, 'width')),
-              height: removePxSuffix(dom.getStyle(tableElm, 'height') || dom.getAttrib(tableElm, 'height')),
+              // width: removePxSuffix(dom.getStyle(tableElm, 'width') || dom.getAttrib(tableElm, 'width')),
+              // height: removePxSuffix(dom.getStyle(tableElm, 'height') || dom.getAttrib(tableElm, 'height')),
               cellspacing: removePxSuffix(dom.getStyle(tableElm, 'border-spacing') ||
                 dom.getAttrib(tableElm, 'cellspacing')),
               cellpadding: dom.getAttrib(tableElm, 'data-mce-cell-padding') || dom.getAttrib(tableElm, 'cellpadding') ||
@@ -2091,17 +2091,17 @@ define(
               items: (editor.settings.table_appearance_options !== false) ? [
                 colsCtrl,
                 rowsCtrl,
-                { label: 'Width', name: 'width' },
-                { label: 'Height', name: 'height' },
+                // { label: 'Width', name: 'width' },
+                // { label: 'Height', name: 'height' },
                 { label: 'Cell spacing', name: 'cellspacing' },
                 { label: 'Cell padding', name: 'cellpadding' },
                 { label: 'Border', name: 'border' },
                 { label: 'Caption', name: 'caption', type: 'checkbox' }
               ] : [
                 colsCtrl,
-                rowsCtrl,
-                  { label: 'Width', name: 'width' },
-                  { label: 'Height', name: 'height' }
+                rowsCtrl
+                  // { label: 'Width', name: 'width' },
+                  // { label: 'Height', name: 'height' }
               ]
             },
 
@@ -2246,8 +2246,8 @@ define(
           };
         } else {
           data = {
-            width: removePxSuffix(dom.getStyle(cellElm, 'width') || dom.getAttrib(cellElm, 'width')),
-            height: removePxSuffix(dom.getStyle(cellElm, 'height') || dom.getAttrib(cellElm, 'height')),
+            // width: removePxSuffix(dom.getStyle(cellElm, 'width') || dom.getAttrib(cellElm, 'width')),
+            // height: removePxSuffix(dom.getStyle(cellElm, 'height') || dom.getAttrib(cellElm, 'height')),
             scope: dom.getAttrib(cellElm, 'scope'),
             'class': dom.getAttrib(cellElm, 'class')
           };
