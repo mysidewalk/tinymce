@@ -108,12 +108,12 @@ var colorpicker = (function () {
     });
     setColor(win, value);
   };
-  var $_flqcuua9jiwc0n9m = { open: open };
+  var $_3f82hka9jiwc8ieu = { open: open };
 
   global.add('colorpicker', function (editor) {
     if (!editor.settings.color_picker_callback) {
       editor.settings.color_picker_callback = function (callback, value) {
-        $_flqcuua9jiwc0n9m.open(editor, callback, value);
+        $_3f82hka9jiwc8ieu.open(editor, callback, value);
       };
     }
   });

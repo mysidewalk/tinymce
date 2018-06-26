@@ -33,7 +33,7 @@ var importcss = (function () {
   var getFileFilter = function (editor) {
     return editor.getParam('importcss_file_filter');
   };
-  var $_f8wp72evjiwc0nxf = {
+  var $_c1xwwevjiwc8j2v = {
     shouldMergeClasses: shouldMergeClasses,
     shouldImportExclusive: shouldImportExclusive,
     getSelectorConverter: getSelectorConverter,
@@ -136,7 +136,7 @@ var importcss = (function () {
         classes: classes
       };
     }
-    if ($_f8wp72evjiwc0nxf.shouldMergeClasses(editor) !== false) {
+    if ($_c1xwwevjiwc8j2v.shouldMergeClasses(editor) !== false) {
       format.classes = classes;
     } else {
       format.attributes = { class: classes };
@@ -162,7 +162,7 @@ var importcss = (function () {
     });
   };
   var isExclusiveMode = function (editor, group) {
-    return group === null || $_f8wp72evjiwc0nxf.shouldImportExclusive(editor) !== false;
+    return group === null || $_c1xwwevjiwc8j2v.shouldImportExclusive(editor) !== false;
   };
   var isUniqueSelector = function (editor, selector, group, globallyUniqueSelectors) {
     return !(isExclusiveMode(editor, group) ? selector in globallyUniqueSelectors : selector in group.selectors);
@@ -178,8 +178,8 @@ var importcss = (function () {
     var selectorConverter;
     if (group && group.selector_converter) {
       selectorConverter = group.selector_converter;
-    } else if ($_f8wp72evjiwc0nxf.getSelectorConverter(editor)) {
-      selectorConverter = $_f8wp72evjiwc0nxf.getSelectorConverter(editor);
+    } else if ($_c1xwwevjiwc8j2v.getSelectorConverter(editor)) {
+      selectorConverter = $_c1xwwevjiwc8j2v.getSelectorConverter(editor);
     } else {
       selectorConverter = function () {
         return defaultConvertSelectorToFormat(editor, selector);
@@ -190,8 +190,8 @@ var importcss = (function () {
   var setup = function (editor) {
     editor.on('renderFormatsMenu', function (e) {
       var globallyUniqueSelectors = {};
-      var selectorFilter = compileFilter($_f8wp72evjiwc0nxf.getSelectorFilter(editor)), ctrl = e.control;
-      var groups = compileUserDefinedGroups($_f8wp72evjiwc0nxf.getCssGroups(editor));
+      var selectorFilter = compileFilter($_c1xwwevjiwc8j2v.getSelectorFilter(editor)), ctrl = e.control;
+      var groups = compileUserDefinedGroups($_c1xwwevjiwc8j2v.getCssGroups(editor));
       var processSelector = function (selector, group) {
         if (isUniqueSelector(editor, selector, group, globallyUniqueSelectors)) {
           markUniqueSelector(editor, selector, group, globallyUniqueSelectors);
@@ -207,10 +207,10 @@ var importcss = (function () {
         }
         return null;
       };
-      if (!$_f8wp72evjiwc0nxf.shouldAppend(editor)) {
+      if (!$_c1xwwevjiwc8j2v.shouldAppend(editor)) {
         ctrl.items().remove();
       }
-      global$4.each(getSelectors(editor, e.doc || editor.getDoc(), compileFilter($_f8wp72evjiwc0nxf.getFileFilter(editor))), function (selector) {
+      global$4.each(getSelectors(editor, e.doc || editor.getDoc(), compileFilter($_c1xwwevjiwc8j2v.getFileFilter(editor))), function (selector) {
         if (selector.indexOf('.mce-') === -1) {
           if (!selectorFilter || selectorFilter(selector)) {
             var selectorGroups = getGroupsBySelector(groups, selector);
@@ -238,22 +238,22 @@ var importcss = (function () {
       e.control.renderNew();
     });
   };
-  var $_84h21xeqjiwc0nx7 = {
+  var $_g3bvoteqjiwc8j2p = {
     defaultConvertSelectorToFormat: defaultConvertSelectorToFormat,
     setup: setup
   };
 
   var get = function (editor) {
     var convertSelectorToFormat = function (selectorText) {
-      return $_84h21xeqjiwc0nx7.defaultConvertSelectorToFormat(editor, selectorText);
+      return $_g3bvoteqjiwc8j2p.defaultConvertSelectorToFormat(editor, selectorText);
     };
     return { convertSelectorToFormat: convertSelectorToFormat };
   };
-  var $_9q5uerepjiwc0nx4 = { get: get };
+  var $_en2crxepjiwc8j2n = { get: get };
 
   global.add('importcss', function (editor) {
-    $_84h21xeqjiwc0nx7.setup(editor);
-    return $_9q5uerepjiwc0nx4.get(editor);
+    $_g3bvoteqjiwc8j2p.setup(editor);
+    return $_en2crxepjiwc8j2n.get(editor);
   });
   function Plugin () {
   }

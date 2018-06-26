@@ -15,7 +15,7 @@ var preview = (function () {
   var getContentStyle = function (editor) {
     return editor.getParam('content_style', '');
   };
-  var $_3vgtttiwjiwc0oer = {
+  var $_5h73t4iwjiwc8jhx = {
     getPreviewDialogWidth: getPreviewDialogWidth,
     getPreviewDialogHeight: getPreviewDialogHeight,
     getContentStyle: getContentStyle
@@ -27,7 +27,7 @@ var preview = (function () {
     var previewHtml;
     var headHtml = '';
     var encode = editor.dom.encode;
-    var contentStyle = $_3vgtttiwjiwc0oer.getContentStyle(editor);
+    var contentStyle = $_5h73t4iwjiwc8jhx.getContentStyle(editor);
     headHtml += '<base href="' + encode(editor.documentBaseURI.getURI()) + '">';
     if (contentStyle) {
       headHtml += '<style type="text/css">' + contentStyle + '</style>';
@@ -61,7 +61,7 @@ var preview = (function () {
       iframe.src = 'data:text/html;charset=utf-8,' + encodeURIComponent(previewHtml);
     }
   };
-  var $_cypufyixjiwc0oet = {
+  var $_26td7uixjiwc8jhz = {
     getPreviewHtml: getPreviewHtml,
     injectIframeContent: injectIframeContent
   };
@@ -69,8 +69,8 @@ var preview = (function () {
   var open = function (editor) {
     var sandbox = !global$1.ie;
     var dialogHtml = '<iframe src="" frameborder="0"' + (sandbox ? ' sandbox="allow-scripts"' : '') + '></iframe>';
-    var dialogWidth = $_3vgtttiwjiwc0oer.getPreviewDialogWidth(editor);
-    var dialogHeight = $_3vgtttiwjiwc0oer.getPreviewDialogHeight(editor);
+    var dialogWidth = $_5h73t4iwjiwc8jhx.getPreviewDialogWidth(editor);
+    var dialogHeight = $_5h73t4iwjiwc8jhx.getPreviewDialogHeight(editor);
     editor.windowManager.open({
       title: 'Preview',
       width: dialogWidth,
@@ -84,18 +84,18 @@ var preview = (function () {
       },
       onPostRender: function (e) {
         var iframeElm = e.control.getEl('body').firstChild;
-        $_cypufyixjiwc0oet.injectIframeContent(editor, iframeElm, sandbox);
+        $_26td7uixjiwc8jhz.injectIframeContent(editor, iframeElm, sandbox);
       }
     });
   };
-  var $_eji5gwiujiwc0oep = { open: open };
+  var $_9dn2bciujiwc8jhv = { open: open };
 
   var register = function (editor) {
     editor.addCommand('mcePreview', function () {
-      $_eji5gwiujiwc0oep.open(editor);
+      $_9dn2bciujiwc8jhv.open(editor);
     });
   };
-  var $_2z0lnpitjiwc0oen = { register: register };
+  var $_26pmeuitjiwc8jhu = { register: register };
 
   var register$1 = function (editor) {
     editor.addButton('preview', {
@@ -108,11 +108,11 @@ var preview = (function () {
       context: 'view'
     });
   };
-  var $_4ajk9aizjiwc0oev = { register: register$1 };
+  var $_4tkumkizjiwc8ji2 = { register: register$1 };
 
   global.add('preview', function (editor) {
-    $_2z0lnpitjiwc0oen.register(editor);
-    $_4ajk9aizjiwc0oev.register(editor);
+    $_26pmeuitjiwc8jhu.register(editor);
+    $_4tkumkizjiwc8ji2.register(editor);
   });
   function Plugin () {
   }
