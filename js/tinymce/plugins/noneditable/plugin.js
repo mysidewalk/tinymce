@@ -20,7 +20,7 @@ var noneditable = (function () {
       return nonEditableRegExps;
     }
   };
-  var $_4urdgthkjiwaafyg = {
+  var $_2ctyf6hkjiwc0o8y = {
     getNonEditableClass: getNonEditableClass,
     getEditableClass: getEditableClass,
     getNonEditableRegExps: getNonEditableRegExps
@@ -56,18 +56,18 @@ var noneditable = (function () {
       return;
     }
     while (i--) {
-      content = content.replace(nonEditableRegExps[i], replaceMatchWithSpan(editor, content, $_4urdgthkjiwaafyg.getNonEditableClass(editor)));
+      content = content.replace(nonEditableRegExps[i], replaceMatchWithSpan(editor, content, $_2ctyf6hkjiwc0o8y.getNonEditableClass(editor)));
     }
     e.content = content;
   };
   var setup = function (editor) {
     var editClass, nonEditClass;
     var contentEditableAttrName = 'contenteditable';
-    editClass = ' ' + global$1.trim($_4urdgthkjiwaafyg.getEditableClass(editor)) + ' ';
-    nonEditClass = ' ' + global$1.trim($_4urdgthkjiwaafyg.getNonEditableClass(editor)) + ' ';
+    editClass = ' ' + global$1.trim($_2ctyf6hkjiwc0o8y.getEditableClass(editor)) + ' ';
+    nonEditClass = ' ' + global$1.trim($_2ctyf6hkjiwc0o8y.getNonEditableClass(editor)) + ' ';
     var hasEditClass = hasClass(editClass);
     var hasNonEditClass = hasClass(nonEditClass);
-    var nonEditableRegExps = $_4urdgthkjiwaafyg.getNonEditableRegExps(editor);
+    var nonEditableRegExps = $_2ctyf6hkjiwc0o8y.getNonEditableRegExps(editor);
     editor.on('PreInit', function () {
       if (nonEditableRegExps.length > 0) {
         editor.on('BeforeSetContent', function (e) {
@@ -104,10 +104,10 @@ var noneditable = (function () {
       });
     });
   };
-  var $_85urudhijiwaafyb = { setup: setup };
+  var $_du7m9ehijiwc0o8s = { setup: setup };
 
   global.add('noneditable', function (editor) {
-    $_85urudhijiwaafyb.setup(editor);
+    $_du7m9ehijiwc0o8s.setup(editor);
   });
   function Plugin () {
   }

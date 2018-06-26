@@ -28,12 +28,12 @@ var visualchars = (function () {
     };
     return { isEnabled: isEnabled };
   };
-  var $_f276gxs7jiwaaig8 = { get: get };
+  var $_5kuj7ys7jiwc0qwq = { get: get };
 
   var fireVisualChars = function (editor, state) {
     return editor.fire('VisualChars', { state: state });
   };
-  var $_s5mv5sajiwaaigc = { fireVisualChars: fireVisualChars };
+  var $_aqmfvssajiwc0qwt = { fireVisualChars: fireVisualChars };
 
   var charMap = {
     '\xA0': 'nbsp',
@@ -56,7 +56,7 @@ var visualchars = (function () {
     }
     return selector;
   };
-  var $_gavzkfscjiwaaigp = {
+  var $_7e7s2fscjiwc0qx2 = {
     charMap: charMap,
     regExp: charMapToRegExp(charMap),
     regExpGlobal: charMapToRegExp(charMap, true),
@@ -308,7 +308,7 @@ var visualchars = (function () {
     fromPoint: fromPoint
   };
 
-  var $_235iygsljiwaaihv = {
+  var $_4sltmssljiwc0qyb = {
     ATTRIBUTE: Node.ATTRIBUTE_NODE,
     CDATA_SECTION: Node.CDATA_SECTION_NODE,
     COMMENT: Node.COMMENT_NODE,
@@ -339,12 +339,12 @@ var visualchars = (function () {
     };
   };
   var isComment = function (element) {
-    return type(element) === $_235iygsljiwaaihv.COMMENT || name(element) === '#comment';
+    return type(element) === $_4sltmssljiwc0qyb.COMMENT || name(element) === '#comment';
   };
-  var isElement = isType$1($_235iygsljiwaaihv.ELEMENT);
-  var isText = isType$1($_235iygsljiwaaihv.TEXT);
-  var isDocument = isType$1($_235iygsljiwaaihv.DOCUMENT);
-  var $_5t1ovhskjiwaaiht = {
+  var isElement = isType$1($_4sltmssljiwc0qyb.ELEMENT);
+  var isText = isType$1($_4sltmssljiwc0qyb.TEXT);
+  var isDocument = isType$1($_4sltmssljiwc0qyb.DOCUMENT);
+  var $_dxjudeskjiwc0qya = {
     name: name,
     type: type,
     value: value,
@@ -355,12 +355,12 @@ var visualchars = (function () {
   };
 
   var wrapCharWithSpan = function (value) {
-    return '<span data-mce-bogus="1" class="mce-' + $_gavzkfscjiwaaigp.charMap[value] + '">' + value + '</span>';
+    return '<span data-mce-bogus="1" class="mce-' + $_7e7s2fscjiwc0qx2.charMap[value] + '">' + value + '</span>';
   };
-  var $_761gg8smjiwaaihx = { wrapCharWithSpan: wrapCharWithSpan };
+  var $_csfxoosmjiwc0qyd = { wrapCharWithSpan: wrapCharWithSpan };
 
   var isMatch = function (n) {
-    return $_5t1ovhskjiwaaiht.isText(n) && $_5t1ovhskjiwaaiht.value(n) !== undefined && $_gavzkfscjiwaaigp.regExp.test($_5t1ovhskjiwaaiht.value(n));
+    return $_dxjudeskjiwc0qya.isText(n) && $_dxjudeskjiwc0qya.value(n) !== undefined && $_7e7s2fscjiwc0qx2.regExp.test($_dxjudeskjiwc0qya.value(n));
   };
   var filterDescendants = function (scope, predicate) {
     var result = [];
@@ -383,9 +383,9 @@ var visualchars = (function () {
     }
   };
   var replaceWithSpans = function (html) {
-    return html.replace($_gavzkfscjiwaaigp.regExpGlobal, $_761gg8smjiwaaihx.wrapCharWithSpan);
+    return html.replace($_7e7s2fscjiwc0qx2.regExpGlobal, $_csfxoosmjiwc0qyd.wrapCharWithSpan);
   };
-  var $_dctzjusdjiwaaigr = {
+  var $_b72b6gsdjiwc0qx5 = {
     isMatch: isMatch,
     filterDescendants: filterDescendants,
     findParentElm: findParentElm,
@@ -394,9 +394,9 @@ var visualchars = (function () {
 
   var show = function (editor, rootElm) {
     var node, div;
-    var nodeList = $_dctzjusdjiwaaigr.filterDescendants(Element$$1.fromDom(rootElm), $_dctzjusdjiwaaigr.isMatch);
+    var nodeList = $_b72b6gsdjiwc0qx5.filterDescendants(Element$$1.fromDom(rootElm), $_b72b6gsdjiwc0qx5.isMatch);
     each(nodeList, function (n) {
-      var withSpans = $_dctzjusdjiwaaigr.replaceWithSpans($_5t1ovhskjiwaaiht.value(n));
+      var withSpans = $_b72b6gsdjiwc0qx5.replaceWithSpans($_dxjudeskjiwc0qya.value(n));
       div = editor.dom.create('div', null, withSpans);
       while (node = div.lastChild) {
         editor.dom.insertAfter(node, n.dom());
@@ -405,7 +405,7 @@ var visualchars = (function () {
     });
   };
   var hide = function (editor, body) {
-    var nodeList = editor.dom.select($_gavzkfscjiwaaigp.selector, body);
+    var nodeList = editor.dom.select($_7e7s2fscjiwc0qx2.selector, body);
     each(nodeList, function (node) {
       editor.dom.remove(node, 1);
     });
@@ -413,13 +413,13 @@ var visualchars = (function () {
   var toggle = function (editor) {
     var body = editor.getBody();
     var bookmark = editor.selection.getBookmark();
-    var parentNode = $_dctzjusdjiwaaigr.findParentElm(editor.selection.getNode(), body);
+    var parentNode = $_b72b6gsdjiwc0qx5.findParentElm(editor.selection.getNode(), body);
     parentNode = parentNode !== undefined ? parentNode : body;
     hide(editor, parentNode);
     show(editor, parentNode);
     editor.selection.moveToBookmark(bookmark);
   };
-  var $_dfy1y1sbjiwaaigd = {
+  var $_adyb04sbjiwc0qwu = {
     show: show,
     hide: hide,
     toggle: toggle
@@ -430,39 +430,39 @@ var visualchars = (function () {
     var selection = editor.selection;
     var bookmark;
     toggleState.set(!toggleState.get());
-    $_s5mv5sajiwaaigc.fireVisualChars(editor, toggleState.get());
+    $_aqmfvssajiwc0qwt.fireVisualChars(editor, toggleState.get());
     bookmark = selection.getBookmark();
     if (toggleState.get() === true) {
-      $_dfy1y1sbjiwaaigd.show(editor, body);
+      $_adyb04sbjiwc0qwu.show(editor, body);
     } else {
-      $_dfy1y1sbjiwaaigd.hide(editor, body);
+      $_adyb04sbjiwc0qwu.hide(editor, body);
     }
     selection.moveToBookmark(bookmark);
   };
-  var $_a5qai4s9jiwaaiga = { toggleVisualChars: toggleVisualChars };
+  var $_3jn729s9jiwc0qws = { toggleVisualChars: toggleVisualChars };
 
   var register = function (editor, toggleState) {
     editor.addCommand('mceVisualChars', function () {
-      $_a5qai4s9jiwaaiga.toggleVisualChars(editor, toggleState);
+      $_3jn729s9jiwc0qws.toggleVisualChars(editor, toggleState);
     });
   };
-  var $_4630f4s8jiwaaig9 = { register: register };
+  var $_6cdfgus8jiwc0qwr = { register: register };
 
   var global$1 = tinymce.util.Tools.resolve('tinymce.util.Delay');
 
   var setup = function (editor, toggleState) {
     var debouncedToggle = global$1.debounce(function () {
-      $_dfy1y1sbjiwaaigd.toggle(editor);
+      $_adyb04sbjiwc0qwu.toggle(editor);
     }, 300);
     if (editor.settings.forced_root_block !== false) {
       editor.on('keydown', function (e) {
         if (toggleState.get() === true) {
-          e.keyCode === 13 ? $_dfy1y1sbjiwaaigd.toggle(editor) : debouncedToggle();
+          e.keyCode === 13 ? $_adyb04sbjiwc0qwu.toggle(editor) : debouncedToggle();
         }
       });
     }
   };
-  var $_b5jnh8snjiwaaihy = { setup: setup };
+  var $_af7zlvsnjiwc0qyf = { setup: setup };
 
   var toggleActiveState = function (editor) {
     return function (e) {
@@ -491,10 +491,10 @@ var visualchars = (function () {
 
   global.add('visualchars', function (editor) {
     var toggleState = Cell(false);
-    $_4630f4s8jiwaaig9.register(editor, toggleState);
+    $_6cdfgus8jiwc0qwr.register(editor, toggleState);
     register$1(editor);
-    $_b5jnh8snjiwaaihy.setup(editor, toggleState);
-    return $_f276gxs7jiwaaig8.get(toggleState);
+    $_af7zlvsnjiwc0qyf.setup(editor, toggleState);
+    return $_5kuj7ys7jiwc0qwq.get(toggleState);
   });
   function Plugin () {
   }

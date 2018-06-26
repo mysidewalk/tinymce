@@ -62,7 +62,7 @@ var lists = (function () {
   var isChildOfBody = function (dom, elm) {
     return dom.isChildOf(elm, dom.getRoot());
   };
-  var $_6p4iqng3jiwaafrz = {
+  var $_eh9l9mg3jiwc0o1w = {
     isTextNode: isTextNode,
     isListNode: isListNode,
     isListItemNode: isListItemNode,
@@ -79,7 +79,7 @@ var lists = (function () {
 
   var getNormalizedEndPoint = function (container, offset) {
     var node = global$1.getNode(container, offset);
-    if ($_6p4iqng3jiwaafrz.isListItemNode(container) && $_6p4iqng3jiwaafrz.isTextNode(node)) {
+    if ($_eh9l9mg3jiwc0o1w.isListItemNode(container) && $_eh9l9mg3jiwc0o1w.isTextNode(node)) {
       var textNodeOffset = offset >= container.childNodes.length ? node.data.length : 0;
       return {
         container: node,
@@ -99,7 +99,7 @@ var lists = (function () {
     outRng.setEnd(rangeEnd.container, rangeEnd.offset);
     return outRng;
   };
-  var $_61nnbhg2jiwaafrx = {
+  var $_c5kttdg2jiwc0o1s = {
     getNormalizedEndPoint: getNormalizedEndPoint,
     normalizeRange: normalizeRange
   };
@@ -174,9 +174,9 @@ var lists = (function () {
     if (bookmark.endContainer) {
       rng.setEnd(bookmark.endContainer, bookmark.endOffset);
     }
-    return $_61nnbhg2jiwaafrx.normalizeRange(rng);
+    return $_c5kttdg2jiwc0o1s.normalizeRange(rng);
   };
-  var $_fn0i6hg1jiwaafru = {
+  var $_1alutrg1jiwc0o1p = {
     createBookmark: createBookmark,
     resolveBookmark: resolveBookmark
   };
@@ -189,14 +189,14 @@ var lists = (function () {
       sibling = parentNode.previousSibling;
       if (sibling && sibling.nodeName === 'LI') {
         sibling.appendChild(ul);
-        if ($_6p4iqng3jiwaafrz.isEmpty(dom, parentNode)) {
+        if ($_eh9l9mg3jiwc0o1w.isEmpty(dom, parentNode)) {
           DOM$1.remove(parentNode);
         }
       } else {
         DOM$1.setStyle(parentNode, 'listStyleType', 'none');
       }
     }
-    if ($_6p4iqng3jiwaafrz.isListNode(parentNode)) {
+    if ($_eh9l9mg3jiwc0o1w.isListNode(parentNode)) {
       sibling = parentNode.previousSibling;
       if (sibling && sibling.nodeName === 'LI') {
         sibling.appendChild(ul);
@@ -208,7 +208,7 @@ var lists = (function () {
       normalizeList(dom, ul);
     });
   };
-  var $_a8cvaqg4jiwaafs1 = {
+  var $_5d1nd2g4jiwc0o1y = {
     normalizeList: normalizeList,
     normalizeLists: normalizeLists
   };
@@ -224,7 +224,7 @@ var lists = (function () {
   };
   var findSubLists = function (parentList) {
     return global$5.grep(parentList.querySelectorAll('ol,ul,dl'), function (elm) {
-      return $_6p4iqng3jiwaafrz.isListNode(elm);
+      return $_eh9l9mg3jiwc0o1w.isListNode(elm);
     });
   };
   var getSelectedSubLists = function (editor) {
@@ -234,7 +234,7 @@ var lists = (function () {
       return findSubLists(parentList);
     } else {
       return global$5.grep(selectedBlocks, function (elm) {
-        return $_6p4iqng3jiwaafrz.isListNode(elm) && parentList !== elm;
+        return $_eh9l9mg3jiwc0o1w.isListNode(elm) && parentList !== elm;
       });
     }
   };
@@ -248,7 +248,7 @@ var lists = (function () {
   var getSelectedListItems = function (editor) {
     var selectedBlocks = editor.selection.getSelectedBlocks();
     return global$5.grep(findParentListItemsNodes(editor, selectedBlocks), function (block) {
-      return $_6p4iqng3jiwaafrz.isListItemNode(block);
+      return $_eh9l9mg3jiwc0o1w.isListItemNode(block);
     });
   };
   var getClosestListRootElm = function (editor, elm) {
@@ -256,7 +256,7 @@ var lists = (function () {
     var root = parentTableCell.length > 0 ? parentTableCell[0] : editor.getBody();
     return root;
   };
-  var $_g34hy3g5jiwaafs3 = {
+  var $_8an5z1g5jiwc0o20 = {
     getParentList: getParentList,
     getSelectedSubLists: getSelectedSubLists,
     getSelectedListItems: getSelectedListItems,
@@ -279,7 +279,7 @@ var lists = (function () {
       if (textBlock.tagName === editor.settings.forced_root_block) {
         DOM$2.setAttribs(textBlock, editor.settings.forced_root_block_attrs);
       }
-      if (!$_6p4iqng3jiwaafrz.isBlock(contentNode.firstChild, blockElements)) {
+      if (!$_eh9l9mg3jiwc0o1w.isBlock(contentNode.firstChild, blockElements)) {
         fragment.appendChild(textBlock);
       }
     }
@@ -289,7 +289,7 @@ var lists = (function () {
         if (!hasContentNode && (nodeName !== 'SPAN' || node.getAttribute('data-mce-type') !== 'bookmark')) {
           hasContentNode = true;
         }
-        if ($_6p4iqng3jiwaafrz.isBlock(node, blockElements)) {
+        if ($_eh9l9mg3jiwc0o1w.isBlock(node, blockElements)) {
           fragment.appendChild(node);
           textBlock = null;
         } else {
@@ -314,7 +314,7 @@ var lists = (function () {
     }
     return fragment;
   };
-  var $_cyka96g8jiwaafs8 = { createNewTextBlock: createNewTextBlock };
+  var $_ayxz95g8jiwc0o28 = { createNewTextBlock: createNewTextBlock };
 
   var DOM$3 = global$6.DOM;
   var splitList = function (editor, ul, li, newBlock) {
@@ -326,7 +326,7 @@ var lists = (function () {
       DOM$3.remove(targetNode);
     };
     bookmarks = DOM$3.select('span[data-mce-type="bookmark"]', ul);
-    newBlock = newBlock || $_cyka96g8jiwaafs8.createNewTextBlock(editor, li);
+    newBlock = newBlock || $_ayxz95g8jiwc0o28.createNewTextBlock(editor, li);
     tmpRng = DOM$3.createRng();
     tmpRng.setStartAfter(li);
     tmpRng.setEndAfter(ul);
@@ -341,19 +341,19 @@ var lists = (function () {
       DOM$3.insertAfter(fragment, ul);
     }
     DOM$3.insertAfter(newBlock, ul);
-    if ($_6p4iqng3jiwaafrz.isEmpty(editor.dom, li.parentNode)) {
+    if ($_eh9l9mg3jiwc0o1w.isEmpty(editor.dom, li.parentNode)) {
       removeAndKeepBookmarks(li.parentNode);
     }
     DOM$3.remove(li);
-    if ($_6p4iqng3jiwaafrz.isEmpty(editor.dom, ul)) {
+    if ($_eh9l9mg3jiwc0o1w.isEmpty(editor.dom, ul)) {
       DOM$3.remove(ul);
     }
   };
-  var $_6set9kg7jiwaafs6 = { splitList: splitList };
+  var $_eid68vg7jiwc0o23 = { splitList: splitList };
 
   var DOM$4 = global$6.DOM;
   var removeEmptyLi = function (dom, li) {
-    if ($_6p4iqng3jiwaafrz.isEmpty(dom, li)) {
+    if ($_eh9l9mg3jiwc0o1w.isEmpty(dom, li)) {
       DOM$4.remove(li);
     }
   };
@@ -373,59 +373,59 @@ var lists = (function () {
       DOM$4.rename(li, 'DT');
       return true;
     }
-    if ($_6p4iqng3jiwaafrz.isFirstChild(li) && $_6p4iqng3jiwaafrz.isLastChild(li)) {
+    if ($_eh9l9mg3jiwc0o1w.isFirstChild(li) && $_eh9l9mg3jiwc0o1w.isLastChild(li)) {
       if (ulParent.nodeName === 'LI') {
         DOM$4.insertAfter(li, ulParent);
         removeEmptyLi(editor.dom, ulParent);
         DOM$4.remove(ul);
-      } else if ($_6p4iqng3jiwaafrz.isListNode(ulParent)) {
+      } else if ($_eh9l9mg3jiwc0o1w.isListNode(ulParent)) {
         DOM$4.remove(ul, true);
       } else {
-        ulParent.insertBefore($_cyka96g8jiwaafs8.createNewTextBlock(editor, li), ul);
+        ulParent.insertBefore($_ayxz95g8jiwc0o28.createNewTextBlock(editor, li), ul);
         DOM$4.remove(ul);
       }
       return true;
-    } else if ($_6p4iqng3jiwaafrz.isFirstChild(li)) {
+    } else if ($_eh9l9mg3jiwc0o1w.isFirstChild(li)) {
       if (ulParent.nodeName === 'LI') {
         DOM$4.insertAfter(li, ulParent);
         li.appendChild(ul);
         removeEmptyLi(editor.dom, ulParent);
-      } else if ($_6p4iqng3jiwaafrz.isListNode(ulParent)) {
+      } else if ($_eh9l9mg3jiwc0o1w.isListNode(ulParent)) {
         ulParent.insertBefore(li, ul);
       } else {
-        ulParent.insertBefore($_cyka96g8jiwaafs8.createNewTextBlock(editor, li), ul);
+        ulParent.insertBefore($_ayxz95g8jiwc0o28.createNewTextBlock(editor, li), ul);
         DOM$4.remove(li);
       }
       return true;
-    } else if ($_6p4iqng3jiwaafrz.isLastChild(li)) {
+    } else if ($_eh9l9mg3jiwc0o1w.isLastChild(li)) {
       if (ulParent.nodeName === 'LI') {
         DOM$4.insertAfter(li, ulParent);
-      } else if ($_6p4iqng3jiwaafrz.isListNode(ulParent)) {
+      } else if ($_eh9l9mg3jiwc0o1w.isListNode(ulParent)) {
         DOM$4.insertAfter(li, ul);
       } else {
-        DOM$4.insertAfter($_cyka96g8jiwaafs8.createNewTextBlock(editor, li), ul);
+        DOM$4.insertAfter($_ayxz95g8jiwc0o28.createNewTextBlock(editor, li), ul);
         DOM$4.remove(li);
       }
       return true;
     }
     if (ulParent.nodeName === 'LI') {
       ul = ulParent;
-      newBlock = $_cyka96g8jiwaafs8.createNewTextBlock(editor, li, 'LI');
-    } else if ($_6p4iqng3jiwaafrz.isListNode(ulParent)) {
-      newBlock = $_cyka96g8jiwaafs8.createNewTextBlock(editor, li, 'LI');
+      newBlock = $_ayxz95g8jiwc0o28.createNewTextBlock(editor, li, 'LI');
+    } else if ($_eh9l9mg3jiwc0o1w.isListNode(ulParent)) {
+      newBlock = $_ayxz95g8jiwc0o28.createNewTextBlock(editor, li, 'LI');
     } else {
-      newBlock = $_cyka96g8jiwaafs8.createNewTextBlock(editor, li);
+      newBlock = $_ayxz95g8jiwc0o28.createNewTextBlock(editor, li);
     }
-    $_6set9kg7jiwaafs6.splitList(editor, ul, li, newBlock);
-    $_a8cvaqg4jiwaafs1.normalizeLists(editor.dom, ul.parentNode);
+    $_eid68vg7jiwc0o23.splitList(editor, ul, li, newBlock);
+    $_5d1nd2g4jiwc0o1y.normalizeLists(editor.dom, ul.parentNode);
     return true;
   };
   var outdentSelection = function (editor) {
-    var listElements = $_g34hy3g5jiwaafs3.getSelectedListItems(editor);
+    var listElements = $_8an5z1g5jiwc0o20.getSelectedListItems(editor);
     if (listElements.length) {
-      var bookmark = $_fn0i6hg1jiwaafru.createBookmark(editor.selection.getRng());
+      var bookmark = $_1alutrg1jiwc0o1p.createBookmark(editor.selection.getRng());
       var i = void 0, y = void 0;
-      var root = $_g34hy3g5jiwaafs3.getClosestListRootElm(editor, editor.selection.getStart(true));
+      var root = $_8an5z1g5jiwc0o20.getClosestListRootElm(editor, editor.selection.getStart(true));
       i = listElements.length;
       while (i--) {
         var node = listElements[i].parentNode;
@@ -445,12 +445,12 @@ var lists = (function () {
           break;
         }
       }
-      editor.selection.setRng($_fn0i6hg1jiwaafru.resolveBookmark(bookmark));
+      editor.selection.setRng($_1alutrg1jiwc0o1p.resolveBookmark(bookmark));
       editor.nodeChanged();
       return true;
     }
   };
-  var $_fn549afzjiwaafrr = {
+  var $_2i6vazfzjiwc0o1k = {
     outdent: outdent,
     outdentSelection: outdentSelection
   };
@@ -487,11 +487,11 @@ var lists = (function () {
     if (container.nodeType === 1) {
       container = container.childNodes[Math.min(offset, container.childNodes.length - 1)] || container;
     }
-    if (!start && $_6p4iqng3jiwaafrz.isBr(container.nextSibling)) {
+    if (!start && $_eh9l9mg3jiwc0o1w.isBr(container.nextSibling)) {
       container = container.nextSibling;
     }
     while (container.parentNode !== root) {
-      if ($_6p4iqng3jiwaafrz.isTextBlock(editor, container)) {
+      if ($_eh9l9mg3jiwc0o1w.isTextBlock(editor, container)) {
         return container;
       }
       if (/^(TD|TH)$/.test(container.parentNode.nodeName)) {
@@ -514,13 +514,13 @@ var lists = (function () {
       }
     }
     global$5.each(siblings, function (node) {
-      if ($_6p4iqng3jiwaafrz.isTextBlock(editor, node)) {
+      if ($_eh9l9mg3jiwc0o1w.isTextBlock(editor, node)) {
         textBlocks.push(node);
         block = null;
         return;
       }
-      if (dom.isBlock(node) || $_6p4iqng3jiwaafrz.isBr(node)) {
-        if ($_6p4iqng3jiwaafrz.isBr(node)) {
+      if (dom.isBlock(node) || $_eh9l9mg3jiwc0o1w.isBr(node)) {
+        if ($_eh9l9mg3jiwc0o1w.isBr(node)) {
           dom.remove(node);
         }
         block = null;
@@ -528,7 +528,7 @@ var lists = (function () {
       }
       var nextSibling = node.nextSibling;
       if (global$4.isBookmarkNode(node)) {
-        if ($_6p4iqng3jiwaafrz.isTextBlock(editor, nextSibling) || !nextSibling && node.parentNode === root) {
+        if ($_eh9l9mg3jiwc0o1w.isTextBlock(editor, nextSibling) || !nextSibling && node.parentNode === root) {
           block = null;
           return;
         }
@@ -555,7 +555,7 @@ var lists = (function () {
     var rng = editor.selection.getRng(true);
     var bookmark;
     var listItemName = 'LI';
-    var root = $_g34hy3g5jiwaafs3.getClosestListRootElm(editor, editor.selection.getStart(true));
+    var root = $_8an5z1g5jiwc0o20.getClosestListRootElm(editor, editor.selection.getStart(true));
     var dom = editor.dom;
     if (dom.getContentEditable(editor.selection.getNode()) === 'false') {
       return;
@@ -564,11 +564,11 @@ var lists = (function () {
     if (listName === 'DL') {
       listItemName = 'DT';
     }
-    bookmark = $_fn0i6hg1jiwaafru.createBookmark(rng);
+    bookmark = $_1alutrg1jiwc0o1p.createBookmark(rng);
     global$5.each(getSelectedTextBlocks(editor, rng, root), function (block) {
       var listBlock, sibling;
       sibling = block.previousSibling;
-      if (sibling && $_6p4iqng3jiwaafrz.isListNode(sibling) && sibling.nodeName === listName && hasCompatibleStyle(dom, sibling, detail)) {
+      if (sibling && $_eh9l9mg3jiwc0o1w.isListNode(sibling) && sibling.nodeName === listName && hasCompatibleStyle(dom, sibling, detail)) {
         listBlock = sibling;
         block = dom.rename(block, listItemName);
         sibling.appendChild(block);
@@ -593,12 +593,12 @@ var lists = (function () {
       updateListWithDetails(dom, listBlock, detail);
       mergeWithAdjacentLists(editor.dom, listBlock);
     });
-    editor.selection.setRng($_fn0i6hg1jiwaafru.resolveBookmark(bookmark));
+    editor.selection.setRng($_1alutrg1jiwc0o1p.resolveBookmark(bookmark));
   };
   var removeList = function (editor) {
-    var bookmark = $_fn0i6hg1jiwaafru.createBookmark(editor.selection.getRng(true));
-    var root = $_g34hy3g5jiwaafs3.getClosestListRootElm(editor, editor.selection.getStart(true));
-    var listItems = $_g34hy3g5jiwaafs3.getSelectedListItems(editor);
+    var bookmark = $_1alutrg1jiwc0o1p.createBookmark(editor.selection.getRng(true));
+    var root = $_8an5z1g5jiwc0o20.getClosestListRootElm(editor, editor.selection.getStart(true));
+    var listItems = $_8an5z1g5jiwc0o20.getSelectedListItems(editor);
     var emptyListItems = global$5.grep(listItems, function (li) {
       return editor.dom.isEmpty(li);
     });
@@ -606,8 +606,8 @@ var lists = (function () {
       return !editor.dom.isEmpty(li);
     });
     global$5.each(emptyListItems, function (li) {
-      if ($_6p4iqng3jiwaafrz.isEmpty(editor.dom, li)) {
-        $_fn549afzjiwaafrr.outdent(editor, li);
+      if ($_eh9l9mg3jiwc0o1w.isEmpty(editor.dom, li)) {
+        $_2i6vazfzjiwc0o1k.outdent(editor, li);
         return;
       }
     });
@@ -617,17 +617,17 @@ var lists = (function () {
         return;
       }
       for (node = li; node && node !== root; node = node.parentNode) {
-        if ($_6p4iqng3jiwaafrz.isListNode(node)) {
+        if ($_eh9l9mg3jiwc0o1w.isListNode(node)) {
           rootList = node;
         }
       }
-      $_6set9kg7jiwaafs6.splitList(editor, rootList, li);
-      $_a8cvaqg4jiwaafs1.normalizeLists(editor.dom, rootList.parentNode);
+      $_eid68vg7jiwc0o23.splitList(editor, rootList, li);
+      $_5d1nd2g4jiwc0o1y.normalizeLists(editor.dom, rootList.parentNode);
     });
-    editor.selection.setRng($_fn0i6hg1jiwaafru.resolveBookmark(bookmark));
+    editor.selection.setRng($_1alutrg1jiwc0o1p.resolveBookmark(bookmark));
   };
   var isValidLists = function (list1, list2) {
-    return list1 && list2 && $_6p4iqng3jiwaafrz.isListNode(list1) && list1.nodeName === list2.nodeName;
+    return list1 && list2 && $_eh9l9mg3jiwc0o1w.isListNode(list1) && list1.nodeName === list2.nodeName;
   };
   var hasSameListStyle = function (dom, list1, list2) {
     var targetStyle = dom.getStyle(list1, 'list-style-type', true);
@@ -669,11 +669,11 @@ var lists = (function () {
     if (parentList.nodeName === listName && !hasListStyleDetail(detail)) {
       removeList(editor);
     } else {
-      var bookmark = $_fn0i6hg1jiwaafru.createBookmark(editor.selection.getRng(true));
+      var bookmark = $_1alutrg1jiwc0o1p.createBookmark(editor.selection.getRng(true));
       global$5.each([parentList].concat(lists), function (elm) {
         updateList(editor.dom, elm, listName, detail);
       });
-      editor.selection.setRng($_fn0i6hg1jiwaafru.resolveBookmark(bookmark));
+      editor.selection.setRng($_1alutrg1jiwc0o1p.resolveBookmark(bookmark));
     }
   };
   var hasListStyleDetail = function (detail) {
@@ -687,18 +687,18 @@ var lists = (function () {
       if (parentList.nodeName === listName && !hasListStyleDetail(detail)) {
         removeList(editor);
       } else {
-        var bookmark = $_fn0i6hg1jiwaafru.createBookmark(editor.selection.getRng(true));
+        var bookmark = $_1alutrg1jiwc0o1p.createBookmark(editor.selection.getRng(true));
         updateListWithDetails(editor.dom, parentList, detail);
         mergeWithAdjacentLists(editor.dom, editor.dom.rename(parentList, listName));
-        editor.selection.setRng($_fn0i6hg1jiwaafru.resolveBookmark(bookmark));
+        editor.selection.setRng($_1alutrg1jiwc0o1p.resolveBookmark(bookmark));
       }
     } else {
       applyList(editor, listName, detail);
     }
   };
   var toggleList = function (editor, listName, detail) {
-    var parentList = $_g34hy3g5jiwaafs3.getParentList(editor);
-    var selectedSubLists = $_g34hy3g5jiwaafs3.getSelectedSubLists(editor);
+    var parentList = $_8an5z1g5jiwc0o20.getParentList(editor);
+    var selectedSubLists = $_8an5z1g5jiwc0o20.getSelectedSubLists(editor);
     detail = detail ? detail : {};
     if (parentList && selectedSubLists.length > 0) {
       toggleMultipleLists(editor, parentList, selectedSubLists, listName, detail);
@@ -706,7 +706,7 @@ var lists = (function () {
       toggleSingleList(editor, parentList, listName, detail);
     }
   };
-  var $_7sbyohfwjiwaafri = {
+  var $_1ckvmjfwjiwc0o1d = {
     toggleList: toggleList,
     removeList: removeList,
     mergeWithAdjacentLists: mergeWithAdjacentLists
@@ -725,7 +725,7 @@ var lists = (function () {
     }
     walker = new global$2(node, root);
     if (isForward) {
-      if ($_6p4iqng3jiwaafrz.isBogusBr(editor.dom, node)) {
+      if ($_eh9l9mg3jiwc0o1w.isBogusBr(editor.dom, node)) {
         walker.next();
       }
     }
@@ -743,7 +743,7 @@ var lists = (function () {
   };
   var hasOnlyOneBlockChild = function (dom, elm) {
     var childNodes = elm.childNodes;
-    return childNodes.length === 1 && !$_6p4iqng3jiwaafrz.isListNode(childNodes[0]) && dom.isBlock(childNodes[0]);
+    return childNodes.length === 1 && !$_eh9l9mg3jiwc0o1w.isListNode(childNodes[0]) && dom.isBlock(childNodes[0]);
   };
   var unwrapSingleBlockChild = function (dom, elm) {
     if (hasOnlyOneBlockChild(dom, elm)) {
@@ -754,7 +754,7 @@ var lists = (function () {
     var node, targetElm;
     targetElm = hasOnlyOneBlockChild(dom, toElm) ? toElm.firstChild : toElm;
     unwrapSingleBlockChild(dom, fromElm);
-    if (!$_6p4iqng3jiwaafrz.isEmpty(dom, fromElm, true)) {
+    if (!$_eh9l9mg3jiwc0o1w.isEmpty(dom, fromElm, true)) {
       while (node = fromElm.firstChild) {
         targetElm.appendChild(node);
       }
@@ -763,22 +763,22 @@ var lists = (function () {
   var mergeLiElements = function (dom, fromElm, toElm) {
     var node, listNode;
     var ul = fromElm.parentNode;
-    if (!$_6p4iqng3jiwaafrz.isChildOfBody(dom, fromElm) || !$_6p4iqng3jiwaafrz.isChildOfBody(dom, toElm)) {
+    if (!$_eh9l9mg3jiwc0o1w.isChildOfBody(dom, fromElm) || !$_eh9l9mg3jiwc0o1w.isChildOfBody(dom, toElm)) {
       return;
     }
-    if ($_6p4iqng3jiwaafrz.isListNode(toElm.lastChild)) {
+    if ($_eh9l9mg3jiwc0o1w.isListNode(toElm.lastChild)) {
       listNode = toElm.lastChild;
     }
     if (ul === toElm.lastChild) {
-      if ($_6p4iqng3jiwaafrz.isBr(ul.previousSibling)) {
+      if ($_eh9l9mg3jiwc0o1w.isBr(ul.previousSibling)) {
         dom.remove(ul.previousSibling);
       }
     }
     node = toElm.lastChild;
-    if (node && $_6p4iqng3jiwaafrz.isBr(node) && fromElm.hasChildNodes()) {
+    if (node && $_eh9l9mg3jiwc0o1w.isBr(node) && fromElm.hasChildNodes()) {
       dom.remove(node);
     }
-    if ($_6p4iqng3jiwaafrz.isEmpty(dom, toElm, true)) {
+    if ($_eh9l9mg3jiwc0o1w.isEmpty(dom, toElm, true)) {
       dom.$(toElm).empty();
     }
     moveChildren(dom, fromElm, toElm);
@@ -786,7 +786,7 @@ var lists = (function () {
       toElm.appendChild(listNode);
     }
     dom.remove(fromElm);
-    if ($_6p4iqng3jiwaafrz.isEmpty(dom, ul) && ul !== dom.getRoot()) {
+    if ($_eh9l9mg3jiwc0o1w.isEmpty(dom, ul) && ul !== dom.getRoot()) {
       dom.remove(ul);
     }
   };
@@ -800,29 +800,29 @@ var lists = (function () {
     if (dom.isEmpty(toLi)) {
       mergeIntoEmptyLi(editor, fromLi, toLi);
     } else {
-      var bookmark = $_fn0i6hg1jiwaafru.createBookmark(rng);
+      var bookmark = $_1alutrg1jiwc0o1p.createBookmark(rng);
       mergeLiElements(dom, fromLi, toLi);
-      editor.selection.setRng($_fn0i6hg1jiwaafru.resolveBookmark(bookmark));
+      editor.selection.setRng($_1alutrg1jiwc0o1p.resolveBookmark(bookmark));
     }
   };
   var mergeBackward = function (editor, rng, fromLi, toLi) {
-    var bookmark = $_fn0i6hg1jiwaafru.createBookmark(rng);
+    var bookmark = $_1alutrg1jiwc0o1p.createBookmark(rng);
     mergeLiElements(editor.dom, fromLi, toLi);
-    var resolvedBookmark = $_fn0i6hg1jiwaafru.resolveBookmark(bookmark);
+    var resolvedBookmark = $_1alutrg1jiwc0o1p.resolveBookmark(bookmark);
     editor.selection.setRng(resolvedBookmark);
   };
   var backspaceDeleteFromListToListCaret = function (editor, isForward) {
     var dom = editor.dom, selection = editor.selection;
     var selectionStartElm = selection.getStart();
-    var root = $_g34hy3g5jiwaafs3.getClosestListRootElm(editor, selectionStartElm);
+    var root = $_8an5z1g5jiwc0o20.getClosestListRootElm(editor, selectionStartElm);
     var li = dom.getParent(selection.getStart(), 'LI', root);
     var ul, rng, otherLi;
     if (li) {
       ul = li.parentNode;
-      if (ul === editor.getBody() && $_6p4iqng3jiwaafrz.isEmpty(dom, ul)) {
+      if (ul === editor.getBody() && $_eh9l9mg3jiwc0o1w.isEmpty(dom, ul)) {
         return true;
       }
-      rng = $_61nnbhg2jiwaafrx.normalizeRange(selection.getRng(true));
+      rng = $_c5kttdg2jiwc0o1s.normalizeRange(selection.getRng(true));
       otherLi = dom.getParent(findNextCaretContainer(editor, rng, isForward, root), 'LI', root);
       if (otherLi && otherLi !== li) {
         if (isForward) {
@@ -832,7 +832,7 @@ var lists = (function () {
         }
         return true;
       } else if (!otherLi) {
-        if (!isForward && $_7sbyohfwjiwaafri.removeList(editor)) {
+        if (!isForward && $_1ckvmjfwjiwc0o1d.removeList(editor)) {
           return true;
         }
       }
@@ -849,15 +849,15 @@ var lists = (function () {
   var backspaceDeleteIntoListCaret = function (editor, isForward) {
     var dom = editor.dom;
     var selectionStartElm = editor.selection.getStart();
-    var root = $_g34hy3g5jiwaafs3.getClosestListRootElm(editor, selectionStartElm);
+    var root = $_8an5z1g5jiwc0o20.getClosestListRootElm(editor, selectionStartElm);
     var block = dom.getParent(selectionStartElm, dom.isBlock, root);
     if (block && dom.isEmpty(block)) {
-      var rng = $_61nnbhg2jiwaafrx.normalizeRange(editor.selection.getRng(true));
+      var rng = $_c5kttdg2jiwc0o1s.normalizeRange(editor.selection.getRng(true));
       var otherLi_1 = dom.getParent(findNextCaretContainer(editor, rng, isForward, root), 'LI', root);
       if (otherLi_1) {
         editor.undoManager.transact(function () {
           removeBlock(dom, block, root);
-          $_7sbyohfwjiwaafri.mergeWithAdjacentLists(dom, otherLi_1.parentNode);
+          $_1ckvmjfwjiwc0o1d.mergeWithAdjacentLists(dom, otherLi_1.parentNode);
           editor.selection.select(otherLi_1, true);
           editor.selection.collapse(isForward);
         });
@@ -871,12 +871,12 @@ var lists = (function () {
   };
   var backspaceDeleteRange = function (editor) {
     var selectionStartElm = editor.selection.getStart();
-    var root = $_g34hy3g5jiwaafs3.getClosestListRootElm(editor, selectionStartElm);
+    var root = $_8an5z1g5jiwc0o20.getClosestListRootElm(editor, selectionStartElm);
     var startListParent = editor.dom.getParent(selectionStartElm, 'LI,DT,DD', root);
-    if (startListParent || $_g34hy3g5jiwaafs3.getSelectedListItems(editor).length > 0) {
+    if (startListParent || $_8an5z1g5jiwc0o20.getSelectedListItems(editor).length > 0) {
       editor.undoManager.transact(function () {
         editor.execCommand('Delete');
-        $_a8cvaqg4jiwaafs1.normalizeLists(editor.dom, editor.getBody());
+        $_5d1nd2g4jiwc0o1y.normalizeLists(editor.dom, editor.getBody());
       });
       return true;
     }
@@ -898,7 +898,7 @@ var lists = (function () {
       }
     });
   };
-  var $_dh18kpfsjiwaafra = {
+  var $_99vknvfsjiwc0o14 = {
     setup: setup,
     backspaceDelete: backspaceDelete
   };
@@ -906,16 +906,16 @@ var lists = (function () {
   var get = function (editor) {
     return {
       backspaceDelete: function (isForward) {
-        $_dh18kpfsjiwaafra.backspaceDelete(editor, isForward);
+        $_99vknvfsjiwc0o14.backspaceDelete(editor, isForward);
       }
     };
   };
-  var $_bm3alwfrjiwaafr7 = { get: get };
+  var $_bfg67wfrjiwc0o11 = { get: get };
 
   var DOM$5 = global$6.DOM;
   var mergeLists = function (from, to) {
     var node;
-    if ($_6p4iqng3jiwaafrz.isListNode(from)) {
+    if ($_eh9l9mg3jiwc0o1w.isListNode(from)) {
       while (node = from.firstChild) {
         to.appendChild(node);
       }
@@ -929,17 +929,17 @@ var lists = (function () {
       return true;
     }
     sibling = li.previousSibling;
-    if (sibling && $_6p4iqng3jiwaafrz.isListNode(sibling)) {
+    if (sibling && $_eh9l9mg3jiwc0o1w.isListNode(sibling)) {
       sibling.appendChild(li);
       return true;
     }
-    if (sibling && sibling.nodeName === 'LI' && $_6p4iqng3jiwaafrz.isListNode(sibling.lastChild)) {
+    if (sibling && sibling.nodeName === 'LI' && $_eh9l9mg3jiwc0o1w.isListNode(sibling.lastChild)) {
       sibling.lastChild.appendChild(li);
       mergeLists(li.lastChild, sibling.lastChild);
       return true;
     }
     sibling = li.nextSibling;
-    if (sibling && $_6p4iqng3jiwaafrz.isListNode(sibling)) {
+    if (sibling && $_eh9l9mg3jiwc0o1w.isListNode(sibling)) {
       sibling.insertBefore(li, sibling.firstChild);
       return true;
     }
@@ -958,20 +958,20 @@ var lists = (function () {
     return false;
   };
   var indentSelection = function (editor) {
-    var listElements = $_g34hy3g5jiwaafs3.getSelectedListItems(editor);
+    var listElements = $_8an5z1g5jiwc0o20.getSelectedListItems(editor);
     if (listElements.length) {
-      var bookmark = $_fn0i6hg1jiwaafru.createBookmark(editor.selection.getRng(true));
+      var bookmark = $_1alutrg1jiwc0o1p.createBookmark(editor.selection.getRng(true));
       for (var i = 0; i < listElements.length; i++) {
         if (!indent(listElements[i]) && i === 0) {
           break;
         }
       }
-      editor.selection.setRng($_fn0i6hg1jiwaafru.resolveBookmark(bookmark));
+      editor.selection.setRng($_1alutrg1jiwc0o1p.resolveBookmark(bookmark));
       editor.nodeChanged();
       return true;
     }
   };
-  var $_6iwgemgbjiwaafsg = { indentSelection: indentSelection };
+  var $_gfm61dgbjiwc0o2f = { indentSelection: indentSelection };
 
   var queryListCommandState = function (editor, listName) {
     return function () {
@@ -984,11 +984,11 @@ var lists = (function () {
       var cmd = e.command.toLowerCase();
       var isHandled;
       if (cmd === 'indent') {
-        if ($_6iwgemgbjiwaafsg.indentSelection(editor)) {
+        if ($_gfm61dgbjiwc0o2f.indentSelection(editor)) {
           isHandled = true;
         }
       } else if (cmd === 'outdent') {
-        if ($_fn549afzjiwaafrr.outdentSelection(editor)) {
+        if ($_2i6vazfzjiwc0o1k.outdentSelection(editor)) {
           isHandled = true;
         }
       }
@@ -999,24 +999,24 @@ var lists = (function () {
       }
     });
     editor.addCommand('InsertUnorderedList', function (ui, detail) {
-      $_7sbyohfwjiwaafri.toggleList(editor, 'UL', detail);
+      $_1ckvmjfwjiwc0o1d.toggleList(editor, 'UL', detail);
     });
     editor.addCommand('InsertOrderedList', function (ui, detail) {
-      $_7sbyohfwjiwaafri.toggleList(editor, 'OL', detail);
+      $_1ckvmjfwjiwc0o1d.toggleList(editor, 'OL', detail);
     });
     editor.addCommand('InsertDefinitionList', function (ui, detail) {
-      $_7sbyohfwjiwaafri.toggleList(editor, 'DL', detail);
+      $_1ckvmjfwjiwc0o1d.toggleList(editor, 'DL', detail);
     });
     editor.addQueryStateHandler('InsertUnorderedList', queryListCommandState(editor, 'UL'));
     editor.addQueryStateHandler('InsertOrderedList', queryListCommandState(editor, 'OL'));
     editor.addQueryStateHandler('InsertDefinitionList', queryListCommandState(editor, 'DL'));
   };
-  var $_ufmwfgajiwaafsd = { register: register };
+  var $_cvbxixgajiwc0o2c = { register: register };
 
   var shouldIndentOnTab = function (editor) {
     return editor.getParam('lists_indent_on_tab', true);
   };
-  var $_5e98c6gdjiwaafsl = { shouldIndentOnTab: shouldIndentOnTab };
+  var $_6qvphxgdjiwc0o2k = { shouldIndentOnTab: shouldIndentOnTab };
 
   var setupTabKey = function (editor) {
     editor.on('keydown', function (e) {
@@ -1026,20 +1026,20 @@ var lists = (function () {
       if (editor.dom.getParent(editor.selection.getStart(), 'LI,DT,DD')) {
         e.preventDefault();
         if (e.shiftKey) {
-          $_fn549afzjiwaafrr.outdentSelection(editor);
+          $_2i6vazfzjiwc0o1k.outdentSelection(editor);
         } else {
-          $_6iwgemgbjiwaafsg.indentSelection(editor);
+          $_gfm61dgbjiwc0o2f.indentSelection(editor);
         }
       }
     });
   };
   var setup$1 = function (editor) {
-    if ($_5e98c6gdjiwaafsl.shouldIndentOnTab(editor)) {
+    if ($_6qvphxgdjiwc0o2k.shouldIndentOnTab(editor)) {
       setupTabKey(editor);
     }
-    $_dh18kpfsjiwaafra.setup(editor);
+    $_99vknvfsjiwc0o14.setup(editor);
   };
-  var $_e1b50pgcjiwaafsj = { setup: setup$1 };
+  var $_dkd05egcjiwc0o2h = { setup: setup$1 };
 
   var findIndex = function (list, predicate) {
     for (var index = 0; index < list.length; index++) {
@@ -1054,9 +1054,9 @@ var lists = (function () {
     return function (e) {
       var ctrl = e.control;
       editor.on('NodeChange', function (e) {
-        var tableCellIndex = findIndex(e.parents, $_6p4iqng3jiwaafrz.isTableCellNode);
+        var tableCellIndex = findIndex(e.parents, $_eh9l9mg3jiwc0o1w.isTableCellNode);
         var parents = tableCellIndex !== -1 ? e.parents.slice(0, tableCellIndex) : e.parents;
-        var lists = global$5.grep(parents, $_6p4iqng3jiwaafrz.isListNode);
+        var lists = global$5.grep(parents, $_eh9l9mg3jiwc0o1w.isListNode);
         ctrl.active(lists.length > 0 && lists[0].nodeName === listName);
       });
     };
@@ -1065,8 +1065,8 @@ var lists = (function () {
     return function (e) {
       var ctrl = e.control;
       editor.on('nodechange', function () {
-        var listItemBlocks = $_g34hy3g5jiwaafs3.getSelectedListItems(editor);
-        var disable = listItemBlocks.length > 0 && $_6p4iqng3jiwaafrz.isFirstChild(listItemBlocks[0]);
+        var listItemBlocks = $_8an5z1g5jiwc0o20.getSelectedListItems(editor);
+        var disable = listItemBlocks.length > 0 && $_eh9l9mg3jiwc0o1w.isFirstChild(listItemBlocks[0]);
         ctrl.disabled(disable);
       });
     };
@@ -1097,13 +1097,13 @@ var lists = (function () {
       onPostRender: indentPostRender(editor)
     });
   };
-  var $_pijy2gejiwaafsn = { register: register$1 };
+  var $_fie2nmgejiwc0o2m = { register: register$1 };
 
   global.add('lists', function (editor) {
-    $_e1b50pgcjiwaafsj.setup(editor);
-    $_pijy2gejiwaafsn.register(editor);
-    $_ufmwfgajiwaafsd.register(editor);
-    return $_bm3alwfrjiwaafr7.get(editor);
+    $_dkd05egcjiwc0o2h.setup(editor);
+    $_fie2nmgejiwc0o2m.register(editor);
+    $_cvbxixgajiwc0o2c.register(editor);
+    return $_bfg67wfrjiwc0o11.get(editor);
   });
   function Plugin () {
   }
