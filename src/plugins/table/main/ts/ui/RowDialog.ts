@@ -18,7 +18,7 @@ import { Editor } from 'tinymce/core/api/Editor';
 import DOMUtils from 'tinymce/core/api/dom/DOMUtils';
 
 interface FormData {
-  height: string;
+  // height: string;
   scope: string;
   class: string;
   align: string;
@@ -29,7 +29,7 @@ interface FormData {
 const extractDataFromElement = function (editor: Editor, elm: Node): FormData {
   const dom = editor.dom;
   const data: FormData = {
-    height: dom.getStyle(elm, 'height') || dom.getAttrib(elm, 'height'),
+    // height: dom.getStyle(elm, 'height') || dom.getAttrib(elm, 'height'),
     scope: dom.getAttrib(elm, 'scope'),
     class: dom.getAttrib(elm, 'class'),
     align: '',
@@ -99,7 +99,7 @@ function onSubmitRowForm(editor: Editor, rows: HTMLElement[], oldData: FormData,
       setAttrib(rowElm, 'scope', data.scope);
       setAttrib(rowElm, 'style', data.style);
       setAttrib(rowElm, 'class', data.class);
-      setStyle(rowElm, 'height', Util.addSizeSuffix(data.height));
+      // setStyle(rowElm, 'height', Util.addSizeSuffix(data.height));
 
       if (data.type !== rowElm.parentNode.nodeName.toLowerCase()) {
         switchRowType(editor.dom, rowElm, data.type);
@@ -141,7 +141,7 @@ const open = function (editor: Editor) {
 
   if (rows.length > 1) {
     data = {
-      height: '',
+      // height: '',
       scope: '',
       style: '',
       class: '',
@@ -203,7 +203,7 @@ const open = function (editor: Editor) {
           { text: 'Right', value: 'right' }
         ]
       },
-      { label: 'Height', name: 'height' },
+      // { label: 'Height', name: 'height' },
       classListCtrl
     ]
   };

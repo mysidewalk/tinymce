@@ -796,8 +796,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('prod', [
     'validateVersion',
-    'shell:tsc',
-    'tslint',
+    // 'shell:tsc',
+    // 'tslint',
     'globals',
     'rollup',
     'uglify',
