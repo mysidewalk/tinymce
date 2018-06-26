@@ -196,8 +196,8 @@ const open = function (editor: Editor) {
           maxWidth: 50
         },
         items: [
-          { label: 'Width', name: 'width', onchange: Fun.curry(Helpers.updateStyleField, editor) },
-          { label: 'Height', name: 'height', onchange: Fun.curry(Helpers.updateStyleField, editor) },
+          // { label: 'Width', name: 'width', onchange: Fun.curry(Helpers.updateStyleField, editor) },
+          // { label: 'Height', name: 'height', onchange: Fun.curry(Helpers.updateStyleField, editor) },
           {
             label: 'Cell type',
             name: 'type',
