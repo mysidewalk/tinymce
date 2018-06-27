@@ -46,7 +46,7 @@ var image = (function () {
   var getUploadCredentials = function (editor) {
     return editor.getParam('images_upload_credentials');
   };
-  var $_pazg8cejiwc8ing = {
+  var $_btt1qwcejiwlm6kp = {
     hasDimensions: hasDimensions,
     hasAdvTab: hasAdvTab,
     getPrependUrl: getPrependUrl,
@@ -85,10 +85,10 @@ var image = (function () {
       throw name + ' not available on this browser';
     return actual;
   };
-  var $_50p7k4chjiwc8io1 = { getOrDie: getOrDie };
+  var $_706aagchjiwlm6lf = { getOrDie: getOrDie };
 
   function FileReader () {
-    var f = $_50p7k4chjiwc8io1.getOrDie('FileReader');
+    var f = $_706aagchjiwlm6lf.getOrDie('FileReader');
     return new f();
   }
 
@@ -190,7 +190,7 @@ var image = (function () {
     return css;
   };
   var createImageList = function (editor, callback) {
-    var imageList = $_pazg8cejiwc8ing.getImageList(editor);
+    var imageList = $_btt1qwcejiwlm6kp.getImageList(editor);
     if (typeof imageList === 'string') {
       global$3.send({
         url: imageList,
@@ -213,7 +213,7 @@ var image = (function () {
       }
     }
     imgElm.onload = function () {
-      if (!data.width && !data.height && $_pazg8cejiwc8ing.hasDimensions(editor)) {
+      if (!data.width && !data.height && $_btt1qwcejiwlm6kp.hasDimensions(editor)) {
         editor.dom.setAttribs(imgElm, {
           width: imgElm.clientWidth,
           height: imgElm.clientHeight
@@ -235,7 +235,7 @@ var image = (function () {
       reader.readAsDataURL(blob);
     });
   };
-  var $_5k88g9cfjiwc8inp = {
+  var $_3am5npcfjiwlm6l4 = {
     getImageSize: getImageSize,
     buildListItems: buildListItems,
     removePixelSuffix: removePixelSuffix,
@@ -275,21 +275,21 @@ var image = (function () {
   var DOM = global$4.DOM;
   var getHspace = function (image) {
     if (image.style.marginLeft && image.style.marginRight && image.style.marginLeft === image.style.marginRight) {
-      return $_5k88g9cfjiwc8inp.removePixelSuffix(image.style.marginLeft);
+      return $_3am5npcfjiwlm6l4.removePixelSuffix(image.style.marginLeft);
     } else {
       return '';
     }
   };
   var getVspace = function (image) {
     if (image.style.marginTop && image.style.marginBottom && image.style.marginTop === image.style.marginBottom) {
-      return $_5k88g9cfjiwc8inp.removePixelSuffix(image.style.marginTop);
+      return $_3am5npcfjiwlm6l4.removePixelSuffix(image.style.marginTop);
     } else {
       return '';
     }
   };
   var getBorder = function (image) {
     if (image.style.borderWidth) {
-      return $_5k88g9cfjiwc8inp.removePixelSuffix(image.style.borderWidth);
+      return $_3am5npcfjiwlm6l4.removePixelSuffix(image.style.borderWidth);
     } else {
       return '';
     }
@@ -342,7 +342,7 @@ var image = (function () {
   var setSize = function (name, normalizeCss) {
     return function (image, name, value) {
       if (image.style[name]) {
-        image.style[name] = $_5k88g9cfjiwc8inp.addPixelSuffix(value);
+        image.style[name] = $_3am5npcfjiwlm6l4.addPixelSuffix(value);
         normalizeStyle(image, normalizeCss);
       } else {
         setAttrib(image, name, value);
@@ -351,23 +351,23 @@ var image = (function () {
   };
   var getSize = function (image, name) {
     if (image.style[name]) {
-      return $_5k88g9cfjiwc8inp.removePixelSuffix(image.style[name]);
+      return $_3am5npcfjiwlm6l4.removePixelSuffix(image.style[name]);
     } else {
       return getAttrib(image, name);
     }
   };
   var setHspace = function (image, value) {
-    var pxValue = $_5k88g9cfjiwc8inp.addPixelSuffix(value);
+    var pxValue = $_3am5npcfjiwlm6l4.addPixelSuffix(value);
     image.style.marginLeft = pxValue;
     image.style.marginRight = pxValue;
   };
   var setVspace = function (image, value) {
-    var pxValue = $_5k88g9cfjiwc8inp.addPixelSuffix(value);
+    var pxValue = $_3am5npcfjiwlm6l4.addPixelSuffix(value);
     image.style.marginTop = pxValue;
     image.style.marginBottom = pxValue;
   };
   var setBorder = function (image, value) {
-    var pxValue = $_5k88g9cfjiwc8inp.addPixelSuffix(value);
+    var pxValue = $_3am5npcfjiwlm6l4.addPixelSuffix(value);
     image.style.borderWidth = pxValue;
   };
   var setBorderStyle = function (image, value) {
@@ -475,7 +475,7 @@ var image = (function () {
 
   var normalizeCss = function (editor, cssText) {
     var css = editor.dom.styles.parse(cssText);
-    var mergedCss = $_5k88g9cfjiwc8inp.mergeMargins(css);
+    var mergedCss = $_3am5npcfjiwlm6l4.mergeMargins(css);
     var compressed = editor.dom.styles.parse(editor.dom.styles.serialize(mergedCss));
     return editor.dom.styles.serialize(compressed);
   };
@@ -550,7 +550,7 @@ var image = (function () {
       editor.selection.select(image.parentNode);
     } else {
       editor.selection.select(image);
-      $_5k88g9cfjiwc8inp.waitLoadImage(editor, data, image);
+      $_3am5npcfjiwlm6l4.waitLoadImage(editor, data, image);
     }
   };
   var insertOrUpdateImage = function (editor, data) {
@@ -570,28 +570,28 @@ var image = (function () {
     return function (evt) {
       var dom = editor.dom;
       var rootControl = evt.control.rootControl;
-      if (!$_pazg8cejiwc8ing.hasAdvTab(editor)) {
+      if (!$_btt1qwcejiwlm6kp.hasAdvTab(editor)) {
         return;
       }
       var data = rootControl.toJSON();
       var css = dom.parseStyle(data.style);
       rootControl.find('#vspace').value('');
       rootControl.find('#hspace').value('');
-      css = $_5k88g9cfjiwc8inp.mergeMargins(css);
+      css = $_3am5npcfjiwlm6l4.mergeMargins(css);
       if (css['margin-top'] && css['margin-bottom'] || css['margin-right'] && css['margin-left']) {
         if (css['margin-top'] === css['margin-bottom']) {
-          rootControl.find('#vspace').value($_5k88g9cfjiwc8inp.removePixelSuffix(css['margin-top']));
+          rootControl.find('#vspace').value($_3am5npcfjiwlm6l4.removePixelSuffix(css['margin-top']));
         } else {
           rootControl.find('#vspace').value('');
         }
         if (css['margin-right'] === css['margin-left']) {
-          rootControl.find('#hspace').value($_5k88g9cfjiwc8inp.removePixelSuffix(css['margin-right']));
+          rootControl.find('#hspace').value($_3am5npcfjiwlm6l4.removePixelSuffix(css['margin-right']));
         } else {
           rootControl.find('#hspace').value('');
         }
       }
       if (css['border-width']) {
-        rootControl.find('#border').value($_5k88g9cfjiwc8inp.removePixelSuffix(css['border-width']));
+        rootControl.find('#border').value($_3am5npcfjiwlm6l4.removePixelSuffix(css['border-width']));
       } else {
         rootControl.find('#border').value('');
       }
@@ -710,7 +710,7 @@ var image = (function () {
       ]
     };
   };
-  var $_4pndnpcnjiwc8ioa = { makeTab: makeTab };
+  var $_10tb0kcnjiwlm6lo = { makeTab: makeTab };
 
   var doSyncSize = function (widthCtrl, heightCtrl) {
     widthCtrl.state.set('oldVal', widthCtrl.value());
@@ -790,7 +790,7 @@ var image = (function () {
       ]
     };
   };
-  var $_7hhhivcujiwc8ip0 = {
+  var $_bbdhp4cujiwlm6mh = {
     createUi: createUi,
     syncSize: syncSize,
     updateSize: updateSize
@@ -810,17 +810,17 @@ var image = (function () {
     });
     if (!meta.width && !meta.height) {
       srcURL = editor.convertURL(control.value(), 'src');
-      prependURL = $_pazg8cejiwc8ing.getPrependUrl(editor);
+      prependURL = $_btt1qwcejiwlm6kp.getPrependUrl(editor);
       absoluteURLPattern = new RegExp('^(?:[a-z]+:)?//', 'i');
       if (prependURL && !absoluteURLPattern.test(srcURL) && srcURL.substring(0, prependURL.length) !== prependURL) {
         srcURL = prependURL + srcURL;
       }
       control.value(srcURL);
-      $_5k88g9cfjiwc8inp.getImageSize(editor.documentBaseURI.toAbsolute(control.value()), function (data) {
-        if (data.width && data.height && $_pazg8cejiwc8ing.hasDimensions(editor)) {
+      $_3am5npcfjiwlm6l4.getImageSize(editor.documentBaseURI.toAbsolute(control.value()), function (data) {
+        if (data.width && data.height && $_btt1qwcejiwlm6kp.hasDimensions(editor)) {
           rootControl.find('#width').value(data.width);
           rootControl.find('#height').value(data.height);
-          $_7hhhivcujiwc8ip0.syncSize(rootControl);
+          $_bbdhp4cujiwlm6mh.syncSize(rootControl);
         }
       });
     }
@@ -843,29 +843,29 @@ var image = (function () {
       },
       imageListCtrl
     ];
-    if ($_pazg8cejiwc8ing.hasDescription(editor)) {
+    if ($_btt1qwcejiwlm6kp.hasDescription(editor)) {
       generalFormItems.push({
         name: 'alt',
         type: 'textbox',
         label: 'Image description'
       });
     }
-    if ($_pazg8cejiwc8ing.hasImageTitle(editor)) {
+    if ($_btt1qwcejiwlm6kp.hasImageTitle(editor)) {
       generalFormItems.push({
         name: 'title',
         type: 'textbox',
         label: 'Image Title'
       });
     }
-    if ($_pazg8cejiwc8ing.hasDimensions(editor)) {
-      generalFormItems.push($_7hhhivcujiwc8ip0.createUi());
+    if ($_btt1qwcejiwlm6kp.hasDimensions(editor)) {
+      generalFormItems.push($_bbdhp4cujiwlm6mh.createUi());
     }
-    if ($_pazg8cejiwc8ing.getClassList(editor)) {
+    if ($_btt1qwcejiwlm6kp.getClassList(editor)) {
       generalFormItems.push({
         name: 'class',
         type: 'listbox',
         label: 'Class',
-        values: $_5k88g9cfjiwc8inp.buildListItems($_pazg8cejiwc8ing.getClassList(editor), function (item) {
+        values: $_3am5npcfjiwlm6l4.buildListItems($_btt1qwcejiwlm6kp.getClassList(editor), function (item) {
           if (item.value) {
             item.textStyle = function () {
               return editor.formatter.getCssText({
@@ -877,7 +877,7 @@ var image = (function () {
         })
       });
     }
-    if ($_pazg8cejiwc8ing.hasImageCaption(editor)) {
+    if ($_btt1qwcejiwlm6kp.hasImageCaption(editor)) {
       generalFormItems.push({
         name: 'caption',
         type: 'checkbox',
@@ -893,13 +893,13 @@ var image = (function () {
       items: getGeneralItems(editor, imageListCtrl)
     };
   };
-  var $_9tpx2wctjiwc8iow = {
+  var $_36sl4jctjiwlm6md = {
     makeTab: makeTab$1,
     getGeneralItems: getGeneralItems
   };
 
   var url = function () {
-    return $_50p7k4chjiwc8io1.getOrDie('URL');
+    return $_706aagchjiwlm6lf.getOrDie('URL');
   };
   var createObjectURL = function (blob) {
     return url().createObjectURL(blob);
@@ -907,7 +907,7 @@ var image = (function () {
   var revokeObjectURL = function (u) {
     url().revokeObjectURL(u);
   };
-  var $_dwbtxvcwjiwc8ip8 = {
+  var $_eb0addcwjiwlm6mq = {
     createObjectURL: createObjectURL,
     revokeObjectURL: revokeObjectURL
   };
@@ -915,7 +915,7 @@ var image = (function () {
   var global$5 = tinymce.util.Tools.resolve('tinymce.ui.Factory');
 
   function XMLHttpRequest () {
-    var f = $_50p7k4chjiwc8io1.getOrDie('XMLHttpRequest');
+    var f = $_706aagchjiwlm6lf.getOrDie('XMLHttpRequest');
     return new f();
   }
 
@@ -984,19 +984,19 @@ var image = (function () {
       var rootControl = evt.control.rootControl;
       var throbber = new Throbber(rootControl.getEl());
       var file = evt.control.value();
-      var blobUri = $_dwbtxvcwjiwc8ip8.createObjectURL(file);
+      var blobUri = $_eb0addcwjiwlm6mq.createObjectURL(file);
       var uploader = Uploader({
-        url: $_pazg8cejiwc8ing.getUploadUrl(editor),
-        basePath: $_pazg8cejiwc8ing.getUploadBasePath(editor),
-        credentials: $_pazg8cejiwc8ing.getUploadCredentials(editor),
-        handler: $_pazg8cejiwc8ing.getUploadHandler(editor)
+        url: $_btt1qwcejiwlm6kp.getUploadUrl(editor),
+        basePath: $_btt1qwcejiwlm6kp.getUploadBasePath(editor),
+        credentials: $_btt1qwcejiwlm6kp.getUploadCredentials(editor),
+        handler: $_btt1qwcejiwlm6kp.getUploadHandler(editor)
       });
       var finalize = function () {
         throbber.hide();
-        $_dwbtxvcwjiwc8ip8.revokeObjectURL(blobUri);
+        $_eb0addcwjiwlm6mq.revokeObjectURL(blobUri);
       };
       throbber.show();
-      return $_5k88g9cfjiwc8inp.blobToDataUri(file).then(function (dataUrl) {
+      return $_3am5npcfjiwlm6l4.blobToDataUri(file).then(function (dataUrl) {
         var blobInfo = editor.editorUpload.blobCache.create({
           blob: file,
           blobUri: blobUri,
@@ -1056,7 +1056,7 @@ var image = (function () {
       ]
     };
   };
-  var $_b9uzhacvjiwc8ip4 = { makeTab: makeTab$2 };
+  var $_5azsujcvjiwlm6mj = { makeTab: makeTab$2 };
 
   var curry = function (f) {
     var x = [];
@@ -1081,7 +1081,7 @@ var image = (function () {
 
   var submitForm = function (editor, evt) {
     var win = evt.control.getRoot();
-    $_7hhhivcujiwc8ip0.updateSize(win);
+    $_bbdhp4cujiwlm6mh.updateSize(win);
     editor.undoManager.transact(function () {
       var data = merge(readImageDataFromSelection(editor), win.toJSON());
       insertOrUpdateImage(editor, data);
@@ -1097,7 +1097,7 @@ var image = (function () {
           type: 'listbox',
           label: 'Image list',
           name: 'image-list',
-          values: $_5k88g9cfjiwc8inp.buildListItems(imageList, function (item) {
+          values: $_3am5npcfjiwlm6l4.buildListItems(imageList, function (item) {
             item.value = editor.convertURL(item.value || item.url, 'src');
           }, [{
               text: 'None',
@@ -1116,13 +1116,13 @@ var image = (function () {
           }
         };
       }
-      if ($_pazg8cejiwc8ing.hasAdvTab(editor) || $_pazg8cejiwc8ing.hasUploadUrl(editor) || $_pazg8cejiwc8ing.hasUploadHandler(editor)) {
-        var body = [$_9tpx2wctjiwc8iow.makeTab(editor, imageListCtrl)];
-        if ($_pazg8cejiwc8ing.hasAdvTab(editor)) {
-          body.push($_4pndnpcnjiwc8ioa.makeTab(editor));
+      if ($_btt1qwcejiwlm6kp.hasAdvTab(editor) || $_btt1qwcejiwlm6kp.hasUploadUrl(editor) || $_btt1qwcejiwlm6kp.hasUploadHandler(editor)) {
+        var body = [$_36sl4jctjiwlm6md.makeTab(editor, imageListCtrl)];
+        if ($_btt1qwcejiwlm6kp.hasAdvTab(editor)) {
+          body.push($_10tb0kcnjiwlm6lo.makeTab(editor));
         }
-        if ($_pazg8cejiwc8ing.hasUploadUrl(editor) || $_pazg8cejiwc8ing.hasUploadHandler(editor)) {
-          body.push($_b9uzhacvjiwc8ip4.makeTab(editor));
+        if ($_btt1qwcejiwlm6kp.hasUploadUrl(editor) || $_btt1qwcejiwlm6kp.hasUploadHandler(editor)) {
+          body.push($_5azsujcvjiwlm6mj.makeTab(editor));
         }
         win = editor.windowManager.open({
           title: 'Insert/edit image',
@@ -1135,14 +1135,14 @@ var image = (function () {
         win = editor.windowManager.open({
           title: 'Insert/edit image',
           data: data,
-          body: $_9tpx2wctjiwc8iow.getGeneralItems(editor, imageListCtrl),
+          body: $_36sl4jctjiwlm6md.getGeneralItems(editor, imageListCtrl),
           onSubmit: curry(submitForm, editor)
         });
       }
-      $_7hhhivcujiwc8ip0.syncSize(win);
+      $_bbdhp4cujiwlm6mh.syncSize(win);
     }
     function open() {
-      $_5k88g9cfjiwc8inp.createImageList(editor, showDialog);
+      $_3am5npcfjiwlm6l4.createImageList(editor, showDialog);
     }
     return { open: open };
   }
@@ -1150,7 +1150,7 @@ var image = (function () {
   var register = function (editor) {
     editor.addCommand('mceImage', Dialog(editor).open);
   };
-  var $_bk1b7pccjiwc8in7 = { register: register };
+  var $_37uomyccjiwlm6kg = { register: register };
 
   var hasImageClass = function (node) {
     var className = node.attr('class');
@@ -1177,7 +1177,7 @@ var image = (function () {
       editor.serializer.addNodeFilter('figure', toggleContentEditableState(false));
     });
   };
-  var $_bw8c2xd1jiwc8iph = { setup: setup };
+  var $_dshbzcd1jiwlm6n0 = { setup: setup };
 
   var register$1 = function (editor) {
     editor.addButton('image', {
@@ -1194,12 +1194,12 @@ var image = (function () {
       prependToContext: true
     });
   };
-  var $_geqcjad2jiwc8ipi = { register: register$1 };
+  var $_e94g4qd2jiwlm6n2 = { register: register$1 };
 
   global.add('image', function (editor) {
-    $_bw8c2xd1jiwc8iph.setup(editor);
-    $_geqcjad2jiwc8ipi.register(editor);
-    $_bk1b7pccjiwc8in7.register(editor);
+    $_dshbzcd1jiwlm6n0.setup(editor);
+    $_e94g4qd2jiwlm6n2.register(editor);
+    $_37uomyccjiwlm6kg.register(editor);
   });
   function Plugin () {
   }

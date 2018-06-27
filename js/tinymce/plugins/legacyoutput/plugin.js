@@ -118,7 +118,7 @@ var legacyoutput = (function () {
       overrideFormats(editor);
     });
   };
-  var $_8jt5ncf6jiwc8j42 = { setup: setup };
+  var $_1b3jglf6jiwlm72n = { setup: setup };
 
   var register = function (editor) {
     editor.addButton('fontsizeselect', function () {
@@ -205,11 +205,11 @@ var legacyoutput = (function () {
       };
     });
   };
-  var $_a9b6zxf8jiwc8j45 = { register: register };
+  var $_3yjeouf8jiwlm72q = { register: register };
 
   global.add('legacyoutput', function (editor) {
-    $_8jt5ncf6jiwc8j42.setup(editor);
-    $_a9b6zxf8jiwc8j45.register(editor);
+    $_1b3jglf6jiwlm72n.setup(editor);
+    $_3yjeouf8jiwlm72q.register(editor);
   });
   function Plugin () {
   }

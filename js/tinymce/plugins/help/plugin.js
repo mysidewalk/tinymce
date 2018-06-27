@@ -370,13 +370,13 @@ var help = (function () {
       action: 'Find (if searchreplace plugin activated)'
     }
   ];
-  var $_bgbtyjb8jiwc8ihv = { shortcuts: shortcuts };
+  var $_a8kyocb8jiwlm6e0 = { shortcuts: shortcuts };
 
   var makeTab = function () {
     var makeAriaLabel = function (shortcut) {
       return 'aria-label="Action: ' + shortcut.action + ', Shortcut: ' + shortcut.shortcut.replace(/Ctrl/g, 'Control') + '"';
     };
-    var shortcutLisString = map($_bgbtyjb8jiwc8ihv.shortcuts, function (shortcut) {
+    var shortcutLisString = map($_a8kyocb8jiwlm6e0.shortcuts, function (shortcut) {
       return '<tr data-mce-tabstop="1" tabindex="-1" ' + makeAriaLabel(shortcut) + '>' + '<td>' + global$1.translate(shortcut.action) + '</td>' + '<td>' + shortcut.shortcut + '</td>' + '</tr>';
     }).join('');
     return {
@@ -389,7 +389,7 @@ var help = (function () {
         }]
     };
   };
-  var $_1aek7yb2jiwc8ih8 = { makeTab: makeTab };
+  var $_32wmqib2jiwlm6de = { makeTab: makeTab };
 
   var keys = function () {
     var fastKeys = Object.keys;
@@ -594,11 +594,11 @@ var help = (function () {
       name: 'Word Count'
     }
   ];
-  var $_e0antbbfjiwc8iij = { urls: urls };
+  var $_csxebubfjiwlm6ex = { urls: urls };
 
   var makeLink = curry(supplant, '<a href="${url}" target="_blank" rel="noopener">${name}</a>');
   var maybeUrlize = function (editor, key) {
-    return find($_e0antbbfjiwc8iij.urls, function (x) {
+    return find($_csxebubfjiwlm6ex.urls, function (x) {
       return x.key === key;
     }).fold(function () {
       var getMetadata = editor.plugins[key].getMetadata;
@@ -654,7 +654,7 @@ var help = (function () {
       ]
     };
   };
-  var $_e7w3aybajiwc8ihz = { makeTab: makeTab$1 };
+  var $_5opj59bajiwlm6e6 = { makeTab: makeTab$1 };
 
   var global$3 = tinymce.util.Tools.resolve('tinymce.EditorManager');
 
@@ -684,7 +684,7 @@ var help = (function () {
       }
     ];
   };
-  var $_6clcnlbgjiwc8iim = { makeRow: makeRow };
+  var $_ke4ezbgjiwlm6f0 = { makeRow: makeRow };
 
   var open = function (editor, pluginUrl) {
     return function () {
@@ -693,10 +693,10 @@ var help = (function () {
         bodyType: 'tabpanel',
         layout: 'flex',
         body: [
-          $_1aek7yb2jiwc8ih8.makeTab(),
-          $_e7w3aybajiwc8ihz.makeTab(editor)
+          $_32wmqib2jiwlm6de.makeTab(),
+          $_5opj59bajiwlm6e6.makeTab(editor)
         ],
-        buttons: $_6clcnlbgjiwc8iim.makeRow(),
+        buttons: $_ke4ezbgjiwlm6f0.makeRow(),
         onPostRender: function () {
           var title = this.getEl('title');
           title.innerHTML = '<img src="' + pluginUrl + '/img/logo.png" alt="TinyMCE Logo" style="display: inline-block; width: 200px; height: 50px">';
@@ -704,30 +704,30 @@ var help = (function () {
       });
     };
   };
-  var $_7wj4vpb1jiwc8ih7 = { open: open };
+  var $_2m26ncb1jiwlm6dd = { open: open };
 
   var register = function (editor, pluginUrl) {
-    editor.addCommand('mceHelp', $_7wj4vpb1jiwc8ih7.open(editor, pluginUrl));
+    editor.addCommand('mceHelp', $_2m26ncb1jiwlm6dd.open(editor, pluginUrl));
   };
-  var $_ivlknb0jiwc8ih5 = { register: register };
+  var $_9wiw21b0jiwlm6dc = { register: register };
 
   var register$1 = function (editor, pluginUrl) {
     editor.addButton('help', {
       icon: 'help',
-      onclick: $_7wj4vpb1jiwc8ih7.open(editor, pluginUrl)
+      onclick: $_2m26ncb1jiwlm6dd.open(editor, pluginUrl)
     });
     editor.addMenuItem('help', {
       text: 'Help',
       icon: 'help',
       context: 'help',
-      onclick: $_7wj4vpb1jiwc8ih7.open(editor, pluginUrl)
+      onclick: $_2m26ncb1jiwlm6dd.open(editor, pluginUrl)
     });
   };
-  var $_3d5scobijiwc8iio = { register: register$1 };
+  var $_fu1496bijiwlm6f2 = { register: register$1 };
 
   global.add('help', function (editor, pluginUrl) {
-    $_3d5scobijiwc8iio.register(editor, pluginUrl);
-    $_ivlknb0jiwc8ih5.register(editor, pluginUrl);
+    $_fu1496bijiwlm6f2.register(editor, pluginUrl);
+    $_9wiw21b0jiwlm6dc.register(editor, pluginUrl);
     editor.shortcuts.add('Alt+0', 'Open help dialog', 'mceHelp');
   });
   function Plugin () {
