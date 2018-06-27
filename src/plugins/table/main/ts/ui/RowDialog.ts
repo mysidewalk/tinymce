@@ -156,7 +156,7 @@ const open = function (editor: Editor) {
     classListCtrl = {
       name: 'class',
       type: 'listbox',
-      label: 'Class',
+      label: 'Style',
       values: Helpers.buildListItems(
         getRowClassList(editor),
         function (item) {

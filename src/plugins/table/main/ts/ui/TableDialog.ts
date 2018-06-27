@@ -179,7 +179,7 @@ const open = function (editor, isProps?) {
     classListCtrl = {
       name: 'class',
       type: 'listbox',
-      label: 'Class',
+      label: 'Style',
       values: Helpers.buildListItems(
         getTableClassList(editor),
         function (item) {
