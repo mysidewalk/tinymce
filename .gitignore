@@ -21,8 +21,8 @@ package-lock.json
 .project
 coverage
 node_modules
-js/tinymce/*
-!js/tinymce/plugins/
+# js/tinymce/*
+# !js/tinymce/plugins/
 imagemanager
 filemanager
 mcmanager
