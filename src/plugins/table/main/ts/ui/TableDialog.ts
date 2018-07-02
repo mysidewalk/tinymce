@@ -182,7 +182,7 @@ const open = function (editor, isProps?) {
     classListCtrl = {
       name: 'class',
       type: 'listbox',
-      label: 'Class',
+      label: 'Style',
       values: Helpers.buildListItems(
         getTableClassList(editor),
         function (item) {
@@ -216,8 +216,8 @@ const open = function (editor, isProps?) {
         items: (hasAppearanceOptions(editor)) ? [
           colsCtrl,
           rowsCtrl,
-          { label: 'Width', name: 'width', onchange: Fun.curry(Helpers.updateStyleField, editor) },
-          { label: 'Height', name: 'height', onchange: Fun.curry(Helpers.updateStyleField, editor) },
+          // { label: 'Width', name: 'width', onchange: Fun.curry(Helpers.updateStyleField, editor) },
+          // { label: 'Height', name: 'height', onchange: Fun.curry(Helpers.updateStyleField, editor) },
           { label: 'Cell spacing', name: 'cellspacing' },
           { label: 'Cell padding', name: 'cellpadding' },
           { label: 'Border', name: 'border' },
@@ -225,8 +225,8 @@ const open = function (editor, isProps?) {
         ] : [
           colsCtrl,
           rowsCtrl,
-            { label: 'Width', name: 'width', onchange: Fun.curry(Helpers.updateStyleField, editor) },
-            { label: 'Height', name: 'height', onchange: Fun.curry(Helpers.updateStyleField, editor) }
+            // { label: 'Width', name: 'width', onchange: Fun.curry(Helpers.updateStyleField, editor) },
+            // { label: 'Height', name: 'height', onchange: Fun.curry(Helpers.updateStyleField, editor) }
         ]
       },
 
