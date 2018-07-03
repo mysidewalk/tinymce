@@ -1,3 +1,6 @@
+Version 4.8.0-mysw-4 (2018-07-03)
+    Messed up merge, fixed creating multiple modal dropdowns 
+
 Version 4.8.0-mysw-3 (2018-07-03)
     Moved rimraf dependency so grunt prod and postinstall script would work
     

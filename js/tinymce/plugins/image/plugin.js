@@ -46,7 +46,7 @@ var image = (function () {
   var getUploadCredentials = function (editor) {
     return editor.getParam('images_upload_credentials');
   };
-  var $_pacmectjj661094 = {
+  var $_ffod9nctjj68z5jc = {
     hasDimensions: hasDimensions,
     hasAdvTab: hasAdvTab,
     getPrependUrl: getPrependUrl,
@@ -85,10 +85,10 @@ var image = (function () {
       throw name + ' not available on this browser';
     return actual;
   };
-  var $_8uudodcwjj66109j = { getOrDie: getOrDie };
+  var $_c8vkelcwjj68z5k7 = { getOrDie: getOrDie };
 
   function FileReader () {
-    var f = $_8uudodcwjj66109j.getOrDie('FileReader');
+    var f = $_c8vkelcwjj68z5k7.getOrDie('FileReader');
     return new f();
   }
 
@@ -190,7 +190,7 @@ var image = (function () {
     return css;
   };
   var createImageList = function (editor, callback) {
-    var imageList = $_pacmectjj661094.getImageList(editor);
+    var imageList = $_ffod9nctjj68z5jc.getImageList(editor);
     if (typeof imageList === 'string') {
       global$3.send({
         url: imageList,
@@ -213,7 +213,7 @@ var image = (function () {
       }
     }
     imgElm.onload = function () {
-      if (!data.width && !data.height && $_pacmectjj661094.hasDimensions(editor)) {
+      if (!data.width && !data.height && $_ffod9nctjj68z5jc.hasDimensions(editor)) {
         editor.dom.setAttribs(imgElm, {
           width: imgElm.clientWidth,
           height: imgElm.clientHeight
@@ -235,7 +235,7 @@ var image = (function () {
       reader.readAsDataURL(blob);
     });
   };
-  var $_klwv1cujj661097 = {
+  var $_ayn7edcujj68z5jl = {
     getImageSize: getImageSize,
     buildListItems: buildListItems,
     removePixelSuffix: removePixelSuffix,
@@ -275,21 +275,21 @@ var image = (function () {
   var DOM = global$4.DOM;
   var getHspace = function (image) {
     if (image.style.marginLeft && image.style.marginRight && image.style.marginLeft === image.style.marginRight) {
-      return $_klwv1cujj661097.removePixelSuffix(image.style.marginLeft);
+      return $_ayn7edcujj68z5jl.removePixelSuffix(image.style.marginLeft);
     } else {
       return '';
     }
   };
   var getVspace = function (image) {
     if (image.style.marginTop && image.style.marginBottom && image.style.marginTop === image.style.marginBottom) {
-      return $_klwv1cujj661097.removePixelSuffix(image.style.marginTop);
+      return $_ayn7edcujj68z5jl.removePixelSuffix(image.style.marginTop);
     } else {
       return '';
     }
   };
   var getBorder = function (image) {
     if (image.style.borderWidth) {
-      return $_klwv1cujj661097.removePixelSuffix(image.style.borderWidth);
+      return $_ayn7edcujj68z5jl.removePixelSuffix(image.style.borderWidth);
     } else {
       return '';
     }
@@ -342,7 +342,7 @@ var image = (function () {
   var setSize = function (name$$1, normalizeCss) {
     return function (image, name$$1, value) {
       if (image.style[name$$1]) {
-        image.style[name$$1] = $_klwv1cujj661097.addPixelSuffix(value);
+        image.style[name$$1] = $_ayn7edcujj68z5jl.addPixelSuffix(value);
         normalizeStyle(image, normalizeCss);
       } else {
         setAttrib(image, name$$1, value);
@@ -351,23 +351,23 @@ var image = (function () {
   };
   var getSize = function (image, name$$1) {
     if (image.style[name$$1]) {
-      return $_klwv1cujj661097.removePixelSuffix(image.style[name$$1]);
+      return $_ayn7edcujj68z5jl.removePixelSuffix(image.style[name$$1]);
     } else {
       return getAttrib(image, name$$1);
     }
   };
   var setHspace = function (image, value) {
-    var pxValue = $_klwv1cujj661097.addPixelSuffix(value);
+    var pxValue = $_ayn7edcujj68z5jl.addPixelSuffix(value);
     image.style.marginLeft = pxValue;
     image.style.marginRight = pxValue;
   };
   var setVspace = function (image, value) {
-    var pxValue = $_klwv1cujj661097.addPixelSuffix(value);
+    var pxValue = $_ayn7edcujj68z5jl.addPixelSuffix(value);
     image.style.marginTop = pxValue;
     image.style.marginBottom = pxValue;
   };
   var setBorder = function (image, value) {
-    var pxValue = $_klwv1cujj661097.addPixelSuffix(value);
+    var pxValue = $_ayn7edcujj68z5jl.addPixelSuffix(value);
     image.style.borderWidth = pxValue;
   };
   var setBorderStyle = function (image, value) {
@@ -475,7 +475,7 @@ var image = (function () {
 
   var normalizeCss = function (editor, cssText) {
     var css = editor.dom.styles.parse(cssText);
-    var mergedCss = $_klwv1cujj661097.mergeMargins(css);
+    var mergedCss = $_ayn7edcujj68z5jl.mergeMargins(css);
     var compressed = editor.dom.styles.parse(editor.dom.styles.serialize(mergedCss));
     return editor.dom.styles.serialize(compressed);
   };
@@ -550,7 +550,7 @@ var image = (function () {
       editor.selection.select(image.parentNode);
     } else {
       editor.selection.select(image);
-      $_klwv1cujj661097.waitLoadImage(editor, data, image);
+      $_ayn7edcujj68z5jl.waitLoadImage(editor, data, image);
     }
   };
   var insertOrUpdateImage = function (editor, data) {
@@ -570,28 +570,28 @@ var image = (function () {
     return function (evt) {
       var dom = editor.dom;
       var rootControl = evt.control.rootControl;
-      if (!$_pacmectjj661094.hasAdvTab(editor)) {
+      if (!$_ffod9nctjj68z5jc.hasAdvTab(editor)) {
         return;
       }
       var data = rootControl.toJSON();
       var css = dom.parseStyle(data.style);
       rootControl.find('#vspace').value('');
       rootControl.find('#hspace').value('');
-      css = $_klwv1cujj661097.mergeMargins(css);
+      css = $_ayn7edcujj68z5jl.mergeMargins(css);
       if (css['margin-top'] && css['margin-bottom'] || css['margin-right'] && css['margin-left']) {
         if (css['margin-top'] === css['margin-bottom']) {
-          rootControl.find('#vspace').value($_klwv1cujj661097.removePixelSuffix(css['margin-top']));
+          rootControl.find('#vspace').value($_ayn7edcujj68z5jl.removePixelSuffix(css['margin-top']));
         } else {
           rootControl.find('#vspace').value('');
         }
         if (css['margin-right'] === css['margin-left']) {
-          rootControl.find('#hspace').value($_klwv1cujj661097.removePixelSuffix(css['margin-right']));
+          rootControl.find('#hspace').value($_ayn7edcujj68z5jl.removePixelSuffix(css['margin-right']));
         } else {
           rootControl.find('#hspace').value('');
         }
       }
       if (css['border-width']) {
-        rootControl.find('#border').value($_klwv1cujj661097.removePixelSuffix(css['border-width']));
+        rootControl.find('#border').value($_ayn7edcujj68z5jl.removePixelSuffix(css['border-width']));
       } else {
         rootControl.find('#border').value('');
       }
@@ -710,7 +710,7 @@ var image = (function () {
       ]
     };
   };
-  var $_807qrod3jj6610ag = { makeTab: makeTab };
+  var $_6s0lzjd3jj68z5nm = { makeTab: makeTab };
 
   var doSyncSize = function (widthCtrl, heightCtrl) {
     widthCtrl.state.set('oldVal', widthCtrl.value());
@@ -790,7 +790,7 @@ var image = (function () {
       ]
     };
   };
-  var $_fmwts8dajj6610bb = {
+  var $_2bns4dajj68z5pj = {
     createUi: createUi,
     syncSize: syncSize,
     updateSize: updateSize
@@ -810,17 +810,17 @@ var image = (function () {
     });
     if (!meta.width && !meta.height) {
       srcURL = editor.convertURL(control.value(), 'src');
-      prependURL = $_pacmectjj661094.getPrependUrl(editor);
+      prependURL = $_ffod9nctjj68z5jc.getPrependUrl(editor);
       absoluteURLPattern = new RegExp('^(?:[a-z]+:)?//', 'i');
       if (prependURL && !absoluteURLPattern.test(srcURL) && srcURL.substring(0, prependURL.length) !== prependURL) {
         srcURL = prependURL + srcURL;
       }
       control.value(srcURL);
-      $_klwv1cujj661097.getImageSize(editor.documentBaseURI.toAbsolute(control.value()), function (data) {
-        if (data.width && data.height && $_pacmectjj661094.hasDimensions(editor)) {
+      $_ayn7edcujj68z5jl.getImageSize(editor.documentBaseURI.toAbsolute(control.value()), function (data) {
+        if (data.width && data.height && $_ffod9nctjj68z5jc.hasDimensions(editor)) {
           rootControl.find('#width').value(data.width);
           rootControl.find('#height').value(data.height);
-          $_fmwts8dajj6610bb.syncSize(rootControl);
+          $_2bns4dajj68z5pj.syncSize(rootControl);
         }
       });
     }
@@ -843,29 +843,29 @@ var image = (function () {
       },
       imageListCtrl
     ];
-    if ($_pacmectjj661094.hasDescription(editor)) {
+    if ($_ffod9nctjj68z5jc.hasDescription(editor)) {
       generalFormItems.push({
         name: 'alt',
         type: 'textbox',
         label: 'Image description'
       });
     }
-    if ($_pacmectjj661094.hasImageTitle(editor)) {
+    if ($_ffod9nctjj68z5jc.hasImageTitle(editor)) {
       generalFormItems.push({
         name: 'title',
         type: 'textbox',
         label: 'Image Title'
       });
     }
-    if ($_pacmectjj661094.hasDimensions(editor)) {
-      generalFormItems.push($_fmwts8dajj6610bb.createUi());
+    if ($_ffod9nctjj68z5jc.hasDimensions(editor)) {
+      generalFormItems.push($_2bns4dajj68z5pj.createUi());
     }
-    if ($_pacmectjj661094.getClassList(editor)) {
+    if ($_ffod9nctjj68z5jc.getClassList(editor)) {
       generalFormItems.push({
         name: 'class',
         type: 'listbox',
         label: 'Class',
-        values: $_klwv1cujj661097.buildListItems($_pacmectjj661094.getClassList(editor), function (item) {
+        values: $_ayn7edcujj68z5jl.buildListItems($_ffod9nctjj68z5jc.getClassList(editor), function (item) {
           if (item.value) {
             item.textStyle = function () {
               return editor.formatter.getCssText({
@@ -877,7 +877,7 @@ var image = (function () {
         })
       });
     }
-    if ($_pacmectjj661094.hasImageCaption(editor)) {
+    if ($_ffod9nctjj68z5jc.hasImageCaption(editor)) {
       generalFormItems.push({
         name: 'caption',
         type: 'checkbox',
@@ -893,13 +893,13 @@ var image = (function () {
       items: getGeneralItems(editor, imageListCtrl)
     };
   };
-  var $_4cesked9jj6610b8 = {
+  var $_9rf456d9jj68z5p8 = {
     makeTab: makeTab$1,
     getGeneralItems: getGeneralItems
   };
 
   var url = function () {
-    return $_8uudodcwjj66109j.getOrDie('URL');
+    return $_c8vkelcwjj68z5k7.getOrDie('URL');
   };
   var createObjectURL = function (blob) {
     return url().createObjectURL(blob);
@@ -907,7 +907,7 @@ var image = (function () {
   var revokeObjectURL = function (u) {
     url().revokeObjectURL(u);
   };
-  var $_efcdsodcjj6610bk = {
+  var $_4nod1xdcjj68z5py = {
     createObjectURL: createObjectURL,
     revokeObjectURL: revokeObjectURL
   };
@@ -915,7 +915,7 @@ var image = (function () {
   var global$5 = tinymce.util.Tools.resolve('tinymce.ui.Factory');
 
   function XMLHttpRequest () {
-    var f = $_8uudodcwjj66109j.getOrDie('XMLHttpRequest');
+    var f = $_c8vkelcwjj68z5k7.getOrDie('XMLHttpRequest');
     return new f();
   }
 
@@ -984,19 +984,19 @@ var image = (function () {
       var rootControl = evt.control.rootControl;
       var throbber = new Throbber(rootControl.getEl());
       var file = evt.control.value();
-      var blobUri = $_efcdsodcjj6610bk.createObjectURL(file);
+      var blobUri = $_4nod1xdcjj68z5py.createObjectURL(file);
       var uploader = Uploader({
-        url: $_pacmectjj661094.getUploadUrl(editor),
-        basePath: $_pacmectjj661094.getUploadBasePath(editor),
-        credentials: $_pacmectjj661094.getUploadCredentials(editor),
-        handler: $_pacmectjj661094.getUploadHandler(editor)
+        url: $_ffod9nctjj68z5jc.getUploadUrl(editor),
+        basePath: $_ffod9nctjj68z5jc.getUploadBasePath(editor),
+        credentials: $_ffod9nctjj68z5jc.getUploadCredentials(editor),
+        handler: $_ffod9nctjj68z5jc.getUploadHandler(editor)
       });
       var finalize = function () {
         throbber.hide();
-        $_efcdsodcjj6610bk.revokeObjectURL(blobUri);
+        $_4nod1xdcjj68z5py.revokeObjectURL(blobUri);
       };
       throbber.show();
-      return $_klwv1cujj661097.blobToDataUri(file).then(function (dataUrl) {
+      return $_ayn7edcujj68z5jl.blobToDataUri(file).then(function (dataUrl) {
         var blobInfo = editor.editorUpload.blobCache.create({
           blob: file,
           blobUri: blobUri,
@@ -1056,7 +1056,7 @@ var image = (function () {
       ]
     };
   };
-  var $_1wi3c9dbjj6610be = { makeTab: makeTab$2 };
+  var $_fmei8vdbjj68z5po = { makeTab: makeTab$2 };
 
   var curry = function (f) {
     var x = [];
@@ -1081,7 +1081,7 @@ var image = (function () {
 
   var submitForm = function (editor, evt) {
     var win = evt.control.getRoot();
-    $_fmwts8dajj6610bb.updateSize(win);
+    $_2bns4dajj68z5pj.updateSize(win);
     editor.undoManager.transact(function () {
       var data = merge(readImageDataFromSelection(editor), win.toJSON());
       insertOrUpdateImage(editor, data);
@@ -1097,7 +1097,7 @@ var image = (function () {
           type: 'listbox',
           label: 'Image list',
           name: 'image-list',
-          values: $_klwv1cujj661097.buildListItems(imageList, function (item) {
+          values: $_ayn7edcujj68z5jl.buildListItems(imageList, function (item) {
             item.value = editor.convertURL(item.value || item.url, 'src');
           }, [{
               text: 'None',
@@ -1116,13 +1116,13 @@ var image = (function () {
           }
         };
       }
-      if ($_pacmectjj661094.hasAdvTab(editor) || $_pacmectjj661094.hasUploadUrl(editor) || $_pacmectjj661094.hasUploadHandler(editor)) {
-        var body = [$_4cesked9jj6610b8.makeTab(editor, imageListCtrl)];
-        if ($_pacmectjj661094.hasAdvTab(editor)) {
-          body.push($_807qrod3jj6610ag.makeTab(editor));
+      if ($_ffod9nctjj68z5jc.hasAdvTab(editor) || $_ffod9nctjj68z5jc.hasUploadUrl(editor) || $_ffod9nctjj68z5jc.hasUploadHandler(editor)) {
+        var body = [$_9rf456d9jj68z5p8.makeTab(editor, imageListCtrl)];
+        if ($_ffod9nctjj68z5jc.hasAdvTab(editor)) {
+          body.push($_6s0lzjd3jj68z5nm.makeTab(editor));
         }
-        if ($_pacmectjj661094.hasUploadUrl(editor) || $_pacmectjj661094.hasUploadHandler(editor)) {
-          body.push($_1wi3c9dbjj6610be.makeTab(editor));
+        if ($_ffod9nctjj68z5jc.hasUploadUrl(editor) || $_ffod9nctjj68z5jc.hasUploadHandler(editor)) {
+          body.push($_fmei8vdbjj68z5po.makeTab(editor));
         }
         win = editor.windowManager.open({
           title: 'Insert/edit image',
@@ -1135,14 +1135,14 @@ var image = (function () {
         win = editor.windowManager.open({
           title: 'Insert/edit image',
           data: data,
-          body: $_4cesked9jj6610b8.getGeneralItems(editor, imageListCtrl),
+          body: $_9rf456d9jj68z5p8.getGeneralItems(editor, imageListCtrl),
           onSubmit: curry(submitForm, editor)
         });
       }
-      $_fmwts8dajj6610bb.syncSize(win);
+      $_2bns4dajj68z5pj.syncSize(win);
     }
     function open() {
-      $_klwv1cujj661097.createImageList(editor, showDialog);
+      $_ayn7edcujj68z5jl.createImageList(editor, showDialog);
     }
     return { open: open };
   }
@@ -1150,7 +1150,7 @@ var image = (function () {
   var register = function (editor) {
     editor.addCommand('mceImage', Dialog(editor).open);
   };
-  var $_fc5qhfcrjj66108t = { register: register };
+  var $_8z6yh3crjj68z5id = { register: register };
 
   var hasImageClass = function (node) {
     var className = node.attr('class');
@@ -1177,7 +1177,7 @@ var image = (function () {
       editor.serializer.addNodeFilter('figure', toggleContentEditableState(false));
     });
   };
-  var $_dpchv4dhjj6610bw = { setup: setup };
+  var $_cald6cdhjj68z5qo = { setup: setup };
 
   var register$1 = function (editor) {
     editor.addButton('image', {
@@ -1194,12 +1194,12 @@ var image = (function () {
       prependToContext: true
     });
   };
-  var $_577og7dijj6610by = { register: register$1 };
+  var $_7ofuutdijj68z5qr = { register: register$1 };
 
   global.add('image', function (editor) {
-    $_dpchv4dhjj6610bw.setup(editor);
-    $_577og7dijj6610by.register(editor);
-    $_fc5qhfcrjj66108t.register(editor);
+    $_cald6cdhjj68z5qo.setup(editor);
+    $_7ofuutdijj68z5qr.register(editor);
+    $_8z6yh3crjj68z5id.register(editor);
   });
   function Plugin () {
   }
