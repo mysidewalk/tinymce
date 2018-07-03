@@ -1,3 +1,8 @@
+Version 4.8.0-mysw-2 (2018-07-03)
+    Removed width/height from table edit
+    Updated Class label to Style
+    Fix for modal select dropdown positioning 
+
 Version 4.8.0 (2018-06-27)
     Added new "experimental" object in editor, with initial annotator API
 

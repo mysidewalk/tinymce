@@ -25,23 +25,23 @@ var anchor = (function () {
       editor.execCommand('mceInsertContent', false, editor.dom.createHTML('a', { id: id }));
     }
   };
-  var $_brn5ic8ojj4oktmj = {
+  var $_a8p71k8ojj660zo6 = {
     isValidId: isValidId,
     getId: getId,
     insert: insert
   };
 
   var insertAnchor = function (editor, newId) {
-    if (!$_brn5ic8ojj4oktmj.isValidId(newId)) {
+    if (!$_a8p71k8ojj660zo6.isValidId(newId)) {
       editor.windowManager.alert('Id should start with a letter, followed only by letters, numbers, dashes, dots, colons or underscores.');
       return true;
     } else {
-      $_brn5ic8ojj4oktmj.insert(editor, newId);
+      $_a8p71k8ojj660zo6.insert(editor, newId);
       return false;
     }
   };
   var open = function (editor) {
-    var currentId = $_brn5ic8ojj4oktmj.getId(editor);
+    var currentId = $_a8p71k8ojj660zo6.getId(editor);
     editor.windowManager.open({
       title: 'Anchor',
       body: {
@@ -59,14 +59,14 @@ var anchor = (function () {
       }
     });
   };
-  var $_enwjbg8njj4oktmh = { open: open };
+  var $_dho2yt8njj660zo3 = { open: open };
 
   var register = function (editor) {
     editor.addCommand('mceAnchor', function () {
-      $_enwjbg8njj4oktmh.open(editor);
+      $_dho2yt8njj660zo3.open(editor);
     });
   };
-  var $_ceikc18mjj4oktmf = { register: register };
+  var $_cvfs9y8mjj660zo1 = { register: register };
 
   var isAnchorNode = function (node) {
     return !node.attr('href') && (node.attr('id') || node.attr('name')) && !node.firstChild;
@@ -86,7 +86,7 @@ var anchor = (function () {
       editor.serializer.addNodeFilter('a', setContentEditable(null));
     });
   };
-  var $_38qh358pjj4oktml = { setup: setup };
+  var $_8bgzut8pjj660zo9 = { setup: setup };
 
   var register$1 = function (editor) {
     editor.addButton('anchor', {
@@ -102,12 +102,12 @@ var anchor = (function () {
       cmd: 'mceAnchor'
     });
   };
-  var $_enth278qjj4oktmn = { register: register$1 };
+  var $_boif7w8qjj660zob = { register: register$1 };
 
   global.add('anchor', function (editor) {
-    $_38qh358pjj4oktml.setup(editor);
-    $_ceikc18mjj4oktmf.register(editor);
-    $_enth278qjj4oktmn.register(editor);
+    $_8bgzut8pjj660zo9.setup(editor);
+    $_cvfs9y8mjj660zo1.register(editor);
+    $_boif7w8qjj660zob.register(editor);
   });
   function Plugin () {
   }
