@@ -1,3 +1,6 @@
+Version 4.8.0-mysw-3 (2018-07-03)
+    Moved rimraf dependency so grunt prod and postinstall script would work
+    
 Version 4.8.0-mysw-2 (2018-07-03)
     Removed width/height from table edit
     Updated Class label to Style
