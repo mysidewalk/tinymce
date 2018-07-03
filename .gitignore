@@ -21,8 +21,7 @@ package-lock.json
 .project
 coverage
 node_modules
-# js/tinymce/*
-# !js/tinymce/plugins/
+js/**/*
 imagemanager
 filemanager
 mcmanager
@@ -31,6 +30,7 @@ tinymcespellchecker
 a11ychecker
 codemirror
 mentions
+*.min.js
 *.dev.js
 *.full.js
 *.min.css
