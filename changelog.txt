@@ -1,5 +1,9 @@
+Version 4.8.0-mysw-6 (2018-07-05)
+    Bumped version number because I built a release w/o pushing all files and yarn lock files reference old hash of 4.8.0-mysw-5.
+
 Version 4.8.0-mysw-5 (2018-07-05)
     Allow skin scss into repo
+
 Version 4.8.0-mysw-4 (2018-07-03)
     Messed up merge, fixed creating multiple modal dropdowns 
 
