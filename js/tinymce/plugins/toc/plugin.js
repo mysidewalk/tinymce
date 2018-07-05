@@ -21,7 +21,7 @@ var toc = (function () {
     var depth = parseInt(editor.getParam('toc_depth', '3'), 10);
     return depth >= 1 && depth <= 9 ? depth : 3;
   };
-  var $_1cz6xgsajj68zewv = {
+  var $_ans1wlsajj8ux01m = {
     getTocClass: getTocClass,
     getTocHeader: getTocHeader,
     getTocDepth: getTocDepth
@@ -34,9 +34,9 @@ var toc = (function () {
       return prefix + guid + (counter++).toString(32);
     };
   };
-  var $_gbsh9isbjj68zewy = { create: create };
+  var $_bkra9nsbjj8ux01n = { create: create };
 
-  var tocId = $_gbsh9isbjj68zewy.create('mcetoc_');
+  var tocId = $_bkra9nsbjj8ux01n.create('mcetoc_');
   var generateSelector = function generateSelector(depth) {
     var i;
     var selector = [];
@@ -49,9 +49,9 @@ var toc = (function () {
     return readHeaders(editor).length > 0;
   };
   var readHeaders = function (editor) {
-    var tocClass = $_1cz6xgsajj68zewv.getTocClass(editor);
-    var headerTag = $_1cz6xgsajj68zewv.getTocHeader(editor);
-    var selector = generateSelector($_1cz6xgsajj68zewv.getTocDepth(editor));
+    var tocClass = $_ans1wlsajj8ux01m.getTocClass(editor);
+    var headerTag = $_ans1wlsajj8ux01m.getTocHeader(editor);
+    var selector = generateSelector($_ans1wlsajj8ux01m.getTocDepth(editor));
     var headers = editor.$(selector);
     if (headers.length && /^h[1-9]$/i.test(headerTag)) {
       headers = headers.filter(function (i, el) {
@@ -86,7 +86,7 @@ var toc = (function () {
   };
   var generateTocHtml = function (editor) {
     var html = generateTocContentHtml(editor);
-    return '<div class="' + editor.dom.encode($_1cz6xgsajj68zewv.getTocClass(editor)) + '" contenteditable="false">' + html + '</div>';
+    return '<div class="' + editor.dom.encode($_ans1wlsajj8ux01m.getTocClass(editor)) + '" contenteditable="false">' + html + '</div>';
   };
   var generateTocContentHtml = function (editor) {
     var html = '';
@@ -96,7 +96,7 @@ var toc = (function () {
     if (!headers.length) {
       return '';
     }
-    html += generateTitle($_1cz6xgsajj68zewv.getTocHeader(editor), global$2.translate('Table of Contents'));
+    html += generateTitle($_ans1wlsajj8ux01m.getTocHeader(editor), global$2.translate('Table of Contents'));
     for (i = 0; i < headers.length; i++) {
       h = headers[i];
       h.element.id = h.id;
@@ -127,7 +127,7 @@ var toc = (function () {
     return !nodes.length || editor.dom.getParents(nodes[0], '.mce-offscreen-selection').length > 0;
   };
   var insertToc = function (editor) {
-    var tocClass = $_1cz6xgsajj68zewv.getTocClass(editor);
+    var tocClass = $_ans1wlsajj8ux01m.getTocClass(editor);
     var $tocElm = editor.$('.' + tocClass);
     if (isEmptyOrOffscren(editor, $tocElm)) {
       editor.insertContent(generateTocHtml(editor));
@@ -136,7 +136,7 @@ var toc = (function () {
     }
   };
   var updateToc = function (editor) {
-    var tocClass = $_1cz6xgsajj68zewv.getTocClass(editor);
+    var tocClass = $_ans1wlsajj8ux01m.getTocClass(editor);
     var $tocElm = editor.$('.' + tocClass);
     if ($tocElm.length) {
       editor.undoManager.transact(function () {
@@ -144,7 +144,7 @@ var toc = (function () {
       });
     }
   };
-  var $_4lgr7ds6jj68zewk = {
+  var $_53y5mqs6jj8ux01h = {
     hasHeaders: hasHeaders,
     insertToc: insertToc,
     updateToc: updateToc
@@ -152,16 +152,16 @@ var toc = (function () {
 
   var register = function (editor) {
     editor.addCommand('mceInsertToc', function () {
-      $_4lgr7ds6jj68zewk.insertToc(editor);
+      $_53y5mqs6jj8ux01h.insertToc(editor);
     });
     editor.addCommand('mceUpdateToc', function () {
-      $_4lgr7ds6jj68zewk.updateToc(editor);
+      $_53y5mqs6jj8ux01h.updateToc(editor);
     });
   };
-  var $_a2sqfus5jj68zewf = { register: register };
+  var $_a4umdms5jj8ux01e = { register: register };
 
   var setup = function (editor) {
-    var $ = editor.$, tocClass = $_1cz6xgsajj68zewv.getTocClass(editor);
+    var $ = editor.$, tocClass = $_ans1wlsajj8ux01m.getTocClass(editor);
     editor.on('PreProcess', function (e) {
       var $tocElm = $('.' + tocClass, e.node);
       if ($tocElm.length) {
@@ -177,19 +177,19 @@ var toc = (function () {
       }
     });
   };
-  var $_976h9scjj68zex2 = { setup: setup };
+  var $_5uf49scjj8ux01p = { setup: setup };
 
   var toggleState = function (editor) {
     return function (e) {
       var ctrl = e.control;
       editor.on('LoadContent SetContent change', function () {
-        ctrl.disabled(editor.readonly || !$_4lgr7ds6jj68zewk.hasHeaders(editor));
+        ctrl.disabled(editor.readonly || !$_53y5mqs6jj8ux01h.hasHeaders(editor));
       });
     };
   };
   var isToc = function (editor) {
     return function (elm) {
-      return elm && editor.dom.is(elm, '.' + $_1cz6xgsajj68zewv.getTocClass(editor)) && editor.getBody().contains(elm);
+      return elm && editor.dom.is(elm, '.' + $_ans1wlsajj8ux01m.getTocClass(editor)) && editor.getBody().contains(elm);
     };
   };
   var register$1 = function (editor) {
@@ -212,12 +212,12 @@ var toc = (function () {
     });
     editor.addContextToolbar(isToc(editor), 'tocupdate');
   };
-  var $_fmpb78sdjj68zex6 = { register: register$1 };
+  var $_6vp2f3sdjj8ux01q = { register: register$1 };
 
   global.add('toc', function (editor) {
-    $_a2sqfus5jj68zewf.register(editor);
-    $_fmpb78sdjj68zex6.register(editor);
-    $_976h9scjj68zex2.setup(editor);
+    $_a4umdms5jj8ux01e.register(editor);
+    $_6vp2f3sdjj8ux01q.register(editor);
+    $_5uf49scjj8ux01p.setup(editor);
   });
   function Plugin () {
   }

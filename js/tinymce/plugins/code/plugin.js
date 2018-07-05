@@ -12,7 +12,7 @@ var code = (function () {
   var getMinHeight = function (editor) {
     return editor.getParam('code_dialog_height', Math.min(global$1.DOM.getViewPort().h - 200, 500));
   };
-  var $_3qorc5a2jj68z4ii = {
+  var $_205x2ia2jj8uwvmr = {
     getMinWidth: getMinWidth,
     getMinHeight: getMinHeight
   };
@@ -28,14 +28,14 @@ var code = (function () {
   var getContent = function (editor) {
     return editor.getContent({ source_view: true });
   };
-  var $_d5qoy0a4jj68z4in = {
+  var $_8d81bea4jj8uwvmt = {
     setContent: setContent,
     getContent: getContent
   };
 
   var open = function (editor) {
-    var minWidth = $_3qorc5a2jj68z4ii.getMinWidth(editor);
-    var minHeight = $_3qorc5a2jj68z4ii.getMinHeight(editor);
+    var minWidth = $_205x2ia2jj8uwvmr.getMinWidth(editor);
+    var minHeight = $_205x2ia2jj8uwvmr.getMinHeight(editor);
     var win = editor.windowManager.open({
       title: 'Source code',
       body: {
@@ -48,41 +48,41 @@ var code = (function () {
         style: 'direction: ltr; text-align: left'
       },
       onSubmit: function (e) {
-        $_d5qoy0a4jj68z4in.setContent(editor, e.data.code);
+        $_8d81bea4jj8uwvmt.setContent(editor, e.data.code);
       }
     });
-    win.find('#code').value($_d5qoy0a4jj68z4in.getContent(editor));
+    win.find('#code').value($_8d81bea4jj8uwvmt.getContent(editor));
   };
-  var $_gbyg3aa1jj68z4if = { open: open };
+  var $_2a68qsa1jj8uwvmm = { open: open };
 
   var register = function (editor) {
     editor.addCommand('mceCodeEditor', function () {
-      $_gbyg3aa1jj68z4if.open(editor);
+      $_2a68qsa1jj8uwvmm.open(editor);
     });
   };
-  var $_a893gba0jj68z4id = { register: register };
+  var $_973k2oa0jj8uwvmj = { register: register };
 
   var register$1 = function (editor) {
     editor.addButton('code', {
       icon: 'code',
       tooltip: 'Source code',
       onclick: function () {
-        $_gbyg3aa1jj68z4if.open(editor);
+        $_2a68qsa1jj8uwvmm.open(editor);
       }
     });
     editor.addMenuItem('code', {
       icon: 'code',
       text: 'Source code',
       onclick: function () {
-        $_gbyg3aa1jj68z4if.open(editor);
+        $_2a68qsa1jj8uwvmm.open(editor);
       }
     });
   };
-  var $_8w6nyoa5jj68z4is = { register: register$1 };
+  var $_ata7vqa5jj8uwvmw = { register: register$1 };
 
   global.add('code', function (editor) {
-    $_a893gba0jj68z4id.register(editor);
-    $_8w6nyoa5jj68z4is.register(editor);
+    $_973k2oa0jj8uwvmj.register(editor);
+    $_ata7vqa5jj8uwvmw.register(editor);
     return {};
   });
   function Plugin () {
