@@ -1,3 +1,6 @@
+Version 4.8.0-mysw-7 (2018-07-05)
+    Fix for Cell Properies on a single selected cell
+
 Version 4.8.0-mysw-6 (2018-07-05)
     Bumped version number because I built a release w/o pushing all files and yarn lock files reference old hash of 4.8.0-mysw-5.
 
