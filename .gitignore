@@ -34,6 +34,7 @@ mentions
 *.dev.js
 *.full.js
 *.min.css
+!js/tinymce/skins/**/*
 *.dev.less
 **/dist
 **/scratch
