@@ -61,7 +61,7 @@ var template = (function () {
   var getDialogHeight = function (editor) {
     return Math.min(global$3.DOM.getViewPort().h, editor.getParam('template_popup_height', 500));
   };
-  var $_1x3hxqr9jj8uwzxi = {
+  var $_a3wsvgr9jj8vl7y6 = {
     getCreationDateClasses: getCreationDateClasses,
     getModificationDateClasses: getModificationDateClasses,
     getSelectedContentClasses: getSelectedContentClasses,
@@ -107,11 +107,11 @@ var template = (function () {
     fmt = fmt.replace('%%', '%');
     return fmt;
   };
-  var $_dq82h2rbjj8uwzxk = { getDateTime: getDateTime };
+  var $_4fqfrerbjj8vl7y9 = { getDateTime: getDateTime };
 
   var createTemplateList = function (editorSettings, callback) {
     return function () {
-      var templateList = $_1x3hxqr9jj8uwzxi.getTemplates(editorSettings);
+      var templateList = $_a3wsvgr9jj8vl7y6.getTemplates(editorSettings);
       if (typeof templateList === 'function') {
         templateList(callback);
         return;
@@ -138,7 +138,7 @@ var template = (function () {
     return html;
   };
   var replaceVals = function (editor, e) {
-    var dom = editor.dom, vl = $_1x3hxqr9jj8uwzxi.getTemplateReplaceValues(editor);
+    var dom = editor.dom, vl = $_a3wsvgr9jj8vl7y6.getTemplateReplaceValues(editor);
     global$1.each(dom.select('*', e), function (e) {
       global$1.each(vl, function (v, k) {
         if (dom.hasClass(e, k)) {
@@ -157,7 +157,7 @@ var template = (function () {
     var n;
     var dom = editor.dom;
     var sel = editor.selection.getContent();
-    html = replaceTemplateValues(editor, html, $_1x3hxqr9jj8uwzxi.getTemplateReplaceValues(editor));
+    html = replaceTemplateValues(editor, html, $_a3wsvgr9jj8vl7y6.getTemplateReplaceValues(editor));
     el = dom.create('div', null, html);
     n = dom.select('.mceTmpl', el);
     if (n && n.length > 0) {
@@ -165,13 +165,13 @@ var template = (function () {
       el.appendChild(n[0].cloneNode(true));
     }
     global$1.each(dom.select('*', el), function (n) {
-      if (hasClass(n, $_1x3hxqr9jj8uwzxi.getCreationDateClasses(editor).replace(/\s+/g, '|'))) {
-        n.innerHTML = $_dq82h2rbjj8uwzxk.getDateTime(editor, $_1x3hxqr9jj8uwzxi.getCdateFormat(editor));
+      if (hasClass(n, $_a3wsvgr9jj8vl7y6.getCreationDateClasses(editor).replace(/\s+/g, '|'))) {
+        n.innerHTML = $_4fqfrerbjj8vl7y9.getDateTime(editor, $_a3wsvgr9jj8vl7y6.getCdateFormat(editor));
       }
-      if (hasClass(n, $_1x3hxqr9jj8uwzxi.getModificationDateClasses(editor).replace(/\s+/g, '|'))) {
-        n.innerHTML = $_dq82h2rbjj8uwzxk.getDateTime(editor, $_1x3hxqr9jj8uwzxi.getMdateFormat(editor));
+      if (hasClass(n, $_a3wsvgr9jj8vl7y6.getModificationDateClasses(editor).replace(/\s+/g, '|'))) {
+        n.innerHTML = $_4fqfrerbjj8vl7y9.getDateTime(editor, $_a3wsvgr9jj8vl7y6.getMdateFormat(editor));
       }
-      if (hasClass(n, $_1x3hxqr9jj8uwzxi.getSelectedContentClasses(editor).replace(/\s+/g, '|'))) {
+      if (hasClass(n, $_a3wsvgr9jj8vl7y6.getSelectedContentClasses(editor).replace(/\s+/g, '|'))) {
         n.innerHTML = sel;
       }
     });
@@ -179,7 +179,7 @@ var template = (function () {
     editor.execCommand('mceInsertContent', false, el.innerHTML);
     editor.addVisual();
   };
-  var $_csd9nir6jj8uwzxb = {
+  var $_akfj81r6jj8vl7y1 = {
     createTemplateList: createTemplateList,
     replaceTemplateValues: replaceTemplateValues,
     replaceVals: replaceVals,
@@ -187,26 +187,26 @@ var template = (function () {
   };
 
   var register = function (editor) {
-    editor.addCommand('mceInsertTemplate', curry($_csd9nir6jj8uwzxb.insertTemplate, editor));
+    editor.addCommand('mceInsertTemplate', curry($_akfj81r6jj8vl7y1.insertTemplate, editor));
   };
-  var $_r2hplr4jj8uwzx2 = { register: register };
+  var $_d1wjx0r4jj8vl7xr = { register: register };
 
   var setup = function (editor) {
     editor.on('PreProcess', function (o) {
-      var dom = editor.dom, dateFormat = $_1x3hxqr9jj8uwzxi.getMdateFormat(editor);
+      var dom = editor.dom, dateFormat = $_a3wsvgr9jj8vl7y6.getMdateFormat(editor);
       global$1.each(dom.select('div', o.node), function (e) {
         if (dom.hasClass(e, 'mceTmpl')) {
           global$1.each(dom.select('*', e), function (e) {
             if (dom.hasClass(e, editor.getParam('template_mdate_classes', 'mdate').replace(/\s+/g, '|'))) {
-              e.innerHTML = $_dq82h2rbjj8uwzxk.getDateTime(editor, dateFormat);
+              e.innerHTML = $_4fqfrerbjj8vl7y9.getDateTime(editor, dateFormat);
             }
           });
-          $_csd9nir6jj8uwzxb.replaceVals(editor, e);
+          $_akfj81r6jj8vl7y1.replaceVals(editor, e);
         }
       });
     });
   };
-  var $_3ntnv8rcjj8uwzxm = { setup: setup };
+  var $_2gsgcqrcjj8vl7yb = { setup: setup };
 
   var insertIframeHtml = function (editor, win, html) {
     if (html.indexOf('<html>') === -1) {
@@ -221,7 +221,7 @@ var template = (function () {
       }
       html = '<!DOCTYPE html>' + '<html>' + '<head>' + contentCssLinks_1 + '</head>' + '<body class="' + bodyClass + '">' + html + '</body>' + '</html>';
     }
-    html = $_csd9nir6jj8uwzxb.replaceTemplateValues(editor, html, $_1x3hxqr9jj8uwzxi.getPreviewReplaceValues(editor));
+    html = $_akfj81r6jj8vl7y1.replaceTemplateValues(editor, html, $_a3wsvgr9jj8vl7y6.getPreviewReplaceValues(editor));
     var doc = win.find('iframe')[0].getEl().contentWindow.document;
     doc.open();
     doc.write(html);
@@ -303,38 +303,38 @@ var template = (function () {
         }
       ],
       onsubmit: function () {
-        $_csd9nir6jj8uwzxb.insertTemplate(editor, false, templateHtml);
+        $_akfj81r6jj8vl7y1.insertTemplate(editor, false, templateHtml);
       },
-      minWidth: $_1x3hxqr9jj8uwzxi.getDialogWidth(editor),
-      minHeight: $_1x3hxqr9jj8uwzxi.getDialogHeight(editor)
+      minWidth: $_a3wsvgr9jj8vl7y6.getDialogWidth(editor),
+      minHeight: $_a3wsvgr9jj8vl7y6.getDialogHeight(editor)
     });
     win.find('listbox')[0].fire('select');
   };
-  var $_22vgxzrejj8uwzxq = { open: open };
+  var $_duplfrrejj8vl7yg = { open: open };
 
   var showDialog = function (editor) {
     return function (templates) {
-      $_22vgxzrejj8uwzxq.open(editor, templates);
+      $_duplfrrejj8vl7yg.open(editor, templates);
     };
   };
   var register$1 = function (editor) {
     editor.addButton('template', {
       title: 'Insert template',
-      onclick: $_csd9nir6jj8uwzxb.createTemplateList(editor.settings, showDialog(editor))
+      onclick: $_akfj81r6jj8vl7y1.createTemplateList(editor.settings, showDialog(editor))
     });
     editor.addMenuItem('template', {
       text: 'Template',
-      onclick: $_csd9nir6jj8uwzxb.createTemplateList(editor.settings, showDialog(editor)),
+      onclick: $_akfj81r6jj8vl7y1.createTemplateList(editor.settings, showDialog(editor)),
       icon: 'template',
       context: 'insert'
     });
   };
-  var $_dz6u2rdjj8uwzxo = { register: register$1 };
+  var $_cwammordjj8vl7ye = { register: register$1 };
 
   global.add('template', function (editor) {
-    $_dz6u2rdjj8uwzxo.register(editor);
-    $_r2hplr4jj8uwzx2.register(editor);
-    $_3ntnv8rcjj8uwzxm.setup(editor);
+    $_cwammordjj8vl7ye.register(editor);
+    $_d1wjx0r4jj8vl7xr.register(editor);
+    $_2gsgcqrcjj8vl7yb.setup(editor);
   });
   function Plugin () {
   }
