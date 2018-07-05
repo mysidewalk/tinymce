@@ -9,7 +9,7 @@ var hr = (function () {
       editor.execCommand('mceInsertContent', false, '<hr />');
     });
   };
-  var $_6st3a0cnjj8vl3os = { register: register };
+  var $_22r16kcnjj91axq3 = { register: register };
 
   var register$1 = function (editor) {
     editor.addButton('hr', {
@@ -24,11 +24,11 @@ var hr = (function () {
       context: 'insert'
     });
   };
-  var $_9i23d3cojj8vl3ou = { register: register$1 };
+  var $_epqtzecojj91axq7 = { register: register$1 };
 
   global.add('hr', function (editor) {
-    $_6st3a0cnjj8vl3os.register(editor);
-    $_9i23d3cojj8vl3ou.register(editor);
+    $_22r16kcnjj91axq3.register(editor);
+    $_epqtzecojj91axq7.register(editor);
   });
   function Plugin () {
   }

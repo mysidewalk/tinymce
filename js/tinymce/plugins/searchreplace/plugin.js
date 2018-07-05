@@ -216,7 +216,7 @@ var searchreplace = (function () {
     }
     return count;
   }
-  var $_dingjqk1jj8vl52p = { findAndReplaceDOMText: findAndReplaceDOMText };
+  var $_3zz6umk1jj91b0w4 = { findAndReplaceDOMText: findAndReplaceDOMText };
 
   var getElmIndex = function (elm) {
     var value = elm.getAttribute('data-mce-index');
@@ -231,7 +231,7 @@ var searchreplace = (function () {
     marker.className = 'mce-match-marker';
     node = editor.getBody();
     done(editor, currentIndexState, false);
-    return $_dingjqk1jj8vl52p.findAndReplaceDOMText(regex, node, marker, false, editor.schema);
+    return $_3zz6umk1jj91b0w4.findAndReplaceDOMText(regex, node, marker, false, editor.schema);
   };
   var unwrap = function (node) {
     var parentNode = node.parentNode;
@@ -381,7 +381,7 @@ var searchreplace = (function () {
   var hasPrev = function (editor, currentIndexState) {
     return findSpansByIndex(editor, currentIndexState.get() - 1).length > 0;
   };
-  var $_1ipsvxjzjj8vl52j = {
+  var $_anu5ncjzjj91b0vb = {
     done: done,
     find: find,
     next: next,
@@ -393,19 +393,19 @@ var searchreplace = (function () {
 
   var get = function (editor, currentIndexState) {
     var done = function (keepEditorSelection) {
-      return $_1ipsvxjzjj8vl52j.done(editor, currentIndexState, keepEditorSelection);
+      return $_anu5ncjzjj91b0vb.done(editor, currentIndexState, keepEditorSelection);
     };
     var find = function (text, matchCase, wholeWord) {
-      return $_1ipsvxjzjj8vl52j.find(editor, currentIndexState, text, matchCase, wholeWord);
+      return $_anu5ncjzjj91b0vb.find(editor, currentIndexState, text, matchCase, wholeWord);
     };
     var next = function () {
-      return $_1ipsvxjzjj8vl52j.next(editor, currentIndexState);
+      return $_anu5ncjzjj91b0vb.next(editor, currentIndexState);
     };
     var prev = function () {
-      return $_1ipsvxjzjj8vl52j.prev(editor, currentIndexState);
+      return $_anu5ncjzjj91b0vb.prev(editor, currentIndexState);
     };
     var replace = function (text, forward, all) {
-      return $_1ipsvxjzjj8vl52j.replace(editor, currentIndexState, text, forward, all);
+      return $_anu5ncjzjj91b0vb.replace(editor, currentIndexState, text, forward, all);
     };
     return {
       done: done,
@@ -415,15 +415,15 @@ var searchreplace = (function () {
       replace: replace
     };
   };
-  var $_7ohvfwjyjj8vl52e = { get: get };
+  var $_83kqsmjyjj91b0uv = { get: get };
 
   var open = function (editor, currentIndexState) {
     var last = {}, selectedText;
     editor.undoManager.add();
     selectedText = global$1.trim(editor.selection.getContent({ format: 'text' }));
     function updateButtonStates() {
-      win.statusbar.find('#next').disabled($_1ipsvxjzjj8vl52j.hasNext(editor, currentIndexState) === false);
-      win.statusbar.find('#prev').disabled($_1ipsvxjzjj8vl52j.hasPrev(editor, currentIndexState) === false);
+      win.statusbar.find('#next').disabled($_anu5ncjzjj91b0vb.hasNext(editor, currentIndexState) === false);
+      win.statusbar.find('#prev').disabled($_anu5ncjzjj91b0vb.hasPrev(editor, currentIndexState) === false);
     }
     function notFoundAlert() {
       editor.windowManager.alert('Could not find the specified string.', function () {
@@ -436,7 +436,7 @@ var searchreplace = (function () {
       align: 'center',
       onClose: function () {
         editor.focus();
-        $_1ipsvxjzjj8vl52j.done(editor, currentIndexState);
+        $_anu5ncjzjj91b0vb.done(editor, currentIndexState);
         editor.undoManager.add();
       },
       onSubmit: function (e) {
@@ -446,20 +446,20 @@ var searchreplace = (function () {
         wholeWord = win.find('#words').checked();
         text = win.find('#find').value();
         if (!text.length) {
-          $_1ipsvxjzjj8vl52j.done(editor, currentIndexState, false);
+          $_anu5ncjzjj91b0vb.done(editor, currentIndexState, false);
           win.statusbar.items().slice(1).disabled(true);
           return;
         }
         if (last.text === text && last.caseState === caseState && last.wholeWord === wholeWord) {
-          if (!$_1ipsvxjzjj8vl52j.hasNext(editor, currentIndexState)) {
+          if (!$_anu5ncjzjj91b0vb.hasNext(editor, currentIndexState)) {
             notFoundAlert();
             return;
           }
-          $_1ipsvxjzjj8vl52j.next(editor, currentIndexState);
+          $_anu5ncjzjj91b0vb.next(editor, currentIndexState);
           updateButtonStates();
           return;
         }
-        count = $_1ipsvxjzjj8vl52j.find(editor, currentIndexState, text, caseState, wholeWord);
+        count = $_anu5ncjzjj91b0vb.find(editor, currentIndexState, text, caseState, wholeWord);
         if (!count) {
           notFoundAlert();
         }
@@ -483,7 +483,7 @@ var searchreplace = (function () {
           text: 'Replace',
           disabled: true,
           onclick: function () {
-            if (!$_1ipsvxjzjj8vl52j.replace(editor, currentIndexState, win.find('#replace').value())) {
+            if (!$_anu5ncjzjj91b0vb.replace(editor, currentIndexState, win.find('#replace').value())) {
               win.statusbar.items().slice(1).disabled(true);
               currentIndexState.set(-1);
               last = {};
@@ -494,7 +494,7 @@ var searchreplace = (function () {
           text: 'Replace all',
           disabled: true,
           onclick: function () {
-            $_1ipsvxjzjj8vl52j.replace(editor, currentIndexState, win.find('#replace').value(), true, true);
+            $_anu5ncjzjj91b0vb.replace(editor, currentIndexState, win.find('#replace').value(), true, true);
             win.statusbar.items().slice(1).disabled(true);
             last = {};
           }
@@ -508,7 +508,7 @@ var searchreplace = (function () {
           name: 'prev',
           disabled: true,
           onclick: function () {
-            $_1ipsvxjzjj8vl52j.prev(editor, currentIndexState);
+            $_anu5ncjzjj91b0vb.prev(editor, currentIndexState);
             updateButtonStates();
           }
         },
@@ -517,7 +517,7 @@ var searchreplace = (function () {
           name: 'next',
           disabled: true,
           onclick: function () {
-            $_1ipsvxjzjj8vl52j.next(editor, currentIndexState);
+            $_anu5ncjzjj91b0vb.next(editor, currentIndexState);
             updateButtonStates();
           }
         }
@@ -558,18 +558,18 @@ var searchreplace = (function () {
       }
     });
   };
-  var $_2jakspk3jj8vl52z = { open: open };
+  var $_8uongrk3jj91b0ws = { open: open };
 
   var register = function (editor, currentIndexState) {
     editor.addCommand('SearchReplace', function () {
-      $_2jakspk3jj8vl52z.open(editor, currentIndexState);
+      $_8uongrk3jj91b0ws.open(editor, currentIndexState);
     });
   };
-  var $_20nxwmk2jj8vl52w = { register: register };
+  var $_14zcidk2jj91b0wm = { register: register };
 
   var showDialog = function (editor, currentIndexState) {
     return function () {
-      $_2jakspk3jj8vl52z.open(editor, currentIndexState);
+      $_8uongrk3jj91b0ws.open(editor, currentIndexState);
     };
   };
   var register$1 = function (editor, currentIndexState) {
@@ -586,13 +586,13 @@ var searchreplace = (function () {
     });
     editor.shortcuts.add('Meta+F', '', showDialog(editor, currentIndexState));
   };
-  var $_154kfjk4jj8vl535 = { register: register$1 };
+  var $_9ci8xqk4jj91b0x5 = { register: register$1 };
 
   global.add('searchreplace', function (editor) {
     var currentIndexState = Cell(-1);
-    $_20nxwmk2jj8vl52w.register(editor, currentIndexState);
-    $_154kfjk4jj8vl535.register(editor, currentIndexState);
-    return $_7ohvfwjyjj8vl52e.get(editor, currentIndexState);
+    $_14zcidk2jj91b0wm.register(editor, currentIndexState);
+    $_9ci8xqk4jj91b0x5.register(editor, currentIndexState);
+    return $_83kqsmjyjj91b0uv.get(editor, currentIndexState);
   });
   function Plugin () {
   }

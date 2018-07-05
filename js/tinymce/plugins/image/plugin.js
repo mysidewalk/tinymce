@@ -46,7 +46,7 @@ var image = (function () {
   var getUploadCredentials = function (editor) {
     return editor.getParam('images_upload_credentials');
   };
-  var $_8iy6ivctjj8vl3pk = {
+  var $_3zyz5kctjj91axrh = {
     hasDimensions: hasDimensions,
     hasAdvTab: hasAdvTab,
     getPrependUrl: getPrependUrl,
@@ -85,10 +85,10 @@ var image = (function () {
       throw name + ' not available on this browser';
     return actual;
   };
-  var $_7yvm6gcwjj8vl3q0 = { getOrDie: getOrDie };
+  var $_etndozcwjj91axsl = { getOrDie: getOrDie };
 
   function FileReader () {
-    var f = $_7yvm6gcwjj8vl3q0.getOrDie('FileReader');
+    var f = $_etndozcwjj91axsl.getOrDie('FileReader');
     return new f();
   }
 
@@ -190,7 +190,7 @@ var image = (function () {
     return css;
   };
   var createImageList = function (editor, callback) {
-    var imageList = $_8iy6ivctjj8vl3pk.getImageList(editor);
+    var imageList = $_3zyz5kctjj91axrh.getImageList(editor);
     if (typeof imageList === 'string') {
       global$3.send({
         url: imageList,
@@ -213,7 +213,7 @@ var image = (function () {
       }
     }
     imgElm.onload = function () {
-      if (!data.width && !data.height && $_8iy6ivctjj8vl3pk.hasDimensions(editor)) {
+      if (!data.width && !data.height && $_3zyz5kctjj91axrh.hasDimensions(editor)) {
         editor.dom.setAttribs(imgElm, {
           width: imgElm.clientWidth,
           height: imgElm.clientHeight
@@ -235,7 +235,7 @@ var image = (function () {
       reader.readAsDataURL(blob);
     });
   };
-  var $_7qdkhcujj8vl3po = {
+  var $_g61rqscujj91axrz = {
     getImageSize: getImageSize,
     buildListItems: buildListItems,
     removePixelSuffix: removePixelSuffix,
@@ -275,21 +275,21 @@ var image = (function () {
   var DOM = global$4.DOM;
   var getHspace = function (image) {
     if (image.style.marginLeft && image.style.marginRight && image.style.marginLeft === image.style.marginRight) {
-      return $_7qdkhcujj8vl3po.removePixelSuffix(image.style.marginLeft);
+      return $_g61rqscujj91axrz.removePixelSuffix(image.style.marginLeft);
     } else {
       return '';
     }
   };
   var getVspace = function (image) {
     if (image.style.marginTop && image.style.marginBottom && image.style.marginTop === image.style.marginBottom) {
-      return $_7qdkhcujj8vl3po.removePixelSuffix(image.style.marginTop);
+      return $_g61rqscujj91axrz.removePixelSuffix(image.style.marginTop);
     } else {
       return '';
     }
   };
   var getBorder = function (image) {
     if (image.style.borderWidth) {
-      return $_7qdkhcujj8vl3po.removePixelSuffix(image.style.borderWidth);
+      return $_g61rqscujj91axrz.removePixelSuffix(image.style.borderWidth);
     } else {
       return '';
     }
@@ -342,7 +342,7 @@ var image = (function () {
   var setSize = function (name$$1, normalizeCss) {
     return function (image, name$$1, value) {
       if (image.style[name$$1]) {
-        image.style[name$$1] = $_7qdkhcujj8vl3po.addPixelSuffix(value);
+        image.style[name$$1] = $_g61rqscujj91axrz.addPixelSuffix(value);
         normalizeStyle(image, normalizeCss);
       } else {
         setAttrib(image, name$$1, value);
@@ -351,23 +351,23 @@ var image = (function () {
   };
   var getSize = function (image, name$$1) {
     if (image.style[name$$1]) {
-      return $_7qdkhcujj8vl3po.removePixelSuffix(image.style[name$$1]);
+      return $_g61rqscujj91axrz.removePixelSuffix(image.style[name$$1]);
     } else {
       return getAttrib(image, name$$1);
     }
   };
   var setHspace = function (image, value) {
-    var pxValue = $_7qdkhcujj8vl3po.addPixelSuffix(value);
+    var pxValue = $_g61rqscujj91axrz.addPixelSuffix(value);
     image.style.marginLeft = pxValue;
     image.style.marginRight = pxValue;
   };
   var setVspace = function (image, value) {
-    var pxValue = $_7qdkhcujj8vl3po.addPixelSuffix(value);
+    var pxValue = $_g61rqscujj91axrz.addPixelSuffix(value);
     image.style.marginTop = pxValue;
     image.style.marginBottom = pxValue;
   };
   var setBorder = function (image, value) {
-    var pxValue = $_7qdkhcujj8vl3po.addPixelSuffix(value);
+    var pxValue = $_g61rqscujj91axrz.addPixelSuffix(value);
     image.style.borderWidth = pxValue;
   };
   var setBorderStyle = function (image, value) {
@@ -475,7 +475,7 @@ var image = (function () {
 
   var normalizeCss = function (editor, cssText) {
     var css = editor.dom.styles.parse(cssText);
-    var mergedCss = $_7qdkhcujj8vl3po.mergeMargins(css);
+    var mergedCss = $_g61rqscujj91axrz.mergeMargins(css);
     var compressed = editor.dom.styles.parse(editor.dom.styles.serialize(mergedCss));
     return editor.dom.styles.serialize(compressed);
   };
@@ -550,7 +550,7 @@ var image = (function () {
       editor.selection.select(image.parentNode);
     } else {
       editor.selection.select(image);
-      $_7qdkhcujj8vl3po.waitLoadImage(editor, data, image);
+      $_g61rqscujj91axrz.waitLoadImage(editor, data, image);
     }
   };
   var insertOrUpdateImage = function (editor, data) {
@@ -570,28 +570,28 @@ var image = (function () {
     return function (evt) {
       var dom = editor.dom;
       var rootControl = evt.control.rootControl;
-      if (!$_8iy6ivctjj8vl3pk.hasAdvTab(editor)) {
+      if (!$_3zyz5kctjj91axrh.hasAdvTab(editor)) {
         return;
       }
       var data = rootControl.toJSON();
       var css = dom.parseStyle(data.style);
       rootControl.find('#vspace').value('');
       rootControl.find('#hspace').value('');
-      css = $_7qdkhcujj8vl3po.mergeMargins(css);
+      css = $_g61rqscujj91axrz.mergeMargins(css);
       if (css['margin-top'] && css['margin-bottom'] || css['margin-right'] && css['margin-left']) {
         if (css['margin-top'] === css['margin-bottom']) {
-          rootControl.find('#vspace').value($_7qdkhcujj8vl3po.removePixelSuffix(css['margin-top']));
+          rootControl.find('#vspace').value($_g61rqscujj91axrz.removePixelSuffix(css['margin-top']));
         } else {
           rootControl.find('#vspace').value('');
         }
         if (css['margin-right'] === css['margin-left']) {
-          rootControl.find('#hspace').value($_7qdkhcujj8vl3po.removePixelSuffix(css['margin-right']));
+          rootControl.find('#hspace').value($_g61rqscujj91axrz.removePixelSuffix(css['margin-right']));
         } else {
           rootControl.find('#hspace').value('');
         }
       }
       if (css['border-width']) {
-        rootControl.find('#border').value($_7qdkhcujj8vl3po.removePixelSuffix(css['border-width']));
+        rootControl.find('#border').value($_g61rqscujj91axrz.removePixelSuffix(css['border-width']));
       } else {
         rootControl.find('#border').value('');
       }
@@ -710,7 +710,7 @@ var image = (function () {
       ]
     };
   };
-  var $_87voubd3jj8vl3qz = { makeTab: makeTab };
+  var $_4h9jasd3jj91axug = { makeTab: makeTab };
 
   var doSyncSize = function (widthCtrl, heightCtrl) {
     widthCtrl.state.set('oldVal', widthCtrl.value());
@@ -790,7 +790,7 @@ var image = (function () {
       ]
     };
   };
-  var $_ecpko6dajj8vl3rx = {
+  var $_dmoq6bdajj91axwi = {
     createUi: createUi,
     syncSize: syncSize,
     updateSize: updateSize
@@ -810,17 +810,17 @@ var image = (function () {
     });
     if (!meta.width && !meta.height) {
       srcURL = editor.convertURL(control.value(), 'src');
-      prependURL = $_8iy6ivctjj8vl3pk.getPrependUrl(editor);
+      prependURL = $_3zyz5kctjj91axrh.getPrependUrl(editor);
       absoluteURLPattern = new RegExp('^(?:[a-z]+:)?//', 'i');
       if (prependURL && !absoluteURLPattern.test(srcURL) && srcURL.substring(0, prependURL.length) !== prependURL) {
         srcURL = prependURL + srcURL;
       }
       control.value(srcURL);
-      $_7qdkhcujj8vl3po.getImageSize(editor.documentBaseURI.toAbsolute(control.value()), function (data) {
-        if (data.width && data.height && $_8iy6ivctjj8vl3pk.hasDimensions(editor)) {
+      $_g61rqscujj91axrz.getImageSize(editor.documentBaseURI.toAbsolute(control.value()), function (data) {
+        if (data.width && data.height && $_3zyz5kctjj91axrh.hasDimensions(editor)) {
           rootControl.find('#width').value(data.width);
           rootControl.find('#height').value(data.height);
-          $_ecpko6dajj8vl3rx.syncSize(rootControl);
+          $_dmoq6bdajj91axwi.syncSize(rootControl);
         }
       });
     }
@@ -843,29 +843,29 @@ var image = (function () {
       },
       imageListCtrl
     ];
-    if ($_8iy6ivctjj8vl3pk.hasDescription(editor)) {
+    if ($_3zyz5kctjj91axrh.hasDescription(editor)) {
       generalFormItems.push({
         name: 'alt',
         type: 'textbox',
         label: 'Image description'
       });
     }
-    if ($_8iy6ivctjj8vl3pk.hasImageTitle(editor)) {
+    if ($_3zyz5kctjj91axrh.hasImageTitle(editor)) {
       generalFormItems.push({
         name: 'title',
         type: 'textbox',
         label: 'Image Title'
       });
     }
-    if ($_8iy6ivctjj8vl3pk.hasDimensions(editor)) {
-      generalFormItems.push($_ecpko6dajj8vl3rx.createUi());
+    if ($_3zyz5kctjj91axrh.hasDimensions(editor)) {
+      generalFormItems.push($_dmoq6bdajj91axwi.createUi());
     }
-    if ($_8iy6ivctjj8vl3pk.getClassList(editor)) {
+    if ($_3zyz5kctjj91axrh.getClassList(editor)) {
       generalFormItems.push({
         name: 'class',
         type: 'listbox',
         label: 'Class',
-        values: $_7qdkhcujj8vl3po.buildListItems($_8iy6ivctjj8vl3pk.getClassList(editor), function (item) {
+        values: $_g61rqscujj91axrz.buildListItems($_3zyz5kctjj91axrh.getClassList(editor), function (item) {
           if (item.value) {
             item.textStyle = function () {
               return editor.formatter.getCssText({
@@ -877,7 +877,7 @@ var image = (function () {
         })
       });
     }
-    if ($_8iy6ivctjj8vl3pk.hasImageCaption(editor)) {
+    if ($_3zyz5kctjj91axrh.hasImageCaption(editor)) {
       generalFormItems.push({
         name: 'caption',
         type: 'checkbox',
@@ -893,13 +893,13 @@ var image = (function () {
       items: getGeneralItems(editor, imageListCtrl)
     };
   };
-  var $_fgm5cfd9jj8vl3ru = {
+  var $_aakxxbd9jj91axw7 = {
     makeTab: makeTab$1,
     getGeneralItems: getGeneralItems
   };
 
   var url = function () {
-    return $_7yvm6gcwjj8vl3q0.getOrDie('URL');
+    return $_etndozcwjj91axsl.getOrDie('URL');
   };
   var createObjectURL = function (blob) {
     return url().createObjectURL(blob);
@@ -907,7 +907,7 @@ var image = (function () {
   var revokeObjectURL = function (u) {
     url().revokeObjectURL(u);
   };
-  var $_byco6udcjj8vl3s7 = {
+  var $_e2bvv3dcjj91axx3 = {
     createObjectURL: createObjectURL,
     revokeObjectURL: revokeObjectURL
   };
@@ -915,7 +915,7 @@ var image = (function () {
   var global$5 = tinymce.util.Tools.resolve('tinymce.ui.Factory');
 
   function XMLHttpRequest () {
-    var f = $_7yvm6gcwjj8vl3q0.getOrDie('XMLHttpRequest');
+    var f = $_etndozcwjj91axsl.getOrDie('XMLHttpRequest');
     return new f();
   }
 
@@ -984,19 +984,19 @@ var image = (function () {
       var rootControl = evt.control.rootControl;
       var throbber = new Throbber(rootControl.getEl());
       var file = evt.control.value();
-      var blobUri = $_byco6udcjj8vl3s7.createObjectURL(file);
+      var blobUri = $_e2bvv3dcjj91axx3.createObjectURL(file);
       var uploader = Uploader({
-        url: $_8iy6ivctjj8vl3pk.getUploadUrl(editor),
-        basePath: $_8iy6ivctjj8vl3pk.getUploadBasePath(editor),
-        credentials: $_8iy6ivctjj8vl3pk.getUploadCredentials(editor),
-        handler: $_8iy6ivctjj8vl3pk.getUploadHandler(editor)
+        url: $_3zyz5kctjj91axrh.getUploadUrl(editor),
+        basePath: $_3zyz5kctjj91axrh.getUploadBasePath(editor),
+        credentials: $_3zyz5kctjj91axrh.getUploadCredentials(editor),
+        handler: $_3zyz5kctjj91axrh.getUploadHandler(editor)
       });
       var finalize = function () {
         throbber.hide();
-        $_byco6udcjj8vl3s7.revokeObjectURL(blobUri);
+        $_e2bvv3dcjj91axx3.revokeObjectURL(blobUri);
       };
       throbber.show();
-      return $_7qdkhcujj8vl3po.blobToDataUri(file).then(function (dataUrl) {
+      return $_g61rqscujj91axrz.blobToDataUri(file).then(function (dataUrl) {
         var blobInfo = editor.editorUpload.blobCache.create({
           blob: file,
           blobUri: blobUri,
@@ -1056,7 +1056,7 @@ var image = (function () {
       ]
     };
   };
-  var $_ctk841dbjj8vl3s1 = { makeTab: makeTab$2 };
+  var $_wj2lcdbjj91axwq = { makeTab: makeTab$2 };
 
   var curry = function (f) {
     var x = [];
@@ -1081,7 +1081,7 @@ var image = (function () {
 
   var submitForm = function (editor, evt) {
     var win = evt.control.getRoot();
-    $_ecpko6dajj8vl3rx.updateSize(win);
+    $_dmoq6bdajj91axwi.updateSize(win);
     editor.undoManager.transact(function () {
       var data = merge(readImageDataFromSelection(editor), win.toJSON());
       insertOrUpdateImage(editor, data);
@@ -1097,7 +1097,7 @@ var image = (function () {
           type: 'listbox',
           label: 'Image list',
           name: 'image-list',
-          values: $_7qdkhcujj8vl3po.buildListItems(imageList, function (item) {
+          values: $_g61rqscujj91axrz.buildListItems(imageList, function (item) {
             item.value = editor.convertURL(item.value || item.url, 'src');
           }, [{
               text: 'None',
@@ -1116,13 +1116,13 @@ var image = (function () {
           }
         };
       }
-      if ($_8iy6ivctjj8vl3pk.hasAdvTab(editor) || $_8iy6ivctjj8vl3pk.hasUploadUrl(editor) || $_8iy6ivctjj8vl3pk.hasUploadHandler(editor)) {
-        var body = [$_fgm5cfd9jj8vl3ru.makeTab(editor, imageListCtrl)];
-        if ($_8iy6ivctjj8vl3pk.hasAdvTab(editor)) {
-          body.push($_87voubd3jj8vl3qz.makeTab(editor));
+      if ($_3zyz5kctjj91axrh.hasAdvTab(editor) || $_3zyz5kctjj91axrh.hasUploadUrl(editor) || $_3zyz5kctjj91axrh.hasUploadHandler(editor)) {
+        var body = [$_aakxxbd9jj91axw7.makeTab(editor, imageListCtrl)];
+        if ($_3zyz5kctjj91axrh.hasAdvTab(editor)) {
+          body.push($_4h9jasd3jj91axug.makeTab(editor));
         }
-        if ($_8iy6ivctjj8vl3pk.hasUploadUrl(editor) || $_8iy6ivctjj8vl3pk.hasUploadHandler(editor)) {
-          body.push($_ctk841dbjj8vl3s1.makeTab(editor));
+        if ($_3zyz5kctjj91axrh.hasUploadUrl(editor) || $_3zyz5kctjj91axrh.hasUploadHandler(editor)) {
+          body.push($_wj2lcdbjj91axwq.makeTab(editor));
         }
         win = editor.windowManager.open({
           title: 'Insert/edit image',
@@ -1135,14 +1135,14 @@ var image = (function () {
         win = editor.windowManager.open({
           title: 'Insert/edit image',
           data: data,
-          body: $_fgm5cfd9jj8vl3ru.getGeneralItems(editor, imageListCtrl),
+          body: $_aakxxbd9jj91axw7.getGeneralItems(editor, imageListCtrl),
           onSubmit: curry(submitForm, editor)
         });
       }
-      $_ecpko6dajj8vl3rx.syncSize(win);
+      $_dmoq6bdajj91axwi.syncSize(win);
     }
     function open() {
-      $_7qdkhcujj8vl3po.createImageList(editor, showDialog);
+      $_g61rqscujj91axrz.createImageList(editor, showDialog);
     }
     return { open: open };
   }
@@ -1150,7 +1150,7 @@ var image = (function () {
   var register = function (editor) {
     editor.addCommand('mceImage', Dialog(editor).open);
   };
-  var $_6s4qsdcrjj8vl3p4 = { register: register };
+  var $_1d9cxqcrjj91axqp = { register: register };
 
   var hasImageClass = function (node) {
     var className = node.attr('class');
@@ -1177,7 +1177,7 @@ var image = (function () {
       editor.serializer.addNodeFilter('figure', toggleContentEditableState(false));
     });
   };
-  var $_4aib72dhjj8vl3sq = { setup: setup };
+  var $_7qz3yedhjj91axy8 = { setup: setup };
 
   var register$1 = function (editor) {
     editor.addButton('image', {
@@ -1194,12 +1194,12 @@ var image = (function () {
       prependToContext: true
     });
   };
-  var $_5x4hhzdijj8vl3ss = { register: register$1 };
+  var $_gglaxdijj91axyc = { register: register$1 };
 
   global.add('image', function (editor) {
-    $_4aib72dhjj8vl3sq.setup(editor);
-    $_5x4hhzdijj8vl3ss.register(editor);
-    $_6s4qsdcrjj8vl3p4.register(editor);
+    $_7qz3yedhjj91axy8.setup(editor);
+    $_gglaxdijj91axyc.register(editor);
+    $_1d9cxqcrjj91axqp.register(editor);
   });
   function Plugin () {
   }
