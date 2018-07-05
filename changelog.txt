@@ -1,3 +1,5 @@
+Version 4.8.0-mysw-5 (2018-07-05)
+    Allow skin scss into repo
 Version 4.8.0-mysw-4 (2018-07-03)
     Messed up merge, fixed creating multiple modal dropdowns 
 
