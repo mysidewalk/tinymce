@@ -1,5 +1,5 @@
-Version 4.8.0-mysw-7 (2018-09-18)
-
+Version 4.8.3-mysw-8 (2018-09-18)
+    Merged core 4.8.3 with mysw changes
 
 Version 4.8.3 (2018-09-13)
     Fixed a bug where the Wordcount Plugin didn't correctly count words within tables on IE11. #TINY-1770

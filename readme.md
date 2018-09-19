@@ -28,13 +28,13 @@ $ grunt
 
 Build tasks
 ------------
-`grunt`
+`grunt`  
 Lints, compiles, minifies and creates release packages for TinyMCE. This will produce the production ready packages.
 
-`grunt start`
+`grunt start`  
 Starts a webpack-dev-server that compiles the core, themes, plugins and all demos. Go to `localhost:3000` for a list of links to all the demo pages.
 
-`grunt dev`
+`grunt dev`  
 Runs tsc, webpack and less. This will only produce the bare essentials for a development build and is a lot faster.
 
 `grunt test`

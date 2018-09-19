@@ -370,13 +370,13 @@ var help = (function () {
       action: 'Find (if searchreplace plugin activated)'
     }
   ];
-  var $_en1ry2bmjj91axb0 = { shortcuts: shortcuts };
+  var $_9pnfr6bljm8ldrvg = { shortcuts: shortcuts };
 
   var makeTab = function () {
     var makeAriaLabel = function (shortcut) {
       return 'aria-label="Action: ' + shortcut.action + ', Shortcut: ' + shortcut.shortcut.replace(/Ctrl/g, 'Control') + '"';
     };
-    var shortcutLisString = map($_en1ry2bmjj91axb0.shortcuts, function (shortcut) {
+    var shortcutLisString = map($_9pnfr6bljm8ldrvg.shortcuts, function (shortcut) {
       return '<tr data-mce-tabstop="1" tabindex="-1" ' + makeAriaLabel(shortcut) + '>' + '<td>' + global$1.translate(shortcut.action) + '</td>' + '<td>' + shortcut.shortcut + '</td>' + '</tr>';
     }).join('');
     return {
@@ -389,21 +389,9 @@ var help = (function () {
         }]
     };
   };
-  var $_7oe9c9bgjj91ax9d = { makeTab: makeTab };
+  var $_9jt4dfbfjm8ldruo = { makeTab: makeTab };
 
-  var keys = function () {
-    var fastKeys = Object.keys;
-    var slowKeys = function (o) {
-      var r = [];
-      for (var i in o) {
-        if (o.hasOwnProperty(i)) {
-          r.push(i);
-        }
-      }
-      return r;
-    };
-    return fastKeys === undefined ? slowKeys : fastKeys;
-  }();
+  var keys = Object.keys;
 
   var supplant = function (str, obj) {
     var isStringOrNumber = function (a) {
@@ -594,11 +582,11 @@ var help = (function () {
       name: 'Word Count'
     }
   ];
-  var $_a8n2vtbtjj91axd0 = { urls: urls };
+  var $_8qq27vbsjm8ldrwc = { urls: urls };
 
   var makeLink = curry(supplant, '<a href="${url}" target="_blank" rel="noopener">${name}</a>');
   var maybeUrlize = function (editor, key) {
-    return find($_a8n2vtbtjj91axd0.urls, function (x) {
+    return find($_8qq27vbsjm8ldrwc.urls, function (x) {
       return x.key === key;
     }).fold(function () {
       var getMetadata = editor.plugins[key].getMetadata;
@@ -654,7 +642,7 @@ var help = (function () {
       ]
     };
   };
-  var $_7tykqfbojj91axbb = { makeTab: makeTab$1 };
+  var $_30ccusbnjm8ldrvj = { makeTab: makeTab$1 };
 
   var global$3 = tinymce.util.Tools.resolve('tinymce.EditorManager');
 
@@ -684,7 +672,7 @@ var help = (function () {
       }
     ];
   };
-  var $_dkydu9bujj91axd9 = { makeRow: makeRow };
+  var $_z4swxbtjm8ldrwg = { makeRow: makeRow };
 
   var open = function (editor, pluginUrl) {
     return function () {
@@ -693,10 +681,10 @@ var help = (function () {
         bodyType: 'tabpanel',
         layout: 'flex',
         body: [
-          $_7oe9c9bgjj91ax9d.makeTab(),
-          $_7tykqfbojj91axbb.makeTab(editor)
+          $_9jt4dfbfjm8ldruo.makeTab(),
+          $_30ccusbnjm8ldrvj.makeTab(editor)
         ],
-        buttons: $_dkydu9bujj91axd9.makeRow(),
+        buttons: $_z4swxbtjm8ldrwg.makeRow(),
         onPostRender: function () {
           var title = this.getEl('title');
           title.innerHTML = '<img src="' + pluginUrl + '/img/logo.png" alt="TinyMCE Logo" style="display: inline-block; width: 200px; height: 50px">';
@@ -704,30 +692,30 @@ var help = (function () {
       });
     };
   };
-  var $_flbzq5bfjj91ax98 = { open: open };
+  var $_ahbqjdbejm8ldrun = { open: open };
 
   var register = function (editor, pluginUrl) {
-    editor.addCommand('mceHelp', $_flbzq5bfjj91ax98.open(editor, pluginUrl));
+    editor.addCommand('mceHelp', $_ahbqjdbejm8ldrun.open(editor, pluginUrl));
   };
-  var $_o01jibejj91ax95 = { register: register };
+  var $_b7vdngbdjm8ldrul = { register: register };
 
   var register$1 = function (editor, pluginUrl) {
     editor.addButton('help', {
       icon: 'help',
-      onclick: $_flbzq5bfjj91ax98.open(editor, pluginUrl)
+      onclick: $_ahbqjdbejm8ldrun.open(editor, pluginUrl)
     });
     editor.addMenuItem('help', {
       text: 'Help',
       icon: 'help',
       context: 'help',
-      onclick: $_flbzq5bfjj91ax98.open(editor, pluginUrl)
+      onclick: $_ahbqjdbejm8ldrun.open(editor, pluginUrl)
     });
   };
-  var $_c1zk0kbwjj91axde = { register: register$1 };
+  var $_76vk03bvjm8ldrwj = { register: register$1 };
 
   global.add('help', function (editor, pluginUrl) {
-    $_c1zk0kbwjj91axde.register(editor, pluginUrl);
-    $_o01jibejj91ax95.register(editor, pluginUrl);
+    $_76vk03bvjm8ldrwj.register(editor, pluginUrl);
+    $_b7vdngbdjm8ldrul.register(editor, pluginUrl);
     editor.shortcuts.add('Alt+0', 'Open help dialog', 'mceHelp');
   });
   function Plugin () {
