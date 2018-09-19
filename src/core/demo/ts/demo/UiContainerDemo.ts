@@ -21,7 +21,13 @@ export default function () {
     // rtl_ui: true,
     link_list: [
       { title: 'My page 1', value: 'http://www.tinymce.com' },
-      { title: 'My page 2', value: 'http://www.moxiecode.com' }
+      {
+        title: 'SubMenu',
+        menu:  [
+          { title: 'My page 2.1', value: 'http://www.tinymce.com' },
+          { title: 'My page 2.2', value: 'http://www.moxiecode.com' }
+        ]
+      }
     ],
     image_list: [
       { title: 'My page 1', value: 'http://www.tinymce.com' },
