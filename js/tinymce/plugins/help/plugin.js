@@ -370,13 +370,13 @@ var help = (function () {
       action: 'Find (if searchreplace plugin activated)'
     }
   ];
-  var $_9pnfr6bljm8ldrvg = { shortcuts: shortcuts };
+  var $_2n6j76bljm9dk777 = { shortcuts: shortcuts };
 
   var makeTab = function () {
     var makeAriaLabel = function (shortcut) {
       return 'aria-label="Action: ' + shortcut.action + ', Shortcut: ' + shortcut.shortcut.replace(/Ctrl/g, 'Control') + '"';
     };
-    var shortcutLisString = map($_9pnfr6bljm8ldrvg.shortcuts, function (shortcut) {
+    var shortcutLisString = map($_2n6j76bljm9dk777.shortcuts, function (shortcut) {
       return '<tr data-mce-tabstop="1" tabindex="-1" ' + makeAriaLabel(shortcut) + '>' + '<td>' + global$1.translate(shortcut.action) + '</td>' + '<td>' + shortcut.shortcut + '</td>' + '</tr>';
     }).join('');
     return {
@@ -389,7 +389,7 @@ var help = (function () {
         }]
     };
   };
-  var $_9jt4dfbfjm8ldruo = { makeTab: makeTab };
+  var $_aie8mwbfjm9dk76d = { makeTab: makeTab };
 
   var keys = Object.keys;
 
@@ -582,11 +582,11 @@ var help = (function () {
       name: 'Word Count'
     }
   ];
-  var $_8qq27vbsjm8ldrwc = { urls: urls };
+  var $_bc4r3hbsjm9dk781 = { urls: urls };
 
   var makeLink = curry(supplant, '<a href="${url}" target="_blank" rel="noopener">${name}</a>');
   var maybeUrlize = function (editor, key) {
-    return find($_8qq27vbsjm8ldrwc.urls, function (x) {
+    return find($_bc4r3hbsjm9dk781.urls, function (x) {
       return x.key === key;
     }).fold(function () {
       var getMetadata = editor.plugins[key].getMetadata;
@@ -642,7 +642,7 @@ var help = (function () {
       ]
     };
   };
-  var $_30ccusbnjm8ldrvj = { makeTab: makeTab$1 };
+  var $_3s5jpmbnjm9dk77d = { makeTab: makeTab$1 };
 
   var global$3 = tinymce.util.Tools.resolve('tinymce.EditorManager');
 
@@ -672,7 +672,7 @@ var help = (function () {
       }
     ];
   };
-  var $_z4swxbtjm8ldrwg = { makeRow: makeRow };
+  var $_7je0ajbtjm9dk786 = { makeRow: makeRow };
 
   var open = function (editor, pluginUrl) {
     return function () {
@@ -681,10 +681,10 @@ var help = (function () {
         bodyType: 'tabpanel',
         layout: 'flex',
         body: [
-          $_9jt4dfbfjm8ldruo.makeTab(),
-          $_30ccusbnjm8ldrvj.makeTab(editor)
+          $_aie8mwbfjm9dk76d.makeTab(),
+          $_3s5jpmbnjm9dk77d.makeTab(editor)
         ],
-        buttons: $_z4swxbtjm8ldrwg.makeRow(),
+        buttons: $_7je0ajbtjm9dk786.makeRow(),
         onPostRender: function () {
           var title = this.getEl('title');
           title.innerHTML = '<img src="' + pluginUrl + '/img/logo.png" alt="TinyMCE Logo" style="display: inline-block; width: 200px; height: 50px">';
@@ -692,30 +692,30 @@ var help = (function () {
       });
     };
   };
-  var $_ahbqjdbejm8ldrun = { open: open };
+  var $_71gfh4bejm9dk76b = { open: open };
 
   var register = function (editor, pluginUrl) {
-    editor.addCommand('mceHelp', $_ahbqjdbejm8ldrun.open(editor, pluginUrl));
+    editor.addCommand('mceHelp', $_71gfh4bejm9dk76b.open(editor, pluginUrl));
   };
-  var $_b7vdngbdjm8ldrul = { register: register };
+  var $_ci3m7xbdjm9dk768 = { register: register };
 
   var register$1 = function (editor, pluginUrl) {
     editor.addButton('help', {
       icon: 'help',
-      onclick: $_ahbqjdbejm8ldrun.open(editor, pluginUrl)
+      onclick: $_71gfh4bejm9dk76b.open(editor, pluginUrl)
     });
     editor.addMenuItem('help', {
       text: 'Help',
       icon: 'help',
       context: 'help',
-      onclick: $_ahbqjdbejm8ldrun.open(editor, pluginUrl)
+      onclick: $_71gfh4bejm9dk76b.open(editor, pluginUrl)
     });
   };
-  var $_76vk03bvjm8ldrwj = { register: register$1 };
+  var $_fr7m4fbvjm9dk788 = { register: register$1 };
 
   global.add('help', function (editor, pluginUrl) {
-    $_76vk03bvjm8ldrwj.register(editor, pluginUrl);
-    $_b7vdngbdjm8ldrul.register(editor, pluginUrl);
+    $_fr7m4fbvjm9dk788.register(editor, pluginUrl);
+    $_ci3m7xbdjm9dk768.register(editor, pluginUrl);
     editor.shortcuts.add('Alt+0', 'Open help dialog', 'mceHelp');
   });
   function Plugin () {

@@ -57,7 +57,7 @@ var wordcount = (function () {
   var EMPTY_STRING = '';
   var PUNCTUATION = new RegExp('^' + regExps.punctuation + '$');
   var WHITESPACE = /^\s+$/;
-  var $_8sqwtftijm8ldviu = {
+  var $_9hwnnktijm9dkapj = {
     characterIndices: characterIndices,
     SETS: SETS,
     EMPTY_STRING: EMPTY_STRING,
@@ -95,13 +95,13 @@ var wordcount = (function () {
     });
     return out;
   };
-  var $_dn2k3wtkjm8ldviy = {
+  var $_1y2qvvtkjm9dkapo = {
     each: each,
     map: map
   };
 
-  var SETS$1 = $_8sqwtftijm8ldviu.SETS;
-  var OTHER = $_8sqwtftijm8ldviu.characterIndices.OTHER;
+  var SETS$1 = $_9hwnnktijm9dkapj.SETS;
+  var OTHER = $_9hwnnktijm9dkapj.characterIndices.OTHER;
   var getType = function (char) {
     var j, set, type = OTHER;
     var setsLength = SETS$1.length;
@@ -128,11 +128,11 @@ var wordcount = (function () {
   };
   var classify = function (string) {
     var memoized = memoize(getType);
-    return $_dn2k3wtkjm8ldviy.map(string.split(''), memoized);
+    return $_1y2qvvtkjm9dkapo.map(string.split(''), memoized);
   };
-  var $_bgqiqjtjjm8ldvix = { classify: classify };
+  var $_9f2hsstjjm9dkapm = { classify: classify };
 
-  var ci = $_8sqwtftijm8ldviu.characterIndices;
+  var ci = $_9hwnnktijm9dkapj.characterIndices;
   var isWordBoundary = function (map, index) {
     var prevType;
     var type = map[index];
@@ -187,11 +187,11 @@ var wordcount = (function () {
     }
     return true;
   };
-  var $_10i3letljm8ldvj0 = { isWordBoundary: isWordBoundary };
+  var $_a2z89rtljm9dkapq = { isWordBoundary: isWordBoundary };
 
-  var EMPTY_STRING$1 = $_8sqwtftijm8ldviu.EMPTY_STRING;
-  var WHITESPACE$1 = $_8sqwtftijm8ldviu.WHITESPACE;
-  var PUNCTUATION$1 = $_8sqwtftijm8ldviu.PUNCTUATION;
+  var EMPTY_STRING$1 = $_9hwnnktijm9dkapj.EMPTY_STRING;
+  var WHITESPACE$1 = $_9hwnnktijm9dkapj.WHITESPACE;
+  var PUNCTUATION$1 = $_9hwnnktijm9dkapj.PUNCTUATION;
   var isProtocol = function (word) {
     return word === 'http' || word === 'https';
   };
@@ -221,7 +221,7 @@ var wordcount = (function () {
   };
   var doGetWords = function (str, options) {
     var i = 0;
-    var map = $_bgqiqjtjjm8ldvix.classify(str);
+    var map = $_9f2hsstjjm9dkapm.classify(str);
     var len = map.length;
     var word = [];
     var words = [];
@@ -239,7 +239,7 @@ var wordcount = (function () {
     for (; i < len; ++i) {
       chr = str.charAt(i);
       word.push(chr);
-      if ($_10i3letljm8ldvj0.isWordBoundary(map, i)) {
+      if ($_a2z89rtljm9dkapq.isWordBoundary(map, i)) {
         word = word.join(EMPTY_STRING$1);
         if (word && (includeWhitespace || !WHITESPACE$1.test(word)) && (includePunctuation || !PUNCTUATION$1.test(word))) {
           if (isProtocol(word)) {
@@ -258,7 +258,7 @@ var wordcount = (function () {
   var getWords = function (str, options) {
     return doGetWords(str.replace(/\ufeff/g, ''), options);
   };
-  var $_3bnkfvthjm8ldvir = { getWords: getWords };
+  var $_dk33mmthjm9dkapb = { getWords: getWords };
 
   var getText = function (node, schema) {
     var blockElements = schema.getBlockElements();
@@ -285,17 +285,17 @@ var wordcount = (function () {
     return editor.removed ? '' : innerText(editor.getBody(), editor.schema);
   };
   var getCount = function (editor) {
-    return $_3bnkfvthjm8ldvir.getWords(getTextContent(editor)).length;
+    return $_dk33mmthjm9dkapb.getWords(getTextContent(editor)).length;
   };
-  var $_e8bzsetejm8ldvin = { getCount: getCount };
+  var $_ayfrz1tejm9dkap8 = { getCount: getCount };
 
   var get = function (editor) {
     var getCount = function () {
-      return $_e8bzsetejm8ldvin.getCount(editor);
+      return $_ayfrz1tejm9dkap8.getCount(editor);
     };
     return { getCount: getCount };
   };
-  var $_7cdwhktdjm8ldvim = { get: get };
+  var $_6pa0igtdjm9dkap5 = { get: get };
 
   var global$3 = tinymce.util.Tools.resolve('tinymce.util.Delay');
 
@@ -305,7 +305,7 @@ var wordcount = (function () {
     var wordsToText = function (editor) {
       return global$4.translate([
         '{0} words',
-        $_e8bzsetejm8ldvin.getCount(editor)
+        $_ayfrz1tejm9dkap8.getCount(editor)
       ]);
     };
     var update = function () {
@@ -328,11 +328,11 @@ var wordcount = (function () {
       }
     });
   };
-  var $_98nhmatmjm8ldvj2 = { setup: setup };
+  var $_fmzrwvtmjm9dkapt = { setup: setup };
 
   global.add('wordcount', function (editor) {
-    $_98nhmatmjm8ldvj2.setup(editor);
-    return $_7cdwhktdjm8ldvim.get(editor);
+    $_fmzrwvtmjm9dkapt.setup(editor);
+    return $_6pa0igtdjm9dkap5.get(editor);
   });
   function Plugin () {
   }

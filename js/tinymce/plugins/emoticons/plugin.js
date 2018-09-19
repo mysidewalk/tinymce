@@ -46,7 +46,7 @@ var emoticons = (function () {
     emoticonsHtml += '</table>';
     return emoticonsHtml;
   };
-  var $_6xodt9b9jm8ldrub = { getHtml: getHtml };
+  var $_cv4p5ob9jm9dk75r = { getHtml: getHtml };
 
   var insertEmoticon = function (editor, src, alt) {
     editor.insertContent(editor.dom.createHTML('img', {
@@ -55,7 +55,7 @@ var emoticons = (function () {
     }));
   };
   var register = function (editor, pluginUrl) {
-    var panelHtml = $_6xodt9b9jm8ldrub.getHtml(pluginUrl);
+    var panelHtml = $_cv4p5ob9jm9dk75r.getHtml(pluginUrl);
     editor.addButton('emoticons', {
       type: 'panelbutton',
       panel: {
@@ -73,10 +73,10 @@ var emoticons = (function () {
       tooltip: 'Emoticons'
     });
   };
-  var $_1snd0vb8jm8ldrua = { register: register };
+  var $_ca011xb8jm9dk75p = { register: register };
 
   global.add('emoticons', function (editor, pluginUrl) {
-    $_1snd0vb8jm8ldrua.register(editor, pluginUrl);
+    $_ca011xb8jm9dk75p.register(editor, pluginUrl);
   });
   function Plugin () {
   }
