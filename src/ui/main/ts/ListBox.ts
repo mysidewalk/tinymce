@@ -1,16 +1,13 @@
 /**
- * ListBox.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import MenuButton from './MenuButton';
 import Menu from './Menu';
-import Tools from 'tinymce/core/api/util/Tools';
+import { Arr } from '@ephox/katamari';
 
 /**
  * Creates a new list box control.
@@ -101,9 +98,14 @@ export default MenuButton.extend({
       return this;
     }
 
+    function valueExists(values) {
+      return Arr.exists(values, (a) => {
+        return a.menu ? valueExists(a.menu) : a.value === value;
+      });
+    }
+
     if (this.settings.values) {
-      const matchingValues = Tools.grep(this.settings.values, (a) => a.value === value);
-      if (matchingValues.length > 0) {
+      if (valueExists(this.settings.values)) {
         this.state.set('value', value);
       } else if (value === null) {
         this.state.set('value', null);

@@ -1,20 +1,17 @@
 /**
- * CaretWalker.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import NodeType from '../dom/NodeType';
 import * as CaretCandidate from './CaretCandidate';
 import CaretPosition from './CaretPosition';
-import { isBackwards, isForwards, isInSameBlock, findNode } from './CaretUtils';
-import Arr from '../util/Arr';
-import Fun from '../util/Fun';
-import { Node } from '@ephox/dom-globals';
+import { isBackwards, isForwards, findNode } from './CaretUtils';
+import { Node, Element } from '@ephox/dom-globals';
+import { Fun, Arr } from '@ephox/katamari';
+import ArrUtils from '../util/ArrUtils';
 
 export interface CaretWalker {
   next(caretPosition: CaretPosition): CaretPosition;
@@ -100,20 +97,18 @@ const getCaretCandidatePosition = (direction: HDirection, node: Node): CaretPosi
   return CaretPosition.before(node);
 };
 
-// Jumps over BR elements <p>|<br></p><p>a</p> -> <p><br></p><p>|a</p>
-const isBrBeforeBlock = (node: Node, root: Node): boolean => {
-  let next;
+const moveForwardFromBr = (root: Element, nextNode: Node) => {
+  const nextSibling = nextNode.nextSibling;
 
-  if (!NodeType.isBr(node)) {
-    return false;
+  if (nextSibling && isCaretCandidate(nextSibling)) {
+    if (isText(nextSibling)) {
+      return CaretPosition(nextSibling, 0);
+    } else {
+      return CaretPosition.before(nextSibling);
+    }
+  } else {
+    return findCaretPosition(HDirection.Forwards, CaretPosition.after(nextNode), root);
   }
-
-  next = findCaretPosition(1, CaretPosition.after(node), root);
-  if (!next) {
-    return false;
-  }
-
-  return !isInSameBlock(CaretPosition.before(node), CaretPosition.before(next), root);
 };
 
 const findCaretPosition = (direction: HDirection, startPos: CaretPosition, root: Node): CaretPosition => {
@@ -172,12 +167,8 @@ const findCaretPosition = (direction: HDirection, startPos: CaretPosition, root:
     if (isForwards(direction) && offset < container.childNodes.length) {
       nextNode = nodeAtIndex(container, offset);
       if (isCaretCandidate(nextNode)) {
-        if (isBr(nextNode) && root.lastChild === nextNode) {
-          return null;
-        }
-
-        if (isBrBeforeBlock(nextNode, root)) {
-          return findCaretPosition(direction, CaretPosition.after(nextNode), root);
+        if (isBr(nextNode)) {
+          return moveForwardFromBr(root, nextNode);
         }
 
         if (!isAtomic(nextNode)) {
@@ -211,7 +202,7 @@ const findCaretPosition = (direction: HDirection, startPos: CaretPosition, root:
 
   nextNode = findNode(node, direction, isEditableCaretCandidate, root);
 
-  rootContentEditableFalseElm = Arr.last(Arr.filter(getParents(container, root), isContentEditableFalse));
+  rootContentEditableFalseElm = ArrUtils.last(Arr.filter(getParents(container, root), isContentEditableFalse));
   if (rootContentEditableFalseElm && (!nextNode || !rootContentEditableFalseElm.contains(nextNode))) {
     if (isForwards(direction)) {
       caretPosition = CaretPosition.after(rootContentEditableFalseElm);

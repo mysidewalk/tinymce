@@ -1,19 +1,18 @@
 /**
- * Storage.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import LocalStorage from 'tinymce/core/api/util/LocalStorage';
 import Tools from 'tinymce/core/api/util/Tools';
-import Events from '../api/Events';
-import Settings from '../api/Settings';
+import * as Events from '../api/Events';
+import * as Settings from '../api/Settings';
+import { Editor } from 'tinymce/core/api/Editor';
+import { Cell } from '@ephox/katamari';
 
-const isEmpty = function (editor, html?) {
+const isEmpty = (editor: Editor, html?: string) => {
   const forcedRootBlockName = editor.settings.forced_root_block;
 
   html = Tools.trim(typeof html === 'undefined' ? editor.getBody().innerHTML : html);
@@ -23,7 +22,7 @@ const isEmpty = function (editor, html?) {
   ).test(html);
 };
 
-const hasDraft = function (editor) {
+const hasDraft = (editor: Editor) => {
   const time = parseInt(LocalStorage.getItem(Settings.getAutoSavePrefix(editor) + 'time'), 10) || 0;
 
   if (new Date().getTime() - time > Settings.getAutoSaveRetention(editor)) {
@@ -34,7 +33,7 @@ const hasDraft = function (editor) {
   return true;
 };
 
-const removeDraft = function (editor, fire?) {
+const removeDraft = (editor: Editor, fire?: boolean) => {
   const prefix = Settings.getAutoSavePrefix(editor);
 
   LocalStorage.removeItem(prefix + 'draft');
@@ -45,17 +44,17 @@ const removeDraft = function (editor, fire?) {
   }
 };
 
-const storeDraft = function (editor) {
+const storeDraft = (editor: Editor) => {
   const prefix = Settings.getAutoSavePrefix(editor);
 
   if (!isEmpty(editor) && editor.isDirty()) {
-    LocalStorage.setItem(prefix + 'draft', editor.getContent({ format: 'raw', no_events: true }));
+    LocalStorage.setItem(prefix + 'draft', editor.getContent({ format: 'raw', no_events: true }) as string);
     LocalStorage.setItem(prefix + 'time', new Date().getTime().toString());
     Events.fireStoreDraft(editor);
   }
 };
 
-const restoreDraft = function (editor) {
+const restoreDraft = (editor: Editor) => {
   const prefix = Settings.getAutoSavePrefix(editor);
 
   if (hasDraft(editor)) {
@@ -64,11 +63,11 @@ const restoreDraft = function (editor) {
   }
 };
 
-const startStoreDraft = function (editor, started) {
+const startStoreDraft = (editor: Editor, started: Cell<boolean>) => {
   const interval = Settings.getAutoSaveInterval(editor);
 
   if (!started.get()) {
-    setInterval(function () {
+    setInterval(() => {
       if (!editor.removed) {
         storeDraft(editor);
       }
@@ -78,8 +77,8 @@ const startStoreDraft = function (editor, started) {
   }
 };
 
-const restoreLastDraft = function (editor) {
-  editor.undoManager.transact(function () {
+const restoreLastDraft = (editor: Editor) => {
+  editor.undoManager.transact(() => {
     restoreDraft(editor);
     removeDraft(editor);
   });
@@ -87,7 +86,7 @@ const restoreLastDraft = function (editor) {
   editor.focus();
 };
 
-export default {
+export {
   isEmpty,
   hasDraft,
   removeDraft,

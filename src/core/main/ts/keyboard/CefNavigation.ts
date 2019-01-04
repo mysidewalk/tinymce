@@ -1,11 +1,8 @@
 /**
- * CefNavigation.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import Env from '../api/Env';
@@ -18,9 +15,9 @@ import * as LineWalker from '../caret/LineWalker';
 import NodeType from '../dom/NodeType';
 import * as CefUtils from './CefUtils';
 import * as RangeNodes from '../selection/RangeNodes';
-import Arr from '../util/Arr';
-import Fun from '../util/Fun';
+import ArrUtils from '../util/ArrUtils';
 import { Range, Element } from '@ephox/dom-globals';
+import { Fun, Arr } from '@ephox/katamari';
 
 const isContentEditableFalse = NodeType.isContentEditableFalse;
 const getSelectedNode = RangeNodes.getSelectedNode;
@@ -104,7 +101,7 @@ const moveToCeFalseVertically = function (direction: LineWalker.VDirection, edit
   caretPosition = CaretUtils.getNormalizedRangeEndPoint(direction, editor.getBody(), range);
   linePositions = walkerFn(editor.getBody(), LineWalker.isAboveLine(1), caretPosition);
   nextLinePositions = Arr.filter(linePositions, LineWalker.isLine(1));
-  caretClientRect = Arr.last(caretPosition.getClientRects());
+  caretClientRect = ArrUtils.last(caretPosition.getClientRects());
 
   if (isBeforeContentEditableFalse(caretPosition) || CaretUtils.isBeforeTable(caretPosition)) {
     contentEditableFalseNode = caretPosition.getNode();
@@ -138,7 +135,7 @@ const moveToCeFalseVertically = function (direction: LineWalker.VDirection, edit
       return CefUtils.renderRangeCaret(editor, closestNextLineRect.position.toRange(), true);
     }
 
-    closestNextLineRect = Arr.last(Arr.filter(caretPositions, LineWalker.isLine(0)));
+    closestNextLineRect = ArrUtils.last(Arr.filter(caretPositions, LineWalker.isLine(0)));
     if (closestNextLineRect) {
       return CefUtils.renderRangeCaret(editor, closestNextLineRect.position.toRange(), true);
     }

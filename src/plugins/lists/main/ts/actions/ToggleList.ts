@@ -1,22 +1,17 @@
 /**
- * ToggleList.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import BookmarkManager from 'tinymce/core/api/dom/BookmarkManager';
 import Tools from 'tinymce/core/api/util/Tools';
-import Outdent from './Outdent';
 import Bookmark from '../core/Bookmark';
 import NodeType from '../core/NodeType';
-import NormalizeLists from '../core/NormalizeLists';
 import Selection from '../core/Selection';
-import SplitList from '../core/SplitList';
 import { HTMLElement } from '@ephox/dom-globals';
+import { flattenListSelection } from './Indendation';
 
 const updateListStyle = function (dom, el, detail) {
   const type = detail['list-style-type'] ? detail['list-style-type'] : null;
@@ -182,45 +177,6 @@ const applyList = function (editor, listName: string, detail = {}) {
   editor.selection.setRng(Bookmark.resolveBookmark(bookmark));
 };
 
-const removeList = function (editor) {
-  const bookmark = Bookmark.createBookmark(editor.selection.getRng(true));
-  const root = Selection.getClosestListRootElm(editor, editor.selection.getStart(true));
-  let listItems = Selection.getSelectedListItems(editor);
-  const emptyListItems = Tools.grep(listItems, function (li) {
-    return editor.dom.isEmpty(li);
-  });
-
-  listItems = Tools.grep(listItems, function (li) {
-    return !editor.dom.isEmpty(li);
-  });
-
-  Tools.each(emptyListItems, function (li) {
-    if (NodeType.isEmpty(editor.dom, li)) {
-      Outdent.outdent(editor, li);
-      return;
-    }
-  });
-
-  Tools.each(listItems, function (li) {
-    let node, rootList;
-
-    if (li.parentNode === editor.getBody()) {
-      return;
-    }
-
-    for (node = li; node && node !== root; node = node.parentNode) {
-      if (NodeType.isListNode(node)) {
-        rootList = node;
-      }
-    }
-
-    SplitList.splitList(editor, rootList, li);
-    NormalizeLists.normalizeLists(editor.dom, rootList.parentNode);
-  });
-
-  editor.selection.setRng(Bookmark.resolveBookmark(bookmark));
-};
-
 const isValidLists = function (list1, list2) {
   return list1 && list2 && NodeType.isListNode(list1) && list1.nodeName === list2.nodeName;
 };
@@ -272,7 +228,7 @@ const updateList = function (dom, list, listName, detail) {
 
 const toggleMultipleLists = function (editor, parentList, lists, listName, detail) {
   if (parentList.nodeName === listName && !hasListStyleDetail(detail)) {
-    removeList(editor);
+    flattenListSelection(editor);
   } else {
     const bookmark = Bookmark.createBookmark(editor.selection.getRng(true));
 
@@ -295,7 +251,7 @@ const toggleSingleList = function (editor, parentList, listName, detail) {
 
   if (parentList) {
     if (parentList.nodeName === listName && !hasListStyleDetail(detail)) {
-      removeList(editor);
+      flattenListSelection(editor);
     } else {
       const bookmark = Bookmark.createBookmark(editor.selection.getRng(true));
       updateListWithDetails(editor.dom, parentList, detail);
@@ -322,6 +278,5 @@ const toggleList = function (editor, listName, detail) {
 
 export default {
   toggleList,
-  removeList,
   mergeWithAdjacentLists
 };

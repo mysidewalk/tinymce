@@ -1,12 +1,10 @@
 /**
- * Utils.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
+
 import { FileReader, XMLHttpRequest } from '@ephox/sand';
 
 import Promise from 'tinymce/core/api/util/Promise';
@@ -31,7 +29,7 @@ const requestUrlAsBlob = function (url: string, headers: Record<string, string>,
   return new Promise<{status: number, blob: Blob}>(function (resolve) {
     let xhr;
 
-    xhr = new XMLHttpRequest();
+    xhr = XMLHttpRequest();
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
@@ -57,7 +55,7 @@ const requestUrlAsBlob = function (url: string, headers: Record<string, string>,
 
 const readBlob = function (blob) {
   return new Promise(function (resolve) {
-    const fr = new FileReader();
+    const fr = FileReader();
 
     fr.onload = function (e) {
       const data = e.target;

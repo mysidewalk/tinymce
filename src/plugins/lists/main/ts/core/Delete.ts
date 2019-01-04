@@ -1,11 +1,8 @@
 /**
- * Delete.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import RangeUtils from 'tinymce/core/api/dom/RangeUtils';
@@ -17,6 +14,7 @@ import NodeType from './NodeType';
 import NormalizeLists from './NormalizeLists';
 import Range from './Range';
 import Selection from './Selection';
+import { flattenListSelection } from '../actions/Indendation';
 
 const findNextCaretContainer = function (editor, rng, isForward, root) {
   let node = rng.startContainer;
@@ -171,7 +169,7 @@ const backspaceDeleteFromListToListCaret = function (editor, isForward) {
       return true;
     } else if (!otherLi) {
       if (!isForward) {
-        ToggleList.removeList(editor);
+        flattenListSelection(editor);
         return true;
       }
     }

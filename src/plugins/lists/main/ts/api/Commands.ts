@@ -1,16 +1,12 @@
 /**
- * Commands.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
-import Indent from '../actions/Indent';
-import Outdent from '../actions/Outdent';
 import ToggleList from '../actions/ToggleList';
+import { indentListSelection, outdentListSelection, flattenListSelection } from '../actions/Indendation';
 
 const queryListCommandState = function (editor, listName) {
   return function () {
@@ -22,22 +18,11 @@ const queryListCommandState = function (editor, listName) {
 const register = function (editor) {
   editor.on('BeforeExecCommand', function (e) {
     const cmd = e.command.toLowerCase();
-    let isHandled;
 
     if (cmd === 'indent') {
-      if (Indent.indentSelection(editor)) {
-        isHandled = true;
-      }
+      indentListSelection(editor);
     } else if (cmd === 'outdent') {
-      if (Outdent.outdentSelection(editor)) {
-        isHandled = true;
-      }
-    }
-
-    if (isHandled) {
-      editor.fire('ExecCommand', { command: e.command });
-      e.preventDefault();
-      return true;
+      outdentListSelection(editor);
     }
   });
 
@@ -51,6 +36,10 @@ const register = function (editor) {
 
   editor.addCommand('InsertDefinitionList', function (ui, detail) {
     ToggleList.toggleList(editor, 'DL', detail);
+  });
+
+  editor.addCommand('RemoveList', () => {
+    flattenListSelection(editor);
   });
 
   editor.addQueryStateHandler('InsertUnorderedList', queryListCommandState(editor, 'UL'));

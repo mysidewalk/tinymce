@@ -1,22 +1,19 @@
 /**
- * BeforeUnload.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import EditorManager from 'tinymce/core/api/EditorManager';
 import Tools from 'tinymce/core/api/util/Tools';
-import Settings from '../api/Settings';
+import * as Settings from '../api/Settings';
 import { window } from '@ephox/dom-globals';
 
-EditorManager._beforeUnloadHandler = function () {
+EditorManager._beforeUnloadHandler = () => {
   let msg;
 
-  Tools.each(EditorManager.get(), function (editor) {
+  Tools.each(EditorManager.get(), (editor) => {
     // Store a draft for each editor instance
     if (editor.plugins.autosave) {
       editor.plugins.autosave.storeDraft();
@@ -31,10 +28,10 @@ EditorManager._beforeUnloadHandler = function () {
   return msg;
 };
 
-const setup = function (editor) {
+const setup = (editor) => {
   window.onbeforeunload = EditorManager._beforeUnloadHandler;
 };
 
-export default {
+export {
   setup
 };

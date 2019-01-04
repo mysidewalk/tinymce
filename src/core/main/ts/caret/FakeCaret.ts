@@ -1,11 +1,8 @@
 /**
- * FakeCaret.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import * as CaretContainer from './CaretContainer';
@@ -14,9 +11,9 @@ import DomQuery from '../api/dom/DomQuery';
 import NodeType from '../dom/NodeType';
 import * as GeomClientRect from '../geom/ClientRect';
 import Delay from '../api/util/Delay';
-import { isFakeCaretTableBrowser } from '../keyboard/TableNavigation';
 import { Cell, Option } from '@ephox/katamari';
 import { Element, Range, HTMLElement, ClientRect, Node } from '@ephox/dom-globals';
+import { PlatformDetection } from '@ephox/sand';
 
 export interface FakeCaret {
   show: (before: boolean, element: Element) => Range;
@@ -31,6 +28,8 @@ interface CaretState {
   element: HTMLElement;
   before: boolean;
 }
+
+const browser = PlatformDetection.detect().browser;
 
 const isContentEditableFalse = NodeType.isContentEditableFalse;
 const isTableCell = (node: Node) => NodeType.isElement(node) && /^(TD|TH)$/i.test(node.tagName);
@@ -215,5 +214,7 @@ export const FakeCaret = (root: HTMLElement, isBlock: (node: Node) => boolean, h
     destroy
   };
 };
+
+export const isFakeCaretTableBrowser = (): boolean => browser.isIE() || browser.isEdge() || browser.isFirefox();
 
 export const isFakeCaretTarget = (node: Node): boolean => isContentEditableFalse(node) || (NodeType.isTable(node) && isFakeCaretTableBrowser());

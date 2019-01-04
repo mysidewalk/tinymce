@@ -1,11 +1,8 @@
 /**
- * MenuButton.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import Factory from 'tinymce/core/api/ui/Factory';
@@ -110,8 +107,11 @@ const MenuButton = Button.extend({
       self.menu.on('select', function () {
         self.focus();
       });
-
       self.menu.on('show hide', function (e) {
+        if (e.type === 'hide' && e.control.parent() === self) {
+          self.classes.remove('opened-under');
+        }
+
         if (e.control === self.menu) {
           self.activeMenu(e.type === 'show');
           self.classes.toggle('opened', e.type === 'show');
@@ -125,6 +125,12 @@ const MenuButton = Button.extend({
     self.menu.layoutRect({ w: self.layoutRect().w });
     self.menu.repaint();
     self.menu.moveRel(self.getEl(), self.isRtl() ? ['br-tr', 'tr-br'] : ['bl-tl', 'tl-bl']);
+
+    const menuLayoutRect = self.menu.layoutRect();
+    const selfBottom = self.$el.offset().top + self.layoutRect().h;
+    if (selfBottom > menuLayoutRect.y && selfBottom < (menuLayoutRect.y + menuLayoutRect.h)) {
+      self.classes.add('opened-under');
+    }
     self.fire('showmenu');
   },
 

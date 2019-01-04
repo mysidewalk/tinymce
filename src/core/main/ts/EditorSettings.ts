@@ -1,11 +1,8 @@
 /**
- * DefaultSettings.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import { Arr, Fun, Obj, Option, Strings, Struct, Type } from '@ephox/katamari';
@@ -83,7 +80,7 @@ const getDefaultSettings = function (id, documentBaseUrl, editor) {
     forced_root_block: 'p',
     hidden_input: true,
     render_ui: true,
-    indentation: '30px',
+    indentation: '40px',
     inline_styles: true,
     convert_fonts_to_spans: true,
     indent: 'simple',

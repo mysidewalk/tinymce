@@ -1,18 +1,15 @@
 /**
- * Keyboard.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import VK from 'tinymce/core/api/util/VK';
-import Indent from '../actions/Indent';
-import Outdent from '../actions/Outdent';
 import Settings from '../api/Settings';
 import Delete from './Delete';
+import { outdentListSelection, indentListSelection } from '../actions/Indendation';
+import Selection from './Selection';
 
 const setupTabKey = function (editor) {
   editor.on('keydown', function (e) {
@@ -21,14 +18,15 @@ const setupTabKey = function (editor) {
       return;
     }
 
-    if (editor.dom.getParent(editor.selection.getStart(), 'LI,DT,DD')) {
+    if (Selection.isList(editor)) {
       e.preventDefault();
-
-      if (e.shiftKey) {
-        Outdent.outdentSelection(editor);
-      } else {
-        Indent.indentSelection(editor);
-      }
+      editor.undoManager.transact(() => {
+        if (e.shiftKey) {
+          outdentListSelection(editor);
+        } else {
+          indentListSelection(editor);
+        }
+      });
     }
   });
 };
