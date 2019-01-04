@@ -1,11 +1,8 @@
 /**
- * Movable.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import DomUtils from './DomUtils';
@@ -123,8 +120,8 @@ const getWindowViewPort = () => {
   return {
     x,
     y,
-    w: x + w,
-    h: y + h
+    w,
+    h
   };
 };
 
@@ -153,7 +150,7 @@ export default {
           return rels[i];
         }
       } else {
-        if (pos.x > viewPortRect.x && pos.x + pos.w < viewPortRect.w && pos.y > viewPortRect.y && pos.y + pos.h < viewPortRect.h) {
+        if (pos.x > viewPortRect.x && pos.x + pos.w < viewPortRect.w + viewPortRect.x && pos.y > viewPortRect.y && pos.y + pos.h < viewPortRect.h + viewPortRect.y) {
           return rels[i];
         }
       }
@@ -224,8 +221,8 @@ export default {
       const viewPortRect = getViewPortRect(this);
       const layoutRect = self.layoutRect();
 
-      x = constrain(x, viewPortRect.w, layoutRect.w);
-      y = constrain(y, viewPortRect.h, layoutRect.h);
+      x = constrain(x, viewPortRect.w + viewPortRect.x, layoutRect.w);
+      y = constrain(y, viewPortRect.h + viewPortRect.y, layoutRect.h);
     }
 
     const uiContainer = UiContainer.getUiContainer(self);

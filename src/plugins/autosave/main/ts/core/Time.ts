@@ -1,24 +1,22 @@
 /**
- * Time.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
-const parse = function (time, defaultTime) {
+const parse = (timeString: string, defaultTime: string) => {
   const multiples = {
     s: 1000,
     m: 60000
   };
+  const toParse = (timeString || defaultTime);
 
-  time = /^(\d+)([ms]?)$/.exec('' + (time || defaultTime));
+  const parsedTime = /^(\d+)([ms]?)$/.exec('' + toParse);
 
-  return (time[2] ? multiples[time[2]] : 1) * parseInt(time, 10);
+  return (parsedTime[2] ? multiples[parsedTime[2]] : 1) * parseInt(toParse, 10);
 };
 
-export default {
+export {
   parse
 };

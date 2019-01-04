@@ -1,11 +1,8 @@
 /**
- * InitContentBody.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import { Insert, Element, Attr } from '@ephox/sugar';
@@ -30,6 +27,7 @@ import { Editor } from 'tinymce/core/api/Editor';
 import * as MultiClickSelection from 'tinymce/core/selection/MultiClickSelection';
 import * as DetailsElement from '../selection/DetailsElement';
 import { document, window } from '@ephox/dom-globals';
+import Settings from '../api/Settings';
 
 declare const escape: any;
 
@@ -220,6 +218,7 @@ const initContentBody = function (editor: Editor, skipWrite?: boolean) {
     root_element: editor.inline ? editor.getBody() : null,
     collect: settings.content_editable,
     schema: editor.schema,
+    contentCssCors: Settings.shouldUseContentCssCors(editor),
     onSetAttrib (e) {
       editor.fire('SetAttrib', e);
     }

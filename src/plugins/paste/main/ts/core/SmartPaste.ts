@@ -1,19 +1,22 @@
 /**
- * SmartPaste.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import Tools from 'tinymce/core/api/util/Tools';
 import Settings from '../api/Settings';
 import { Editor } from 'tinymce/core/api/Editor';
 
+const removeMeta = (editor: Editor, html: string) => {
+  const body = editor.dom.create('body', {}, html);
+  Tools.each(body.querySelectorAll('meta'), (elm) => elm.parentNode.removeChild(elm));
+  return body.innerHTML;
+};
+
 const pasteHtml = function (editor: Editor, html: string) {
-  editor.insertContent(html, {
+  editor.insertContent(removeMeta(editor, html), {
     merge: Settings.shouldMergeFormats(editor),
     paste: true
   });

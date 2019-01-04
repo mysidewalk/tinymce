@@ -1,4 +1,4 @@
-import { Assertions, Chain, Guard, Mouse, NamedChain, UiFinder } from '@ephox/agar';
+import { Assertions, Chain, Guard, Mouse, NamedChain, UiFinder, TestLogs } from '@ephox/agar';
 import { UnitTest } from '@ephox/bedrock';
 import { Editor, TinyDom, ApiChains } from '@ephox/mcagar';
 
@@ -155,5 +155,5 @@ UnitTest.asynctest('browser.tinymce.plugins.table.ResizeTableTest', (success, fa
     NamedChain.read('editor', Editor.cRemove)
   ], function () {
     success();
-  }, failure);
+  }, failure, TestLogs.init());
 });

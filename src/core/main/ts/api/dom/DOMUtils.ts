@@ -1,11 +1,8 @@
 /**
- * DOMUtils.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import Env from '../Env';
@@ -138,6 +135,7 @@ export interface DOMUtilsSettings {
   root_element: HTMLElement;
   collect: Function;
   onSetAttrib: Function;
+  contentCssCors: boolean;
 }
 
 export type Target = Node | Window | Array<Node | Window>;
@@ -245,7 +243,7 @@ export function DOMUtils(doc: Document, settings: Partial<DOMUtilsSettings> = {}
   let counter = 0;
   const stdMode = true;
   const boxModel = true;
-  const styleSheetLoader = StyleSheetLoader(doc);
+  const styleSheetLoader = StyleSheetLoader(doc, { contentCssCors: settings.contentCssCors });
   const boundEvents = [];
   const schema = settings.schema ? settings.schema : Schema({});
   const styles = Styles({

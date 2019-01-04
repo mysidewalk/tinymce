@@ -1,16 +1,12 @@
 /**
- * Buttons.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import Tools from 'tinymce/core/api/util/Tools';
 import NodeType from '../core/NodeType';
-import Selection from '../core/Selection';
 
 const findIndex = function (list, predicate) {
   for (let index = 0; index < list.length; index++) {
@@ -31,18 +27,6 @@ const listState = function (editor, listName) {
       const parents = tableCellIndex !== -1 ? e.parents.slice(0, tableCellIndex) : e.parents;
       const lists = Tools.grep(parents, NodeType.isListNode);
       ctrl.active(lists.length > 0 && lists[0].nodeName === listName);
-    });
-  };
-};
-
-const indentPostRender = function (editor) {
-  return function (e) {
-    const ctrl = e.control;
-
-    editor.on('nodechange', function () {
-      const listItemBlocks = Selection.getSelectedListItems(editor);
-      const disable = listItemBlocks.length > 0 && NodeType.isFirstChild(listItemBlocks[0]);
-      ctrl.disabled(disable);
     });
   };
 };
@@ -72,8 +56,7 @@ const register = function (editor) {
   editor.addButton('indent', {
     icon: 'indent',
     title: 'Increase indent',
-    cmd: 'Indent',
-    onPostRender: indentPostRender(editor)
+    cmd: 'Indent'
   });
 };
 

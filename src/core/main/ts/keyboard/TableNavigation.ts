@@ -1,30 +1,23 @@
 /**
- * TableNavigation.ts
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2018 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import CaretFinder from '../caret/CaretFinder';
 import CaretPosition from '../caret/CaretPosition';
 import * as CefUtils from '../keyboard/CefUtils';
-import { Arr, Option } from '@ephox/katamari';
-import { PlatformDetection } from '@ephox/sand';
+import { Arr, Option, Fun } from '@ephox/katamari';
 import { getPositionsAbove, findClosestHorizontalPositionFromPoint, getPositionsBelow, getPositionsUntilPreviousLine, getPositionsUntilNextLine, BreakType, LineInfo } from 'tinymce/core/caret/LineReader';
 import { findClosestPositionInAboveCell, findClosestPositionInBelowCell } from 'tinymce/core/caret/TableCells';
-import Fun from 'tinymce/core/util/Fun';
 import ScrollIntoView from 'tinymce/core/dom/ScrollIntoView';
 import { Editor } from 'tinymce/core/api/Editor';
 import NodeType from 'tinymce/core/dom/NodeType';
 import Settings from 'tinymce/core/api/Settings';
 import { Element as SugarElement, Attr, Insert } from '@ephox/sugar';
 import { HTMLElement, Range, Element } from '@ephox/dom-globals';
-
-const browser = PlatformDetection.detect().browser;
-const isFakeCaretTableBrowser = (): boolean => browser.isIE() || browser.isEdge() || browser.isFirefox();
+import { isFakeCaretTableBrowser } from '../caret/FakeCaret';
 
 const moveToRange = (editor: Editor, rng: Range) => {
   editor.selection.setRng(rng);

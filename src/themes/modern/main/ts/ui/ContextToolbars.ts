@@ -1,11 +1,8 @@
 /**
- * ContextToolbars.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2016 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import DOMUtils from 'tinymce/core/api/dom/DOMUtils';
@@ -326,7 +323,7 @@ const addContextualToolbars = function (editor) {
     editor.contextToolbars = {};
   });
 
-  editor.shortcuts.add('ctrl+shift+e > ctrl+shift+p', '', function () {
+  editor.shortcuts.add('ctrl+F9', '', function () {
     const match = findFrontMostMatch(editor.selection.getNode());
     if (match && match.toolbar.panel) {
       match.toolbar.panel.items()[0].focus();

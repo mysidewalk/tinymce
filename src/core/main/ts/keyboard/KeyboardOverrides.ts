@@ -1,11 +1,8 @@
 /**
- * KeyboardOverrides.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import ArrowKeys from './ArrowKeys';
@@ -15,6 +12,7 @@ import EnterKey from './EnterKey';
 import SpaceKey from './SpaceKey';
 import CaretContainerInput from 'tinymce/core/caret/CaretContainerInput';
 import { Editor } from 'tinymce/core/api/Editor';
+import * as InputKeys from './InputKeys';
 
 const setup = function (editor: Editor) {
   const caret = BoundarySelection.setupSelectedState(editor);
@@ -24,6 +22,7 @@ const setup = function (editor: Editor) {
   DeleteBackspaceKeys.setup(editor, caret);
   EnterKey.setup(editor);
   SpaceKey.setup(editor);
+  InputKeys.setup(editor);
 };
 
 export default {

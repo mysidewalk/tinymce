@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
+ */
+
 import { AlloyTriggers, Attachment, Swapping } from '@ephox/alloy';
 import { Cell, Fun } from '@ephox/katamari';
 import { PlatformDetection } from '@ephox/sand';
@@ -246,7 +253,10 @@ ThemeManager.add('mobile', function (editor) {
   return {
     getNotificationManagerImpl () {
       return {
-        open: Fun.identity,
+        open: Fun.constant({
+          progressBar: { value: Fun.noop},
+          close: Fun.noop
+        }),
         close: Fun.noop,
         reposition: Fun.noop,
         getArgs: Fun.identity

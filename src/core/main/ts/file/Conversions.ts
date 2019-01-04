@@ -1,11 +1,8 @@
 /**
- * Conversions.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import { FileReader, Uint8Array, Window, XMLHttpRequest } from '@ephox/sand';
@@ -27,7 +24,7 @@ const blobUriToBlob = function (url: string): Promise<Blob> {
     };
 
     try {
-      const xhr = new XMLHttpRequest();
+      const xhr = XMLHttpRequest();
 
       xhr.open('GET', url, true);
       xhr.responseType = 'blob';
@@ -82,7 +79,7 @@ const dataUriToBlob = function (uri: string): Promise<Blob> {
       return;
     }
 
-    arr = new Uint8Array(str.length);
+    arr = Uint8Array(str.length);
 
     for (i = 0; i < arr.length; i++) {
       arr[i] = str.charCodeAt(i);
@@ -106,7 +103,7 @@ const uriToBlob = function (url: string): Promise<Blob> {
 
 const blobToDataUri = function (blob: Blob): Promise<string> {
   return new Promise(function (resolve) {
-    const reader = new FileReader();
+    const reader = FileReader();
 
     reader.onloadend = function () {
       resolve(reader.result);

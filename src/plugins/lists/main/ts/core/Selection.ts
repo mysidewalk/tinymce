@@ -1,14 +1,15 @@
 /**
- * Selection.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
+import { Node } from '@ephox/dom-globals';
+import { Arr, Option } from '@ephox/katamari';
+import { HTMLElement } from '@ephox/sand';
 import DomQuery from 'tinymce/core/api/dom/DomQuery';
+import { Editor } from 'tinymce/core/api/Editor';
 import Tools from 'tinymce/core/api/util/Tools';
 import NodeType from './NodeType';
 
@@ -58,6 +59,10 @@ const getSelectedListItems = function (editor) {
   });
 };
 
+const getSelectedDlItems = (editor: Editor): Node[] => {
+  return Arr.filter(getSelectedListItems(editor), NodeType.isDlItemNode);
+};
+
 const getClosestListRootElm = function (editor, elm) {
   const parentTableCell = editor.dom.getParents(elm, 'TD,TH');
   const root = parentTableCell.length > 0 ? parentTableCell[0] : editor.getBody();
@@ -65,9 +70,39 @@ const getClosestListRootElm = function (editor, elm) {
   return root;
 };
 
+const findLastParentListNode = (editor: Editor, elm: Node): Option<Node> => {
+  const parentLists = editor.dom.getParents(elm, 'ol,ul', getClosestListRootElm(editor, elm));
+  return Arr.last(parentLists);
+};
+
+const getSelectedLists = (editor: Editor): Node[] => {
+  const firstList = findLastParentListNode(editor, editor.selection.getStart());
+  const subsequentLists = Arr.filter(editor.selection.getSelectedBlocks(), NodeType.isOlUlNode);
+
+  return firstList.toArray().concat(subsequentLists);
+};
+
+const getSelectedListRoots = (editor: Editor): Node[] => {
+  const selectedLists = getSelectedLists(editor);
+  return getUniqueListRoots(editor, selectedLists);
+};
+
+const getUniqueListRoots = (editor: Editor, lists: Node[]): Node[] => {
+  const listRoots = Arr.map(lists, (list) => findLastParentListNode(editor, list).getOr(list));
+  return DomQuery.unique(listRoots);
+};
+
+const isList = (editor: Editor): boolean => {
+  const list = getParentList(editor);
+  return HTMLElement.isPrototypeOf(list);
+};
+
 export default {
+  isList,
   getParentList,
   getSelectedSubLists,
   getSelectedListItems,
-  getClosestListRootElm
+  getClosestListRootElm,
+  getSelectedDlItems,
+  getSelectedListRoots
 };

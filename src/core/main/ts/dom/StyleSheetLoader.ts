@@ -1,11 +1,8 @@
 /**
- * StyleSheetLoader.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import { Arr, Fun, Future, Futures, Result } from '@ephox/katamari';
@@ -25,12 +22,16 @@ export interface StyleSheetLoader {
   loadAll: (urls: string[], success: Function, failure: Function) => void;
 }
 
-export function StyleSheetLoader(document, settings?): StyleSheetLoader {
+export interface StyleSheetLoaderSettings {
+  maxLoadTime: number;
+  contentCssCors: boolean;
+}
+
+export function StyleSheetLoader(document, settings: Partial<StyleSheetLoaderSettings> = {}): StyleSheetLoader {
   let idCount = 0;
   const loadedStates = {};
   let maxLoadTime;
 
-  settings = settings || {};
   maxLoadTime = settings.maxLoadTime || 5000;
 
   const appendToHead = function (node) {
@@ -171,6 +172,10 @@ export function StyleSheetLoader(document, settings?): StyleSheetLoader {
     link.async = false;
     link.defer = false;
     startTime = new Date().getTime();
+
+    if (settings.contentCssCors) {
+      link.crossOrigin = 'anonymous';
+    }
 
     // Feature detect onload on link element and sniff older webkits since it has an broken onload event
     if ('onload' in link && !isOldWebKit()) {

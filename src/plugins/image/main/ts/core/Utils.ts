@@ -1,11 +1,8 @@
 /**
- * Utils.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import { FileReader } from '@ephox/sand';
@@ -170,12 +167,12 @@ const waitLoadImage = function (editor, data, imgElm) {
 
 const blobToDataUri = function (blob) {
   return new Promise<string>(function (resolve, reject) {
-    const reader = new FileReader();
+    const reader = FileReader();
     reader.onload = function () {
       resolve(reader.result);
     };
     reader.onerror = function () {
-      reject(FileReader.error.message);
+      reject(reader.error.message);
     };
     reader.readAsDataURL(blob);
   });

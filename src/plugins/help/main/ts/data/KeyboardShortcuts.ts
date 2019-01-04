@@ -1,11 +1,8 @@
 /**
- * KeyboardShortcuts.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
- *
- * License: http://www.tinymce.com/license
- * Contributing: http://www.tinymce.com/contributing
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
  */
 
 import Env from 'tinymce/core/api/Env';
@@ -33,7 +30,7 @@ const shortcuts = [
   { shortcut: 'Alt + F10', action: 'Focus to toolbar' },
   { shortcut: 'Alt + F11', action: 'Focus to element path' },
   {
-    shortcut: 'Ctrl + Shift + P > Ctrl + Shift + P',
+    shortcut: 'Ctrl + F9',
     action: 'Focus to contextual toolbar'
   },
   { shortcut: meta + ' + K', action: 'Insert link (if link plugin activated)' },
