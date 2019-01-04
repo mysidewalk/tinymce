@@ -31,6 +31,7 @@
     "@ephox/sand": "latest",
     "@ephox/snooker": "latest",
     "@ephox/sugar": "latest",
+    "rimraf": "^2.6.2",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
