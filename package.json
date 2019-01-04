@@ -18,7 +18,7 @@
   "scripts": {
     "test": "grunt bedrock-auto:chrome-headless",
     "lint": "tslint src/**/*.ts",
-    "postinstall": "rimraf node_modules/@ephox/alloy/node_modules"
+    // "postinstall": "rimraf node_modules/@ephox/alloy/node_modules"
   },
   "dependencies": {
     "@ephox/alloy": "2.2.3",
@@ -31,7 +31,6 @@
     "@ephox/sand": "latest",
     "@ephox/snooker": "latest",
     "@ephox/sugar": "latest",
-    "rimraf": "^2.6.2",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
