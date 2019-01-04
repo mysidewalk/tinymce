@@ -17,7 +17,7 @@
   },
   "scripts": {
     "test": "grunt bedrock-auto:chrome-headless",
-    "lint": "tslint src/**/*.ts",
+    "lint": "tslint src/**/*.ts"
   },
   "dependencies": {
     "@ephox/alloy": "2.2.3",
