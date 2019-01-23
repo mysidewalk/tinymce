@@ -1,4 +1,4 @@
-// 4.9.2-mysw-9 (2019-01-04)
+// 4.9.2-mysw-10 (2019-01-23)
 (function () {
 (function () {
     'use strict';
@@ -25530,8 +25530,8 @@
       defaultSettings: {},
       $: DomQuery,
       majorVersion: '4',
-      minorVersion: '9.2-mysw-9',
-      releaseDate: '2019-01-04',
+      minorVersion: '9.2-mysw-10',
+      releaseDate: '2019-01-23',
       editors: legacyEditors,
       i18n: I18n,
       activeEditor: null,

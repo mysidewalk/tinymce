@@ -4559,8 +4559,7 @@ var inlite = (function () {
     };
     var Buttons = { addToEditor: addToEditor };
 
-    var getUiContainerDelta$1 = function () {
-      var uiContainer = global$6.container;
+    var getUiContainerDelta$1 = function (uiContainer) {
       if (uiContainer && global$1.DOM.getStyle(uiContainer, 'position', true) !== 'static') {
         var containerPos = global$1.DOM.getPos(uiContainer);
         var dx = containerPos.x - uiContainer.scrollLeft;
@@ -4849,7 +4848,7 @@ var inlite = (function () {
           result = Layout.calc(targetRect, contentAreaRect, panelRect);
         }
         if (result) {
-          var delta = UiContainer$1.getUiContainerDelta().getOr({
+          var delta = UiContainer$1.getUiContainerDelta(editor.settings.ui_container).getOr({
             x: 0,
             y: 0
           });

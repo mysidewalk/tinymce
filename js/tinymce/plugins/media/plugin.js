@@ -773,7 +773,8 @@ var media = (function () {
         value: getSource(editor),
         multiline: true,
         rows: 5,
-        label: 'Source'
+        label: 'Source',
+        disabled: true
       };
       var updateValueOnChange = function () {
         data = global$2.extend({}, HtmlToData.htmlToData(Settings.getScripts(editor), this.value()));
@@ -816,6 +817,7 @@ var media = (function () {
         data: data,
         bodyType: 'tabpanel',
         body: body,
+        classes: 'mysw-video-dialog-wrapper',
         onSubmit: function () {
           SizeManager.updateSize(win);
           submitForm(win, editor);
