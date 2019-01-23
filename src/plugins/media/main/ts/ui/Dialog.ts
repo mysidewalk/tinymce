@@ -176,7 +176,8 @@ const showDialog = function (editor) {
     value: getSource(editor),
     multiline: true,
     rows: 5,
-    label: 'Source'
+    label: 'Source',
+    disabled: true,
   };
 
   const updateValueOnChange = function () {
@@ -220,6 +221,7 @@ const showDialog = function (editor) {
     data,
     bodyType: 'tabpanel',
     body,
+    classes: 'mysw-video-dialog-wrapper',
     onSubmit () {
       SizeManager.updateSize(win);
       submitForm(win, editor);
