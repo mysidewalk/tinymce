@@ -1,0 +1,85 @@
+/**
+ * Copyright (c) Tiny Technologies, Inc. All rights reserved.
+ * Licensed under the LGPL or a commercial license.
+ * For LGPL see License.txt in the project root for license information.
+ * For commercial licenses see https://www.tiny.cloud/
+ */
+
+@import 'src/less/theme/theme';
+
+//
+// Place your variables here
+//
+
+@background-color: #444444;
+@color-black: #333333;
+@color-tint: #0876A2;
+@color-white: #fff;
+@color-error: #C63800;
+@color-success: #00A681;
+@font-stack: 'Gotham SSm A', 'Gotham SSm B', "Helvetica Neue",sans-serif;
+
+@panel-border-radius: 2px; // Dialogs, menues etc.
+@control-border-radius: 2px; // Buttons, input fields etc.
+
+// Spacings
+@pad-xs: @base-value / 6;
+@pad-sm: @base-value / 4;
+@pad-md: @base-value / 2;
+@pad-lg: @base-value;
+@pad-xl: @base-value * 1.5;
+
+//
+// Inputs
+//
+@input-label-font-size: 12px;
+
+//
+// Toolbar
+//
+
+@toolbar-group-padding-x: 2px;
+@toolbar-background-color: #555555;
+@toolbar-button-background-color: @color-black;
+@toolbar-button-hover-background-color: @toolbar-button-background-color;
+@toolbar-button-focus-background-color: @toolbar-button-background-color;
+@toolbar-button-active-background-color: @toolbar-button-background-color;
+@toolbar-button-enabled-background-color: @color-tint;
+@toolbar-button-disabled-background-color:  @toolbar-button-background-color;
+@toolbar-button-border-radius: 2px;
+@toolbar-button-height: 28px;
+@toolbar-button-width: 28px;
+@toolbar-button-spacing-x: 2px;
+@toolbar-button-spacing-y: 2px;
+
+//
+// Menu
+//
+
+@menu-background-color: @background-color;
+@menubar-background-color: @background-color;
+@menubar-background: none;
+
+@textfield-border-color: @color-black;
+@status-unknown-color: @color-error;
+@status-valid-color: @color-success;
+@input-label-text-color: @color-white;
+@textfield-background-color: @color-black;
+
+//
+// Dialog
+//
+@dialog-background-color: #444444;
+@dialog-body-link-color: #35A3D0;
+@dialog-body-link-hover-color: darken(@dialog-body-link-color, 10%);
+@form-group-vertical-spacing: @pad-lg;
+
+.tox {
+  .tox-dialog__body-nav-item {
+    color: @color-white;
+  }
+
+  .tox-dialog__body-nav-item--active {
+    color: @dialog-body-link-color;
+  }
+}
