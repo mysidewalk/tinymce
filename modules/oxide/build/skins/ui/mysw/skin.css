@@ -60,7 +60,7 @@
   text-align: right;
 }
 .tox-tinymce {
-  border: 1px solid #111111;
+  border: 0 solid #111111;
   border-radius: 0;
   box-shadow: none;
   box-sizing: border-box;
@@ -76,7 +76,7 @@
   box-shadow: none;
 }
 .tox-tinymce-inline .tox-editor-header {
-  border: 1px solid #111111;
+  border: 0 solid #111111;
   border-bottom: 0;
   border-radius: 0;
   box-shadow: none;
