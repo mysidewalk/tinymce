@@ -19,7 +19,7 @@ export type DataToHtmlCallback = (data: MediaData) => string;
 
 const getIframeHtml = function (data: MediaData) {
   const allowFullscreen = data.allowFullscreen ? ' allowFullscreen="1"' : '';
-  return '<iframe src="' + data.source1 + '" width="' + data.width + '" height="' + data.height + '"' + allowFullscreen + '></iframe>';
+  return '<iframe src="' + data.source1 + '" width="' + data.width + '" height="' + data.height + '"' + allowFullscreen + ' title="Embedded Media"></iframe>';
 };
 
 const getFlashHtml = function (data: MediaData) {
